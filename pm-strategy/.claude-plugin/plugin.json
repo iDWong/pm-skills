@@ -1,0 +1,15 @@
+{
+  "name": "pm-strategy",
+  "description": "战略前段：12 个经典框架（三画布/SWOT/PESTLE/五力/安索夫/定价/变现/双向推演）、上市与 ICP、增长营销。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

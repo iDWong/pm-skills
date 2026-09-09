@@ -1,0 +1,155 @@
+<mxfile host="localhost">
+  <diagram name="订单履约矩阵泳道" id="matrix-swimlane-example">
+    <mxGraphModel dx="1872" dy="991" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="1100" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="spacer" parent="1" style="fillColor=none;strokeColor=none;opacity=0;" value="" vertex="1">
+          <mxGeometry height="740" width="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="outer" parent="1" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=13;fontStyle=1;" value="电商订单履约流程（角色 × 阶段矩阵）" vertex="1">
+          <mxGeometry height="660" width="980" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="corner" parent="outer" style="rounded=0;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="买家" vertex="1">
+          <mxGeometry height="630" width="150" x="30" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="商家" vertex="1">
+          <mxGeometry height="630" width="150" x="180" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="仓库" vertex="1">
+          <mxGeometry height="630" width="150" x="330" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="物流" vertex="1">
+          <mxGeometry height="630" width="150" x="480" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="系统" vertex="1">
+          <mxGeometry height="630" width="150" x="630" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" parent="outer" style="swimlane;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="客服" vertex="1">
+          <mxGeometry height="630" width="200" x="780" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" parent="outer" style="swimlane;horizontal=0;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="下单支付" vertex="1">
+          <mxGeometry height="110" width="980" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" parent="outer" style="swimlane;horizontal=0;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="备货出库" vertex="1">
+          <mxGeometry height="110" width="980" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" parent="outer" style="swimlane;horizontal=0;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="配送签收" vertex="1">
+          <mxGeometry height="110" width="980" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" parent="outer" style="swimlane;horizontal=0;startSize=30;fillColor=#cce5ff;strokeColor=#b0b8c0;fontSize=11;fontStyle=1;" value="售后完结" vertex="1">
+          <mxGeometry height="110" width="980" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" parent="outer" style="swimlane;horizontal=0;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="异常处理" vertex="1">
+          <mxGeometry height="160" width="980" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" parent="outer" style="ellipse;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="开始" vertex="1">
+          <mxGeometry height="32" width="50" x="80" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="提交订单" vertex="1">
+          <mxGeometry height="36" width="80" x="65" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="在线支付" vertex="1">
+          <mxGeometry height="36" width="80" x="65" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="拣货打包" vertex="1">
+          <mxGeometry height="36" width="80" x="365" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="出库扫描" vertex="1">
+          <mxGeometry height="36" width="80" x="365" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="揽收配送" vertex="1">
+          <mxGeometry height="36" width="80" x="515" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="确认收货" vertex="1">
+          <mxGeometry height="36" width="80" x="65" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=11;" value="更新订单状态" vertex="1">
+          <mxGeometry height="36" width="90" x="655" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=11;" value="库存扣减" vertex="1">
+          <mxGeometry height="36" width="90" x="655" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=11;" value="物流轨迹同步" vertex="1">
+          <mxGeometry height="36" width="90" x="655" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="n12" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="订单完结" vertex="1">
+          <mxGeometry height="36" width="90" x="655" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="n13" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="售后/退款" vertex="1">
+          <mxGeometry height="36" width="80" x="835" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="异常工单" vertex="1">
+          <mxGeometry height="36" width="80" x="835" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="n15" parent="outer" style="ellipse;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="结束" vertex="1">
+          <mxGeometry height="32" width="50" x="855" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="outer" source="n1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="outer" source="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="outer" source="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="outer" source="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="outer" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="outer" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="outer" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="n8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="555" y="380" />
+              <mxPoint x="105" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="outer" source="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="outer" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="outer" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="outer" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="outer" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;exitX=0.5;exitY=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" target="n13" value="售后">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="105" y="480" />
+              <mxPoint x="820" y="480" />
+              <mxPoint x="820" y="433" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="outer" source="n13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="outer" source="n12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="580" />
+              <mxPoint x="880" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n4" parent="outer" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" value="接单确认" vertex="1">
+          <mxGeometry height="36" width="80" x="215" y="125" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

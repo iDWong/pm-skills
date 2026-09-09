@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frosted Gradient Clear Sleeve · 规范手册</title>
+<style>
+:root{
+  --pg:#F7F7F4; --pn:#FFFFFF; --pn2:#F1F1ED; --ln:#E3E3DD;
+  --ink:#1C1E22; --ink2:#4A4F57; --ink3:#6E757F;
+  --acc:#1F6F7A; --accs:rgba(31,111,122,.10);
+  --ok:#12684A; --oks:rgba(18,104,74,.10);
+  --wr:#8A5A00; --wrs:rgba(138,90,0,.10);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --pg:#14161A; --pn:#1C1F24; --pn2:#23272D; --ln:#2F343B;
+    --ink:#E7EAEE; --ink2:#AEB6C0; --ink3:#868F9A;
+    --acc:#6BC9D6; --accs:rgba(107,201,214,.13);
+    --ok:#52D9A0; --oks:rgba(82,217,160,.13);
+    --wr:#E7B269; --wrs:rgba(231,178,105,.13); }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pg);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{width:min(100%,78ch);margin:0 auto;padding:48px 22px 88px;
+  display:flex;flex-direction:column;gap:44px}
+h1{font-size:30px;margin:0;line-height:1.3;letter-spacing:.01em}
+h2{font-size:20px;margin:0;padding-bottom:10px;border-bottom:1px solid var(--ln)}
+p{margin:0}
+.lede{color:var(--ink2);font-size:16px}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--acc)}
+section{display:flex;flex-direction:column;gap:16px}
+.muted{color:var(--ink2);font-size:14px}
+code{font-family:var(--mono);font-size:.87em;background:var(--pn2);
+  border:1px solid var(--ln);padding:1px 5px;border-radius:4px}
+.scroll{overflow-x:auto;border:1px solid var(--ln);border-radius:10px;background:var(--pn)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--ln);vertical-align:top}
+thead th{font-size:11px;color:var(--ink3);letter-spacing:.05em;background:var(--pn2);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.k{font-family:var(--mono);white-space:nowrap}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:700;
+  padding:2px 7px;border-radius:4px;white-space:nowrap}
+.tag--ok{background:var(--oks);color:var(--ok)}
+.tag--wr{background:var(--wrs);color:var(--wr)}
+.note{padding:14px 16px;border-radius:9px;background:var(--pn);border:1px solid var(--ln);
+  display:flex;flex-direction:column;gap:5px}
+.note--wr{background:var(--wrs);border-color:transparent}
+.note b{font-size:14px}
+.note span{font-size:13px;color:var(--ink2);line-height:1.72}
+
+/* ---- 实样 ---- */
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.spec{border:1px solid var(--ln);border-radius:12px;overflow:hidden}
+.spec__bar{display:flex;justify-content:space-between;gap:10px;padding:9px 13px;
+  background:var(--pn2);border-bottom:1px solid var(--ln);
+  font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.spec__bar b{color:var(--ink)}
+.stage{position:relative;padding:20px 16px;min-height:190px;
+  display:flex;flex-direction:column;justify-content:center;gap:12px}
+.stage--d{background-color:#0A0A0A;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 1.5px,transparent 1.5px 7px)}
+.stage--l{background-color:#F3F2EE;
+  background-image:repeating-linear-gradient(45deg,rgba(43,42,38,.05) 0 1.5px,transparent 1.5px 7px)}
+.pane{border-radius:14px;padding:13px 15px;display:flex;flex-direction:column;gap:5px}
+.stage--d .pane{background:rgba(30,30,30,.55);border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 20px 25px -5px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05);
+  -webkit-backdrop-filter:blur(22px) saturate(1.35);backdrop-filter:blur(22px) saturate(1.35)}
+.stage--l .pane{background:rgba(252,251,247,.50);border:1px solid rgba(43,42,38,.09);
+  box-shadow:0 10px 28px rgba(43,42,38,.08),inset 0 1px 0 rgba(255,255,255,.85);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6) brightness(1.02);
+  backdrop-filter:blur(20px) saturate(1.6) brightness(1.02)}
+.pane b{font-size:14px}
+.pane span{font-size:11px}
+.stage--d .pane b{color:#fff} .stage--d .pane span{color:#8E97A3}
+.stage--l .pane b{color:#2B2A26} .stage--l .pane span{color:#67665C}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:10px;font-weight:700;
+  padding:3px 9px;border-radius:999px}
+.stage--d .pill{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);color:#fff;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2)}
+.stage--l .pill{background:rgba(255,255,255,.46);border:1px solid rgba(43,42,38,.11);color:#2B2A26;
+  -webkit-backdrop-filter:blur(9px) saturate(1.4) brightness(1.02);
+  backdrop-filter:blur(9px) saturate(1.4) brightness(1.02)}
+.specs.off .pane,.specs.off .pill{-webkit-backdrop-filter:none;backdrop-filter:none}
+.specs.off .stage{background-image:none}
+.specs.off .stage--d .pane{background:#1A1A1A}
+.specs.off .stage--l .pane{background:#FBFAF6}
+.specs.off .stage--d .pill{background:#121212}
+.specs.off .stage--l .pill{background:#F2EEE8}
+.btn{align-self:flex-start;font-family:var(--mono);font-size:12px;font-weight:700;
+  padding:8px 14px;border-radius:7px;cursor:pointer;
+  background:var(--pn);border:1px solid var(--ln);color:var(--ink)}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn[aria-pressed="true"]{background:var(--accs);border-color:var(--acc);color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="eyebrow">ui-frosted-gradient-clear-sleeve</div>
+  <h1>透明套层 · 磨砂玻璃规范</h1>
+  <p class="lede">可整体关掉的 <code>backdrop-filter</code> 材质层。
+    数值来自 KiraKira 原型 66 页 × 双主题实测，玻璃态与降级态均 WCAG AA 0 项不达标。</p>
+</header>
+
+<section>
+  <h2>实样：磨砂必须有东西可折射</h2>
+  <p class="muted">模糊一片纯色的结果还是同一片纯色。所以画布铺一道 1.5px 斜纹作为折射对象 ——
+    <b>纹在卡外清晰、进卡被抹平</b>，玻璃才成立。点下面的按钮可切到降级态对比。</p>
+  <button class="btn" id="t" type="button" aria-pressed="false">切到降级态（关闭磨砂）</button>
+  <div class="specs" id="s">
+    <div class="spec">
+      <div class="spec__bar"><b>深色</b><span>blur(22px) saturate(1.35)</span></div>
+      <div class="stage stage--d">
+        <span class="pill">控件层 · 10px</span>
+        <div class="pane"><b>面板层 · 22px</b><span>次要文字 #8E97A3 · 三阶</span></div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="spec__bar"><b>浅色</b><span>blur(20px) saturate(1.6)</span></div>
+      <div class="stage stage--l">
+        <span class="pill">控件层 · 9px</span>
+        <div class="pane"><b>面板层 · 20px</b><span>次要文字 #67665C · 三阶</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="note note--wr">
+    <b>大色斑光晕对磨砂零贡献</b>
+    <span>模糊平滑渐变的结果还是那片渐变。走过的弯路：先加三段 radial 光晕、再加两枚 42vw 光球，
+      都看不出磨砂，只是把底色弄脏。最后换成高频斜纹才一次到位。</span>
+  </div>
+</section>
+
+<section>
+  <h2>玻璃令牌</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>令牌</th><th>深色</th><th>浅色</th><th>降级态</th></tr></thead>
+    <tbody>
+      <tr><td class="k">--glass-bg</td><td class="k">rgba(30,30,30,.55)</td><td class="k">rgba(252,251,247,.50)</td><td class="k">var(--surface)</td></tr>
+      <tr><td class="k">--glass-blur</td><td class="k">blur(22px)<br>saturate(1.35)</td><td class="k">blur(20px) saturate(1.6)<br>brightness(1.02)</td><td class="k">none</td></tr>
+      <tr><td class="k">--glass-border</td><td class="k">rgba(255,255,255,.09)</td><td class="k">rgba(43,42,38,.09)</td><td class="k">var(--border-subtle)</td></tr>
+      <tr><td class="k">--glass-hl</td><td class="k">inset 0 1px 0<br>rgba(255,255,255,.05)</td><td class="k">inset 0 1px 0<br>rgba(255,255,255,.85)</td><td class="k">none</td></tr>
+      <tr><td class="k">--glass-ctl</td><td class="k">rgba(255,255,255,.055)</td><td class="k">rgba(255,255,255,.46)</td><td class="k">var(--surface-soft)</td></tr>
+      <tr><td class="k">--glass-ctl-bd</td><td class="k">rgba(255,255,255,.12)</td><td class="k">rgba(43,42,38,.11)</td><td class="k">var(--border)</td></tr>
+      <tr><td class="k">--glass-blur-sm</td><td class="k">blur(10px) saturate(1.2)</td><td class="k">blur(9px) saturate(1.4)<br>brightness(1.02)</td><td class="k">none</td></tr>
+      <tr><td class="k">--amb-tex</td><td class="k">白 .035 · 1.5px 斜纹</td><td class="k">墨 .05 · 1.5px 斜纹</td><td class="k">none</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">浅色多一个 <code>brightness(1.02)</code>：浅底只加 saturate 会发闷。
+    浅色顶边高光要 <code>.85</code> 才可见，深色只要 <code>.05</code> —— 不是笔误。</p>
+</section>
+
+<section>
+  <h2>两层结构</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>层</th><th>成员</th><th>模糊</th></tr></thead>
+    <tbody>
+      <tr><td><b>面板层</b></td><td>卡片 / 动态 / 分组列表 / 表格容器 / KPI / 半屏 / 下拉 / Toast</td><td class="n">22px</td></tr>
+      <tr><td><b>控件层</b></td><td>chip / 输入框 / 选择器 / 统计块 / 次要·描边·幽灵按钮 / 来信气泡</td><td class="n">10px</td></tr>
+      <tr><td><b>保持实心</b></td><td>主按钮 / 危险按钮 / 徽章 / 选中态 chip / 发出气泡</td><td class="n">none</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <b>判断是否豁免只看一条</b>
+    <span>这个元素上的文字是不是白字压色块（on-brand）？是的话就不能透明 ——
+      它的对比度是靠实心底保证的。实测每页模糊元素 24–63 个，大半径只占 9–14 个，所以要分两层。</span>
+  </div>
+</section>
+
+<section>
+  <h2>降级</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>入口</th><th>触发</th></tr></thead>
+    <tbody>
+      <tr><td class="k">data-glass="off"</td><td>机型判定或人工指定</td></tr>
+      <tr><td class="k">prefers-reduced-transparency</td><td>系统「减少透明度」</td></tr>
+      <tr><td class="k">@supports not (backdrop-filter)</td><td>引擎不支持</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note note--wr">
+    <b>⚠️ 选择器必须带 <code>&gt; body</code></b>
+    <span>主题类常同时打在 <code>&lt;html&gt;</code> 和 <code>&lt;body&gt;</code> 上，
+      主题令牌块同样命中 body，于是 body 把玻璃令牌重新声明一遍 ——
+      只作用于 <code>:root</code> 的降级会被挡在外面。
+      症状极具迷惑性：选择器匹配、令牌确实翻了、<code>getComputedStyle(html)</code> 读出来就是
+      <code>none</code>，但卡片纹丝不动。</span>
+  </div>
+  <div class="note note--wr">
+    <b>⚠️ chrome 的 blur 是写死的字面值</b>
+    <span>顶栏 / Dock / 遮罩直接写 <code>backdrop-filter:blur(18px)</code>，不走令牌，
+      令牌降级碰不到。实测降级后仍剩 4 处模糊，而 nav 与 dock 是常驻可见的。</span>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>状态</th><th>模糊元素数</th><th>卡片背景</th><th>对比度最小余量</th></tr></thead>
+    <tbody>
+      <tr><td class="k">glass = on</td><td class="n">63</td><td class="k">rgba(252,251,247,.50)</td><td class="n">+0.11</td></tr>
+      <tr><td class="k">glass = off</td><td class="n">0</td><td class="k">rgb(251,250,246)</td><td class="n">+0.50</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">降级态<b>保留卡片投影</b> —— 那是主题的分离机制，与玻璃无关。
+    降级后应当看起来是一套刻意的扁平设计，而不是坏掉的玻璃设计。</p>
+</section>
+
+<section>
+  <h2>对比度代价</h2>
+  <p class="muted">半透明改变了每一处文字的有效底色，凭眼睛看不出来，必须实测。
+    浅色三阶的实测轨迹：</p>
+  <div class="scroll"><table>
+    <thead><tr><th>状态</th><th>值</th><th>比值</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>纯色底</td><td class="k">#6E6D63</td><td class="n">4.65</td><td><span class="tag tag--ok">达标</span></td></tr>
+      <tr><td>大色斑 + 强纹理</td><td class="k">#6E6D63</td><td class="n">3.97</td><td><span class="tag tag--wr">不达标</span></td></tr>
+      <tr><td>收敛纹理后</td><td class="k">#6E6D63</td><td class="n">4.25</td><td><span class="tag tag--wr">不达标</span></td></tr>
+      <tr><td>最终</td><td class="k">#67665C</td><td class="n">4.60</td><td><span class="tag tag--ok">达标</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <b>不达标时不要先动透明度</b>
+    <span>按顺序试：① 降低纹理幅度（收益最大）② 压深/提亮中性阶一档（实测反推，别猜）
+      ③ 才考虑提高 <code>--glass-bg</code> 的 alpha。
+      曾一度把浅色三阶压到 <code>#636258</code>，但那已和二阶 <code>#5C5B52</code> 挤到一起，
+      阶梯塌了 —— 该回头削纹理，而不是继续压文字。</span>
+  </div>
+</section>
+
+</div>
+<script>
+(function(){
+  var b=document.getElementById('t'), s=document.getElementById('s');
+  b.addEventListener('click',function(){
+    var off=s.classList.toggle('off');
+    b.setAttribute('aria-pressed',String(off));
+    b.textContent=off?'切回玻璃态':'切到降级态（关闭磨砂）';
+  });
+})();
+</script>
+</body>
+</html>

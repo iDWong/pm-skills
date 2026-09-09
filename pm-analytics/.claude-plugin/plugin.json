@@ -1,0 +1,15 @@
+{
+  "name": "pm-analytics",
+  "description": "数据与实验：归因分析、指标体系、A/B 实验方案、埋点规格与 QA SQL。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

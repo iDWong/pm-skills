@@ -1,0 +1,15 @@
+{
+  "name": "pm-docs",
+  "description": "研发文档链：SRS 真源、PRD、原型逆向、可研、功能清单、交付计划、概要/详细设计、原型标注、Word/xlsx 导出。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

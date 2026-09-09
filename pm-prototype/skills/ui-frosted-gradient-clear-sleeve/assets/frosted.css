@@ -1,0 +1,188 @@
+/* ============================================================
+   Frosted Gradient Clear Sleeve
+   磨砂玻璃材质层 · 双主题 + 三路降级
+   来源：KiraKira 移动端、官网、运营管理系统实测提取
+
+   前置：宿主需已定义 --bg / --surface / --surface-soft /
+        --border / --border-subtle。玻璃令牌引用它们，
+        降级时也是指回它们。
+   ============================================================ */
+
+/* ---------- 令牌：浅色（默认） ---------- */
+:root{
+  --glass-bg:rgba(252,251,247,.50);
+  --glass-blur:blur(20px) saturate(1.6) brightness(1.02);
+  --glass-border:rgba(43,42,38,.09);
+  --glass-hl:inset 0 1px 0 rgba(255,255,255,.85);
+  --glass-ctl:rgba(255,255,255,.46);
+  --glass-ctl-bd:rgba(43,42,38,.11);
+  --glass-blur-sm:blur(9px) saturate(1.4) brightness(1.02);
+
+  /* 画布折射纹理：磨砂的可见性完全依赖这一层。
+     模糊纯色的结果还是纯色 —— 必须是高频细节，大色斑光晕无效。 */
+  --amb-tex:repeating-linear-gradient(45deg,rgba(43,42,38,.05) 0 1.5px,
+            transparent 1.5px 7px);
+
+  --material-nav:rgba(243,242,238,.88);
+  --material-dock:rgba(251,250,246,.95);
+
+  /* 投影不属于玻璃：降级时保留，靠它维持卡片边界 */
+  --sh-card:0 10px 28px rgba(43,42,38,.08), 0 2px 6px rgba(43,42,38,.05);
+}
+
+/* ---------- 令牌：深色 ---------- */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --glass-bg:rgba(30,30,30,.55);
+    --glass-blur:blur(22px) saturate(1.35);
+    --glass-border:rgba(255,255,255,.09);
+    --glass-hl:inset 0 1px 0 rgba(255,255,255,.05);
+    --glass-ctl:rgba(255,255,255,.055);
+    --glass-ctl-bd:rgba(255,255,255,.12);
+    --glass-blur-sm:blur(10px) saturate(1.2);
+    --amb-tex:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 1.5px,
+              transparent 1.5px 7px);
+    --material-nav:rgba(10,10,10,.86);
+    --material-dock:rgba(26,26,26,.95);
+    --sh-card:0 20px 25px -5px rgb(0 0 0/.35), 0 8px 10px -6px rgb(0 0 0/.30);
+  }
+}
+:root[data-theme="dark"]{
+  --glass-bg:rgba(30,30,30,.55);
+  --glass-blur:blur(22px) saturate(1.35);
+  --glass-border:rgba(255,255,255,.09);
+  --glass-hl:inset 0 1px 0 rgba(255,255,255,.05);
+  --glass-ctl:rgba(255,255,255,.055);
+  --glass-ctl-bd:rgba(255,255,255,.12);
+  --glass-blur-sm:blur(10px) saturate(1.2);
+  --amb-tex:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 1.5px,
+            transparent 1.5px 7px);
+  --material-nav:rgba(10,10,10,.86);
+  --material-dock:rgba(26,26,26,.95);
+  --sh-card:0 20px 25px -5px rgb(0 0 0/.35), 0 8px 10px -6px rgb(0 0 0/.30);
+}
+
+/* ---------- 画布：给磨砂提供折射对象 ----------
+   纹理铺在「背景板」上，滚动层保持透明，卡片滑过时磨砂才会变化。 */
+.sleeve-canvas{ background-color:var(--bg); background-image:var(--amb-tex) }
+.sleeve-scroll{ background:transparent; overflow-y:auto }
+/* 长页面（官网那种）用 fixed，纹理不随滚动跑掉 */
+.sleeve-canvas--fixed{ background-attachment:fixed }
+/* 没有玻璃面板的容器（预览墙 / 缩略图）关掉纹理，别白吃对比度余量 */
+.sleeve-canvas.is-flat{ background-image:none }
+
+/* ---------- 面板层（大半径） ---------- */
+.glass-panel{
+  background:var(--glass-bg);
+  -webkit-backdrop-filter:var(--glass-blur); backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--sh-card), var(--glass-hl);
+}
+/* 面板套面板只留一层模糊，否则越嵌越浑 */
+.glass-panel .glass-panel{
+  -webkit-backdrop-filter:none; backdrop-filter:none;
+  background:var(--surface-soft); box-shadow:none;
+}
+
+/* ---------- 控件层（小半径） ----------
+   注意：把它写进组件的「基础规则」，不要写成 .theme .chip 这类作用域选择器 ——
+   特异性会高于 .chip--ok 等语义变体，把状态底色整个盖掉。 */
+.glass-ctl{
+  background:var(--glass-ctl);
+  border:1px solid var(--glass-ctl-bd);
+  -webkit-backdrop-filter:var(--glass-blur-sm); backdrop-filter:var(--glass-blur-sm);
+}
+
+/* ---------- 豁免：承载 on-brand 文字的实心色块绝不透明 ----------
+   透明化会直接击穿它们的对比度保证。显式 none 还能省一次合成。 */
+.glass-solid,
+[aria-selected="true"].glass-ctl,
+.glass-ctl.is-on{
+  -webkit-backdrop-filter:none; backdrop-filter:none;
+}
+
+/* ---------- 材质条 ---------- */
+.glass-nav{ background:var(--material-nav) }
+.glass-dock{ background:var(--material-dock) }
+
+/* ---------- KiraKira 运营后台：SemiDesign 实心映射 ----------
+   后台共享组件名，但不继承 App / 官网的玻璃材质。只映射令牌，
+   不以 .t-admin .chip 之类的组件覆盖破坏语义状态色。 */
+.t-admin{
+  --glass-bg:var(--surface);
+  --glass-blur:none;
+  --glass-border:var(--border-subtle);
+  --glass-hl:inset 0 0 0 0 transparent;
+  --glass-ctl:var(--surface-soft);
+  --glass-ctl-bd:var(--border);
+  --glass-blur-sm:none;
+  --amb-tex:none;
+}
+.t-admin .sleeve-canvas{background-image:none}
+
+/* ============================================================
+   降级：把玻璃令牌指回实心值，组件规则一行不用改
+   三个入口：data-glass="off" / 系统减少透明度 / 引擎不支持
+
+   ⚠️ 必须带 > body：很多主题实现会把 data-theme 同时打在
+   <html> 和 <body> 上，主题令牌块（.theme[data-theme=...]）
+   同样命中 body，于是 body 把玻璃令牌重新声明一遍，
+   只作用于 :root 的降级会被 body 挡在外面 ——
+   症状是「令牌翻了但样式没动」。
+   ============================================================ */
+:root[data-glass="off"],
+:root[data-glass="off"] > body{
+  --glass-bg:var(--surface);
+  --glass-blur:none;
+  --glass-border:var(--border-subtle);
+  --glass-hl:inset 0 0 0 0 transparent;
+  --glass-ctl:var(--surface-soft);
+  --glass-ctl-bd:var(--border);
+  --glass-blur-sm:none;
+  --amb-tex:none;
+  --material-nav:var(--bg);
+  --material-dock:var(--surface);
+}
+@media (prefers-reduced-transparency:reduce){
+  :root:not([data-glass="on"]),
+  :root:not([data-glass="on"]) > body{
+    --glass-bg:var(--surface);
+    --glass-blur:none;
+    --glass-border:var(--border-subtle);
+    --glass-hl:inset 0 0 0 0 transparent;
+    --glass-ctl:var(--surface-soft);
+    --glass-ctl-bd:var(--border);
+    --glass-blur-sm:none;
+    --amb-tex:none;
+    --material-nav:var(--bg);
+    --material-dock:var(--surface);
+  }
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  :root, :root > body{
+    --glass-bg:var(--surface);
+    --glass-blur:none;
+    --glass-border:var(--border-subtle);
+    --glass-hl:inset 0 0 0 0 transparent;
+    --glass-ctl:var(--surface-soft);
+    --glass-ctl-bd:var(--border);
+    --glass-blur-sm:none;
+    --amb-tex:none;
+    --material-nav:var(--bg);
+    --material-dock:var(--surface);
+  }
+}
+
+/* chrome 的 blur 若写死在字面值里（顶栏 / Dock / 遮罩），
+   令牌降级碰不到它们 —— nav 与 dock 是常驻可见的，必须单独关。
+   把你项目里这类选择器补进下面两处。 */
+:root[data-glass="off"] .glass-nav,
+:root[data-glass="off"] .glass-dock,
+:root[data-glass="off"] .glass-scrim{
+  -webkit-backdrop-filter:none; backdrop-filter:none;
+}
+@media (prefers-reduced-transparency:reduce){
+  .glass-nav, .glass-dock, .glass-scrim{
+    -webkit-backdrop-filter:none; backdrop-filter:none;
+  }
+}

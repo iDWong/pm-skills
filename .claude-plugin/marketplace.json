@@ -1,0 +1,66 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pm-skills",
+  "version": "1.0.0",
+  "description": "产品经理全生命周期技能库。52 个技能打包成 9 个 plugin，覆盖战略立项 → 需求 → 设计 → 开发 → 测试 → 上线审计的完整链路；单一编排器 pm-master 管 13 阶段流程，支持裁剪、默认/深度档换挡与断点续跑。中文说明 + 中英混排正文，Claude Code / Codex / Cursor 三端可装。",
+  "owner": {
+    "name": "Noah Wong",
+    "url": "https://github.com/noahwong"
+  },
+  "plugins": [
+    {
+      "name": "pm-lifecycle",
+      "description": "产品全生命周期总控：13 阶段单一流程、裁剪、默认/深度档换挡、断点续跑。库的唯一入口。",
+      "source": "./pm-lifecycle",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-strategy",
+      "description": "战略前段：12 个经典框架（三画布/SWOT/PESTLE/五力/安索夫/定价/变现/双向推演）、上市与 ICP、增长营销。",
+      "source": "./pm-strategy",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-advisory",
+      "description": "专家顾问团：Cagan / Torres / 俞军三个专家视角 + Mom Test / Story Mapping / Build Trap 三本方法论 + 评审会总控。",
+      "source": "./pm-advisory",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-execution",
+      "description": "执行产出：PRD 三档、六角色评审、多模型优先级、路线图、OKR、迭代规划、复盘、汇报。",
+      "source": "./pm-execution",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-research",
+      "description": "用户与市场研究：市场调研、用户画像、用户访谈、问卷设计、竞品四维拆解。",
+      "source": "./pm-research",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-analytics",
+      "description": "数据与实验：归因分析、指标体系、A/B 实验方案、埋点规格与 QA SQL。",
+      "source": "./pm-analytics",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-docs",
+      "description": "研发文档链：SRS 真源、PRD、原型逆向、可研、功能清单、交付计划、概要/详细设计、原型标注、Word/xlsx 导出。",
+      "source": "./pm-docs",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-prototype",
+      "description": "原型与设计：截图/网址转原型三件套、页面实现、UI/UX 设计智能（79 风格 192 配色可检索）、玻璃材质、图表生成。",
+      "source": "./pm-prototype",
+      "category": "product-management"
+    },
+    {
+      "name": "pm-shipping",
+      "description": "上线交付：AI 代码上线审计（证据行+自我反驳）、测试用例、操作手册、发版说明。",
+      "source": "./pm-shipping",
+      "category": "product-management"
+    }
+  ]
+}

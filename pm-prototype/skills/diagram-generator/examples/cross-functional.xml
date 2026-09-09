@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="跨职能协作流程" id="cross-functional-example">
+    <mxGraphModel dx="1896" dy="1005" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gKVAwgX-mmnWapUUt_FA-1" parent="1" style="fillColor=none;strokeColor=light-dark(#afb5bc, #ededed);opacity=0;" value="" vertex="1">
+          <mxGeometry height="560" width="900" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=14;fontStyle=1;fontColor=#333;" value="员工请假 — 跨职能协作流程（横向泳道）" vertex="1">
+          <mxGeometry height="24" width="480" x="210" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="lane1" parent="1" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;fontSize=12;fontStyle=1;" value="员工" vertex="1">
+          <mxGeometry height="110" width="780" x="50" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nstart" parent="lane1" style="ellipse;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="开始" vertex="1">
+          <mxGeometry height="32" width="44" x="30" y="51" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" parent="lane1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="提交请假申请" vertex="1">
+          <mxGeometry height="44" width="120" x="100" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="lane1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="补充材料" vertex="1">
+          <mxGeometry height="44" width="100" x="320" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="lane1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="收到审批结果" vertex="1">
+          <mxGeometry height="44" width="110" x="595" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="nend" parent="lane1" style="ellipse;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="结束" vertex="1">
+          <mxGeometry height="32" width="44" x="730" y="51" as="geometry" />
+        </mxCell>
+        <mxCell id="lane2" parent="1" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;html=1;fontSize=12;fontStyle=1;" value="直属主管" vertex="1">
+          <mxGeometry height="110" width="780" x="50" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" parent="lane2" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="审核申请" vertex="1">
+          <mxGeometry height="44" width="120" x="100" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" parent="lane2" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="签署意见" vertex="1">
+          <mxGeometry height="44" width="100" x="320" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" parent="lane2" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="驳回并说明" vertex="1">
+          <mxGeometry height="44" width="100" x="460" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="lane3" parent="1" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;html=1;fontSize=12;fontStyle=1;" value="人事部门" vertex="1">
+          <mxGeometry height="110" width="780" x="50" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" parent="lane3" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="复核考勤记录" vertex="1">
+          <mxGeometry height="44" width="110" x="316" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" parent="lane3" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="更新假期余额" vertex="1">
+          <mxGeometry height="44" width="110" x="460" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" parent="lane3" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="发送通知" vertex="1">
+          <mxGeometry height="44" width="100" x="600" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="lane4" parent="1" style="swimlane;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontSize=12;fontStyle=1;" value="系统/OA" vertex="1">
+          <mxGeometry height="90" width="780" x="50" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" parent="lane4" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="生成待办 · 推送消息 · 归档审批单" vertex="1">
+          <mxGeometry height="36" width="220" x="270" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="nstart" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="n1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n7" value="通过">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;fontSize=11;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n6" value="驳回">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;fontSize=11;dashed=1;entryX=0.5;entryY=1;" value="退回">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="120" />
+            </Array>
+            <mxPoint x="610" y="206" as="sourcePoint" />
+            <mxPoint x="470" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;fontSize=11;dashed=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="n1" value="重新提交">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="n9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#666;fontSize=11;dashed=1;exitX=0.5;exitY=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="n10" value="同步">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#adb5bd;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="nend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

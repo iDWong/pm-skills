@@ -1,0 +1,15 @@
+{
+  "name": "pm-prototype",
+  "description": "原型与设计：截图/网址转原型三件套、页面实现、UI/UX 设计智能（79 风格 192 配色可检索）、玻璃材质、图表生成。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

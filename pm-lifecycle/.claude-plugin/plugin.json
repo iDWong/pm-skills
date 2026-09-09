@@ -1,0 +1,15 @@
+{
+  "name": "pm-lifecycle",
+  "description": "产品全生命周期总控：13 阶段单一流程、裁剪、默认/深度档换挡、断点续跑。库的唯一入口。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

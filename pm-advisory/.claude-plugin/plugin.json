@@ -1,0 +1,15 @@
+{
+  "name": "pm-advisory",
+  "description": "专家顾问团：Cagan / Torres / 俞军三个专家视角 + Mom Test / Story Mapping / Build Trap 三本方法论 + 评审会总控。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

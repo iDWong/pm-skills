@@ -1,0 +1,4 @@
+{
+  "version": 13,
+  "note": "标注组件契约版本（Vue/React 共用单一全局版本号）。改动 templates/vue/ 或 templates/react/ 下任何组件后必须 +1。version 是组件契约版本，不是 npm 包版本。"
+}

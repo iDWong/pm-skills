@@ -1,0 +1,205 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="下单支付时序图" id="sequence-example">
+    <mxGraphModel dx="1414" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="spacer" parent="1" style="fillColor=none;strokeColor=none;opacity=0;" value="" vertex="1">
+          <mxGeometry height="780" width="940" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=14;fontStyle=1;fontColor=#333;" value="用户下单并支付 — 系统交互时序" vertex="1">
+          <mxGeometry height="24" width="400" x="350" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" parent="1" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" value="用户" vertex="1">
+          <mxGeometry height="32" width="90" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" value="Web 前端" vertex="1">
+          <mxGeometry height="32" width="100" x="180" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="订单服务" vertex="1">
+          <mxGeometry height="32" width="100" x="340" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="库存服务" vertex="1">
+          <mxGeometry height="32" width="100" x="500" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="支付服务" vertex="1">
+          <mxGeometry height="32" width="100" x="660" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" parent="1" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="数据库" vertex="1">
+          <mxGeometry height="32" width="90" x="800" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" parent="1" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" value="第三方支付" vertex="1">
+          <mxGeometry height="32" width="100" x="930" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="85" y="82" as="sourcePoint" />
+            <mxPoint x="85" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="82" as="sourcePoint" />
+            <mxPoint x="230" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="82" as="sourcePoint" />
+            <mxPoint x="390" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="82" as="sourcePoint" />
+            <mxPoint x="550" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="82" as="sourcePoint" />
+            <mxPoint x="710" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="845" y="82" as="sourcePoint" />
+            <mxPoint x="845" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l7" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#999;dashPattern=4 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="980" y="82" as="sourcePoint" />
+            <mxPoint x="980" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g1" parent="1" style="rounded=0;fillColor=#f0f0f0;strokeColor=#666;fontSize=11;fontStyle=1;" value="1. 创建订单" vertex="1">
+          <mxGeometry height="24" width="890" x="30" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="选择商品，点击结算">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="85" y="145" as="sourcePoint" />
+            <mxPoint x="230" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="POST /api/orders（购物车项、地址）">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="175" as="sourcePoint" />
+            <mxPoint x="390" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="预占库存 lock(sku, qty)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="205" as="sourcePoint" />
+            <mxPoint x="550" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;fontSize=10;" value="库存锁定成功">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="235" as="sourcePoint" />
+            <mxPoint x="390" y="235" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="INSERT orders + order_items">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="265" as="sourcePoint" />
+            <mxPoint x="845" y="265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;fontSize=10;" value="返回 orderId、应付金额">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="295" as="sourcePoint" />
+            <mxPoint x="230" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g2" parent="1" style="rounded=0;fillColor=#f0f0f0;strokeColor=#666;fontSize=11;fontStyle=1;" value="2. 发起支付" vertex="1">
+          <mxGeometry height="24" width="890" x="30" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="确认支付，选择渠道">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="85" y="365" as="sourcePoint" />
+            <mxPoint x="230" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="POST /api/payments">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="395" as="sourcePoint" />
+            <mxPoint x="710" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;dashed=1;" value="调用微信/支付宝预下单">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="425" as="sourcePoint" />
+            <mxPoint x="980" y="425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;fontSize=10;" value="返回 prepay_id / 二维码">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="455" as="sourcePoint" />
+            <mxPoint x="230" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g3" parent="1" style="rounded=0;fillColor=#f0f0f0;strokeColor=#666;fontSize=11;fontStyle=1;" value="3. 支付回调与订单更新" vertex="1">
+          <mxGeometry height="24" width="890" x="30" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="异步支付成功回调 notify">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="980" y="525" as="sourcePoint" />
+            <mxPoint x="710" y="525" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m12" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="更新订单状态 = 已支付">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="555" as="sourcePoint" />
+            <mxPoint x="390" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m13" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="UPDATE orders SET status">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="585" as="sourcePoint" />
+            <mxPoint x="845" y="585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m14" edge="1" parent="1" style="endArrow=block;html=1;fontSize=10;" value="扣减库存 confirm(sku)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="615" as="sourcePoint" />
+            <mxPoint x="550" y="615" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m15" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;fontSize=10;" value="推送支付成功通知">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="645" as="sourcePoint" />
+            <mxPoint x="230" y="645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m16" edge="1" parent="1" style="endArrow=open;dashed=1;html=1;fontSize=10;" value="展示支付成功页">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="675" as="sourcePoint" />
+            <mxPoint x="85" y="675" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pb1" parent="1" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" value="用户" vertex="1">
+          <mxGeometry height="32" width="90" x="40" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb2" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" value="Web 前端" vertex="1">
+          <mxGeometry height="32" width="100" x="180" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb3" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="订单服务" vertex="1">
+          <mxGeometry height="32" width="100" x="340" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb4" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="库存服务" vertex="1">
+          <mxGeometry height="32" width="100" x="500" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb5" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="支付服务" vertex="1">
+          <mxGeometry height="32" width="100" x="660" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb6" parent="1" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="数据库" vertex="1">
+          <mxGeometry height="32" width="90" x="800" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="pb7" parent="1" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" value="第三方支付" vertex="1">
+          <mxGeometry height="32" width="100" x="930" y="730" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

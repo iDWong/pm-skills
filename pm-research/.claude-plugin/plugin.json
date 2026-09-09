@@ -1,0 +1,15 @@
+{
+  "name": "pm-research",
+  "description": "用户与市场研究：市场调研、用户画像、用户访谈、问卷设计、竞品四维拆解。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

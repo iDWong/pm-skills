@@ -1,0 +1,10 @@
+{
+  "apiBaseUrl": "https://www.axuremart.com",
+  "diagramApiUrl": "https://draw.axuremart.com",
+  "timeout": 60000,
+  "description": "Skills API配置文件",
+  "usage": {
+    "Word导出/文档接口": "https://www.axuremart.com",
+    "图表渲染导出": "https://draw.axuremart.com"
+  }
+}

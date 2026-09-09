@@ -1,0 +1,106 @@
+<mxfile host="localhost">
+  <diagram name="订单状态机" id="uml-state-example">
+    <mxGraphModel dx="1896" dy="1005" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="540" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="spacer" parent="1" style="fillColor=none;strokeColor=none;opacity=0;" value="" vertex="1">
+          <mxGeometry height="540" width="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=center;fontSize=14;fontStyle=1;fontColor=#1a237e;" value="电商订单 — 状态机（UML State Diagram）" vertex="1">
+          <mxGeometry height="24" width="400" x="340" y="14" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="ellipse;fillColor=#333333;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="18" width="18" x="70" y="126" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" value="草稿&#xa;Draft" vertex="1">
+          <mxGeometry height="50" width="96" x="120" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" value="待支付&#xa;PendingPay" vertex="1">
+          <mxGeometry height="50" width="106" x="250" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" value="已支付&#xa;Paid" vertex="1">
+          <mxGeometry height="50" width="96" x="390" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" value="备货中&#xa;Processing" vertex="1">
+          <mxGeometry height="50" width="106" x="520" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" value="已发货&#xa;Shipped" vertex="1">
+          <mxGeometry height="50" width="96" x="660" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" value="已完成&#xa;Completed" vertex="1">
+          <mxGeometry height="50" width="106" x="790" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;fillColor=#333333;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="26" width="26" x="940" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="endi" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="14" width="14" x="946" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="已取消&#xa;Cancelled" vertex="1">
+          <mxGeometry height="50" width="106" x="250" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="退款中&#xa;Refunding" vertex="1">
+          <mxGeometry height="50" width="106" x="520" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="s9" parent="1" style="rounded=1;shadow=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" value="已退款&#xa;Refunded" vertex="1">
+          <mxGeometry height="50" width="96" x="660" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#ffffcc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;shadow=1;" value="说明&#xa;· 待支付 → 已取消：超时（30min）或用户主动&#xa;· 已支付 → 已取消：支付后用户取消&#xa;· 已发货 → 退款中：售后流程触发&#xa;· 已完成 → 终态，不可再流转" vertex="1">
+          <mxGeometry height="82" width="260" x="390" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="text;html=1;fontSize=10;fontColor=#666666;" value="■ 正常流转　■ 异常 / 取消 / 退款" vertex="1">
+          <mxGeometry height="18" width="240" x="750" y="452" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="s1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s2" value="提交订单">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s3" value="支付成功">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s4" value="仓库接单">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="s4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s5" value="出库发货">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="s5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s6" value="确认收货&#xa;（7天自动）">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="s6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#adb5bd;strokeWidth=2;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=1.5;fontColor=#555555;fontSize=10;endArrow=classic;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s7" value="超时未支付&#xa;（30min）">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=1.5;fontColor=#555555;fontSize=10;endArrow=classic;exitX=0.25;exitY=1;entryX=0;entryY=0.5;exitDx=0;exitDy=0;" target="s7" value="支付前取消">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="277" y="185" />
+              <mxPoint x="215" y="185" />
+              <mxPoint x="215" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=1.5;fontColor=#555555;fontSize=10;endArrow=classic;exitX=0.5;exitY=1;entryX=1;entryY=0.5;" target="s7" value="用户取消">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="438" y="255" />
+              <mxPoint x="380" y="255" />
+              <mxPoint x="380" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="s5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=1.5;fontColor=#555555;fontSize=10;endArrow=classic;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s8" value="申请售后退款">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="s8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b85450;strokeWidth=1.5;fontColor=#555555;fontSize=10;endArrow=classic;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s9" value="退款成功">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

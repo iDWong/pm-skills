@@ -1,0 +1,15 @@
+{
+  "name": "pm-execution",
+  "description": "执行产出：PRD 三档、六角色评审、多模型优先级、路线图、OKR、迭代规划、复盘、汇报。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}

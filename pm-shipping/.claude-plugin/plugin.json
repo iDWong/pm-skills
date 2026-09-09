@@ -1,0 +1,15 @@
+{
+  "name": "pm-shipping",
+  "description": "上线交付：AI 代码上线审计（证据行+自我反驳）、测试用例、操作手册、发版说明。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Noah Wong"
+  },
+  "license": "MIT",
+  "keywords": [
+    "product-management",
+    "pm",
+    "zh-CN"
+  ],
+  "skills": "./skills/"
+}
