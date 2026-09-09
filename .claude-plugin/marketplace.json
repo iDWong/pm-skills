@@ -5,7 +5,7 @@
   "description": "产品经理全生命周期技能库。52 个技能打包成 9 个 plugin，覆盖战略立项 → 需求 → 设计 → 开发 → 测试 → 上线审计的完整链路；单一编排器 pm-master 管 13 阶段流程，支持裁剪、默认/深度档换挡与断点续跑。中文说明 + 中英混排正文，Claude Code / Codex / Cursor 三端可装。",
   "owner": {
     "name": "Noah Wong",
-    "url": "https://github.com/noahwong"
+    "url": "https://github.com/iDWong"
   },
   "plugins": [
     {

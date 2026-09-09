@@ -19,12 +19,12 @@
 
 | 项 | 内容 |
 | --- | --- |
-| **项目** | `noahwong/pm-skills` **v1.0**（2026-09-10） |
+| **项目** | `iDWong/pm-skills` **v1.0**（2026-09-10） |
 | **作者** | Noah Wong / Product Compass Master |
 | **规模** | **52 个技能**，打包成 **9 个 plugin**；**0 个 slash command**——本库靠 `description` 触发词自动路由，不依赖斜杠命令（Claude Code 仍会把每个技能暴露为 `/<skill-name>`） |
 | **语言** | **中文技能说明**（全部 52 个 `description` 为中文，含触发词与「不适用」）+ **中英混排正文**（自研技能中文，上游引进的 16 个技能保留英文原文，产出语言跟随用户提问语言） |
 | **实现** | **不是纯 markdown**：178 个 md（含 **123 个 references**）+ 164 个非 md 文件——**32 个可执行脚本**、**37 个 CSV 数据表**、30 个 json、65 个其他资产（PNG/XML/字体）。共 **5.9 MB** |
-| **安装** | plugin marketplace：`claude plugin marketplace add noahwong/pm-skills`；Codex / Cursor 用 `bash install.sh` 平铺安装 |
+| **安装** | plugin marketplace：`claude plugin marketplace add iDWong/pm-skills`；Codex / Cursor 用 `bash install.sh` 平铺安装 |
 
 > **和「纯 prompt 库」的区别**：本库带可执行组件——`ui-ux-pro-max` 的 37 张 CSV 是可检索的设计数据库
 > （79 风格 / 192 配色 / 74 字体对 / 119 UX 规则 / 22 技术栈），`pm-prd-spec` 有 547 行线框图生成器，
@@ -87,7 +87,7 @@
 ### Claude Code
 
 ```bash
-claude plugin marketplace add noahwong/pm-skills
+claude plugin marketplace add iDWong/pm-skills
 claude plugin install pm-lifecycle@pm-skills      # 唯一入口，先装这个
 claude plugin install pm-docs@pm-skills           # SRS/PRD 文档链 + 导出
 claude plugin install pm-execution@pm-skills
@@ -99,7 +99,7 @@ claude plugin install pm-execution@pm-skills
 平铺安装（这两个宿主不吃 plugin 格式）：
 
 ```bash
-git clone https://github.com/noahwong/pm-skills && cd pm-skills
+git clone https://github.com/iDWong/pm-skills && cd pm-skills
 bash install.sh codex     # → ${CODEX_HOME:-$HOME/.codex}/skills/
 bash install.sh cursor    # → ~/.cursor/skills/
 bash install.sh claude    # → ~/.claude/skills/（不走 plugin 时也可平铺）
