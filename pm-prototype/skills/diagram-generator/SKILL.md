@@ -24,7 +24,8 @@ description: '> 用户要求在文档中生成、创建、绘制或插入任何�
 
 - 不使用 Mermaid、PlantUML、D2 或任何其他图表语言
 - 源文件为 `.xml`（draw.io 格式），输出为 `.png`（默认）或 `.svg`
-- 渲染通过 `draw.axuremart.com/api/export` API 完成
+- 渲染通过配置的 draw.io 渲染服务完成（技能根 `config.json` 的 `diagramApiUrl` → `POST {diagramApiUrl}/api/export`）；
+  **端点不随仓库分发**，未配置时 `render-diagram.*` 会明确报错并提示如何配。校验（`validate-diagram.*`）是本地的，不需要端点
 
 ## 角色定义
 
@@ -158,7 +159,7 @@ python ../diagram-generator/scripts/validate-diagram.py --dir <DOC_DIR>/images/s
 ### 直接调用 API
 
 ```bash
-curl.exe -X POST "https://draw.axuremart.com/api/export" \
+curl.exe -X POST "{diagramApiUrl}/api/export" \
   -H "Content-Type: application/json" \
   -d '{"xml":"<mxGraphModel>...</mxGraphModel>","format":"png","scale":2}' \
   --output output.png

@@ -29,7 +29,11 @@ if [ -n "$CONFIG_FILE" ]; then
   API_URL=$(grep -o '"diagramApiUrl"[[:space:]]*:[[:space:]]*"[^"]*"' "$CONFIG_FILE" | sed 's/.*"diagramApiUrl"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/')
 fi
 if [ -z "$API_URL" ]; then
-  API_URL="https://draw.axuremart.com"
+  echo "错误：未配置 diagramApiUrl。" >&2
+  echo "  在技能根目录（与各技能目录同级）创建 config.json，从 config.example.json 复制后" >&2
+  echo "  填入你自己的 draw.io 渲染服务地址。接口契约见仓库 README。" >&2
+  echo "  未配置时仍可用 validate-diagram.sh 校验 XML，只是渲不成 PNG/SVG。" >&2
+  exit 1
 fi
 
 # 确保输出目录存在

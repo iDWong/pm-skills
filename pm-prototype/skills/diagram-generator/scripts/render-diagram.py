@@ -25,7 +25,13 @@ def load_api_url(script_dir: Path) -> str:
                 return url
         except (json.JSONDecodeError, OSError):
             continue
-    return "https://draw.axuremart.com"
+    # 端点不随仓库分发：必须在技能根的 config.json 里配 diagramApiUrl
+    raise SystemExit(
+        "错误：未配置 diagramApiUrl。\n"
+        "  在技能根目录（与各技能目录同级）创建 config.json，从 config.example.json 复制后填入\n"
+        "  你自己的 draw.io 渲染服务地址。接口契约见仓库 README 的「导出功能需要自己配端点」。\n"
+        "  未配置时仍可用 validate-diagram.* 校验 XML，只是渲不成 PNG/SVG。"
+    )
 
 
 def detect_format(output_file: Path) -> str:
