@@ -396,10 +396,11 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 **参考索引（照它的结构写，不要另起一套）**：
 
 ```
-file:///Users/noahwong/Documents/Cursor/03·Prototype/KiraKira/index.html?theme=light&lang=zh
+file://<你的参考实现目录>/index.html?theme=light&lang=zh
 ```
 
-`/Users/noahwong/Documents/Cursor/03·Prototype/KiraKira/` 是 68 个 HTML 的参考实现（3 张墙 + 65 个页面；**本机路径**，技能包分发到其他机器时此路径不存在，按契约正文的规格做即可），三张墙
+作者本机有一份 68 个 HTML 的参考实现（3 张墙 + 65 个页面），**不随本仓库分发**——
+按契约正文的规格做即可，不要去找它。其结构是三张墙
 （`index.html` 移动端 / `web-index.html` 官网 / `admin-index.html` 后台）+ `_src/` Python 生成器。
 重点对齐 `_src/index_shared.py`（卡片与页头零件）、`_src/shell.py`（`.pv__frame` CSS、`fitWall` / `mountWall`、`in-frame` 判定、devbar 与 annopanel）、`_src/comp.py`、`_src/build.py`。
 

@@ -589,9 +589,10 @@ EOF
 
 ## 参考实现
 
-`/Users/noahwong/Documents/Cursor/03·Prototype/KiraKira/` —— 68 个 HTML 产物（3 张墙 + 65 个页面）+ `_src/` Python 生成器，
-三张索引墙（`index.html` / `web-index.html` / `admin-index.html`）。**本机路径**，分发到其他机器时不存在，按本契约正文的规格做即可。参考索引：
-`file:///Users/noahwong/Documents/Cursor/03·Prototype/KiraKira/index.html?theme=light&lang=zh`
+存在一份 68 个 HTML 产物的参考实现（3 张墙 + 65 个页面）+ `_src/` Python 生成器，
+三张索引墙（`index.html` / `web-index.html` / `admin-index.html`）。
+**该实现不随本仓库分发**，作者本机之外不存在——**按本契约正文的规格做即可，不要去找它**。
+若你手上有同类实现，用 `file://<你的参考实现目录>/index.html?theme=light&lang=zh` 打开对照。
 
 对齐时重点看：`_src/index_shared.py`（卡片与页头零件）、`_src/shell.py`（`.pv__frame` CSS、
 `fitWall` / `mountWall`、`in-frame` 判定、devbar 与 annopanel 的 CSS）、`_src/comp.py` 的

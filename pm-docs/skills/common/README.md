@@ -1,6 +1,11 @@
 # Word export tools
 
-Cross-platform helpers for exporting Markdown to `.docx` via ``<skills-root>/config.json`（本目录的上一级）` (`apiBaseUrl`).
+Cross-platform helpers for exporting Markdown to `.docx`. 端点从 `<skills-root>/config.json`
+（**本目录的上一级**）的 `apiBaseUrl` 读取。
+
+> **端点不随仓库分发**：`config.json` 需自行创建——从 `config.example.json` 复制后填入你自己的
+> 文档导出服务地址。未配置时本目录三个脚本会报 `无法从 config.json 读取 apiBaseUrl`。
+> 接口契约见仓库 README 的「导出功能需要自己配端点」一节。
 
 ## Windows (PowerShell, Python 3)
 

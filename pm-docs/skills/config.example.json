@@ -1,0 +1,11 @@
+{
+  "apiBaseUrl": "",
+  "diagramApiUrl": "",
+  "timeout": 60000,
+  "description": "Skills API 配置。复制本文件为 config.json 并填入你自己的端点后，Word/xlsx 导出与图表渲染才可用。",
+  "usage": {
+    "apiBaseUrl": "文档导出服务。需提供 POST /api/document/export/word-with-images（multipart：markdown + files[]）与 POST /api/document/export/excel-from-data（JSON：{filename,title,sheets:[{name,data:[[...]]}]}）",
+    "diagramApiUrl": "draw.io 图表渲染服务。供 diagram-generator 的 render-diagram.* 调用，XML → PNG/SVG",
+    "配置位置": "config.json 必须放在技能根目录（与各技能目录同级），不是放在某个技能目录里——export-word.* 用 <script_dir>/../config.json 找它"
+  }
+}

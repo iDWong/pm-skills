@@ -23,7 +23,7 @@
 | **作者** | Noah Wong / Product Compass Master |
 | **规模** | **52 个技能**，打包成 **9 个 plugin**；**0 个 slash command**——本库靠 `description` 触发词自动路由，不依赖斜杠命令（Claude Code 仍会把每个技能暴露为 `/<skill-name>`） |
 | **语言** | **中文技能说明**（全部 52 个 `description` 为中文，含触发词与「不适用」）+ **中英混排正文**（自研技能中文，上游引进的 16 个技能保留英文原文，产出语言跟随用户提问语言） |
-| **实现** | **不是纯 markdown**：178 个 md（含 **123 个 references**）+ 164 个非 md 文件——**32 个可执行脚本**、**37 个 CSV 数据表**、30 个 json、65 个其他资产（PNG/XML/字体）。共 **5.9 MB** |
+| **实现** | **不是纯 markdown**：178 个 md（含 **123 个 references**）+ 164 个非 md 文件——**32 个可执行脚本**、**37 个 CSV 数据表**、30 个 json（含 `config.example.json`，真实 `config.json` 不入库）、65 个其他资产（PNG/XML/字体）。共 **5.9 MB** |
 | **安装** | plugin marketplace：`claude plugin marketplace add iDWong/pm-skills`；Codex / Cursor 用 `bash install.sh` 平铺安装 |
 
 > **和「纯 prompt 库」的区别**：本库带可执行组件——`ui-ux-pro-max` 的 37 张 CSV 是可检索的设计数据库
@@ -105,6 +105,30 @@ bash install.sh cursor    # → ~/.cursor/skills/
 bash install.sh claude    # → ~/.claude/skills/（不走 plugin 时也可平铺）
 bash install.sh all
 ```
+
+---
+
+## 导出功能需要自己配端点
+
+52 个技能里 **50 个开箱即用**。只有 **Word/xlsx 导出**和**图表渲染**依赖两个外部服务端点，
+本仓库**不提供**（原作者用的是自建服务，不随仓库分发）：
+
+```bash
+cp pm-docs/skills/config.example.json <技能根>/config.json
+```
+
+然后填两个字段：
+
+| 字段 | 需要提供什么 |
+| --- | --- |
+| `apiBaseUrl` | `POST /api/document/export/word-with-images`（multipart：markdown + `files[]`）<br>`POST /api/document/export/excel-from-data`（JSON：`{filename,title,sheets:[{name,data:[[...]]}]}`） |
+| `diagramApiUrl` | draw.io XML → PNG/SVG 渲染，供 `diagram-generator` 调用 |
+
+`config.json` **必须放在技能根目录**（与各技能目录同级），不是放进某个技能目录里——
+`export-word.*` 用 `<script_dir>/../config.json` 找它。`install.sh` 会自动放模板并提示。
+
+**不配会怎样**：`req-doc`、`pm-prd-spec` 等仍能正常产出 Markdown 文档，只是「导出 Word」那一步跑不了；
+`diagram-generator` 仍能生成和校验 draw.io XML，只是渲不成 PNG。其余功能完全不受影响。
 
 ---
 
