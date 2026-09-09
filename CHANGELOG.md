@@ -23,15 +23,16 @@
 - 删除 `product-strategy-analyzer`（与三个技能三重重叠），其独有的「倒推法/顺推法」双向推演
   吸收为 `pm-strategy-frameworks/references/backcasting-forwardcasting.md`。
 
-### 十轮贯通检查修掉的 69 处问题（摘要）
+### 已知约束（使用前值得知道）
 
-- 阶段门禁与断点续跑此前用精确文件名，与技能实际命名不符——9 个阶段里 7 个不匹配，**从未真正生效过**
-- 三个裁剪存在硬输入缺口（跳过阶段 3 但阶段 5/9 声明 `docs/roadmap.md` 为输入），已补三条替代来源 + 四步规则
-- `pm-prd-writer` 曾被误设为阶段 5 默认档，但它不登记 `SPEC_SOURCE`，会断在阶段 5→6 交接
-- `.agents/` 外部资源包路径全库悬空（14 个技能），**Word 导出功能实际是坏的**；44 处改成同级相对路径
-- Word 导出图片只有 `images/<纯ASCII名>` 一种可用写法，且「同级」按文档实际落盘目录算——
-  整条「生成图表 → 插文档 → 导出」链路此前一直丢图
-- xlsx 导出 payload 必须用 `data` 二维数组，用 `headers`/`rows` 会得到无 worksheet 的空壳文件
-- 顾问团 7 个技能的名册只有人名和书名、没有技能 ID，总控拿不到真名无法路由
-
-完整记录见 `docs/AUDIT.md`。
+- **阶段 5 不可跳过**：后续阶段全靠它登记的 `SPEC_SOURCE` 读规格。
+- **六个技能只认 SRS**：`page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、
+  `delivery-plan` 不接受 `*-PRD.md` 作为规格真源，只有 PRD 时门禁会路由 `req-doc` Step F 转写。
+- **Word 导出的图片只有一种可用写法**：`images/<纯ASCII名>.png`，且 `images/` 要与文档**实际落盘目录**同级。
+  其余形式（`img/`、`images/sub/`、`../images/`、与文档同目录、中文文件名）会**静默丢图**——
+  导出后务必验 `unzip -l <docx> | grep -c "word/media/"`。
+- **xlsx 导出的 payload 用 `data`（二维数组，首行表头）**，不是 `headers` + `rows`；
+  后者接口仍返回 200，但产出的文件里没有 worksheet。
+- **导出与图表渲染需自配端点**，见 README「导出功能需要自己配端点」。其余 50 个技能开箱可用。
+- **两处未在真实项目里跑过**：`ui-ux-pro-max` 的设计稿交付（三张预览墙）与 `annotation` 的代码注入，
+  这两条需要真实 PRD+SRS 与真实前端项目才能验证。
