@@ -124,8 +124,16 @@ cp pm-docs/skills/config.example.json <技能根>/config.json
 | `apiBaseUrl` | `POST /api/document/export/word-with-images`（multipart：markdown + `files[]`）<br>`POST /api/document/export/excel-from-data`（JSON：`{filename,title,sheets:[{name,data:[[...]]}]}`） |
 | `diagramApiUrl` | draw.io XML → PNG/SVG 渲染，供 `diagram-generator` 调用 |
 
-`config.json` **必须放在技能根目录**（与各技能目录同级），不是放进某个技能目录里——
-`export-word.*` 用 `<script_dir>/../config.json` 找它。`install.sh` 会自动放模板并提示。
+`config.json` **必须与各技能目录同级**，不是放进某个技能目录里——`export-word.*` 用
+`<script_dir>/../config.json` 找它。两种装法落点不同：
+
+| 装法 | 放哪 | 放几份 |
+| --- | --- | --- |
+| **平铺**（`install.sh`） | `<技能根>/config.json`，如 `~/.claude/skills/config.json` | 一份。脚本会自动放模板并提示 |
+| **plugin** | `<每个 plugin>/skills/config.json` | **每个装了的 plugin 各一份**——plugin 之间目录互相独立，共用不了 |
+
+需要端点的是 `pm-docs`、`pm-execution`、`pm-prototype`、`pm-shipping` 四个 plugin
+（它们各自带了 `common/` 与 `config.example.json`，装了哪个就在哪个里配）。其余五个 plugin 不需要。
 
 **不配会怎样**：`req-doc`、`pm-prd-spec` 等仍能正常产出 Markdown 文档，只是「导出 Word」那一步跑不了；
 `diagram-generator` 仍能生成和校验 draw.io XML，只是渲不成 PNG。其余功能完全不受影响。

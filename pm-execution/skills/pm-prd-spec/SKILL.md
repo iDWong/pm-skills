@@ -37,16 +37,29 @@ description: |
 
 ## 技能库根目录自解析
 
-本技能同时安装在 Claude（`~/.claude/skills`）、Codex（`${CODEX_HOME:-$HOME/.codex}/skills`）与 Cursor（`~/.cursor/skills`）三处。**所有跨技能引用都必须走下面的解析器，不要硬编码任何一个根目录**——否则换一个宿主就断链。
+本技能可能落在四种布局下：Claude 平铺（`~/.claude/skills`）、Codex（`${CODEX_HOME:-$HOME/.codex}/skills`）、
+Cursor（`~/.cursor/skills`），以及 **Claude Code plugin 模式**（技能在 `${CLAUDE_PLUGIN_ROOT}/skills/` 下，
+**不在** `~/.claude/skills`）。**所有跨技能引用都必须走下面的解析器，不要硬编码任何一个根目录**——否则换一种装法就断链。
+
+> plugin 模式下同一个 marketplace 的其他 bundle 各有各的目录，所以解析器还要往**同级 bundle** 找一层
+> （`${CLAUDE_PLUGIN_ROOT}/../*/skills/`）：`pm-prd-spec` 在 `pm-execution`，而它要找的 `ui-ux-pro-max` 在 `pm-prototype`。
 
 ```bash
 # 解析出某个技能的绝对路径：resolve_skill <技能名>
 resolve_skill() {
   name="$(printf '%s' "$@")"   # 不要写 $1：本技能被当 slash command 带参调用时，$1 会被参数替换掉
+  # ① plugin 模式：先看本 bundle，再看同级 bundle（跨 bundle 引用很常见）
+  if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then
+    [ -d "$CLAUDE_PLUGIN_ROOT/skills/$name" ] && { printf '%s' "$CLAUDE_PLUGIN_ROOT/skills/$name"; return 0; }
+    for R in "$CLAUDE_PLUGIN_ROOT"/../*/skills; do
+      [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
+    done
+  fi
+  # ② 平铺安装
   for R in "$HOME/.claude/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$HOME/.cursor/skills"; do
     [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
   done
-  echo "未找到技能：$name" >&2; return 1
+  echo "未找到技能：$name（plugin 模式请确认同 marketplace 的相关 bundle 已安装）" >&2; return 1
 }
 
 UIUX="$(resolve_skill ui-ux-pro-max)"
@@ -58,15 +71,21 @@ Python 里同理：
 
 ```python
 import os
+import glob
 def resolve_skill(name):
-    roots = [os.path.expanduser("~/.claude/skills"),
-             os.path.join(os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex")), "skills"),
-             os.path.expanduser("~/.cursor/skills")]
+    roots = []
+    plug = os.environ.get("CLAUDE_PLUGIN_ROOT")
+    if plug:                                          # plugin 模式：本 bundle + 同级 bundle
+        roots.append(os.path.join(plug, "skills"))
+        roots += sorted(glob.glob(os.path.join(plug, "..", "*", "skills")))
+    roots += [os.path.expanduser("~/.claude/skills"),
+              os.path.join(os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex")), "skills"),
+              os.path.expanduser("~/.cursor/skills")]
     for r in roots:
         p = os.path.join(r, name)
         if os.path.isdir(p):
-            return p
-    raise FileNotFoundError(name)
+            return os.path.normpath(p)
+    raise FileNotFoundError(f"{name}（plugin 模式请确认同 marketplace 的相关 bundle 已安装）")
 ```
 
 ---

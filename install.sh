@@ -14,6 +14,12 @@ install_to() {
     for sk in "$plug"/*; do
       [ -d "$sk" ] || continue
       local name; name="$(basename "$sk")"
+      # common/ 每个 bundle 各带一份（plugin 模式要自足），平铺时只装一次、且不算技能
+      if [ "$name" = "common" ]; then
+        [ -d "$root/common" ] && continue
+        rsync -a --exclude '__pycache__' --exclude '.DS_Store' --exclude '*.pyc' "$sk/" "$root/common/"
+        continue
+      fi
       rm -rf "$root/$name"
       rsync -a --exclude '__pycache__' --exclude '.DS_Store' --exclude '*.pyc' "$sk/" "$root/$name/"
       n=$((n+1))
