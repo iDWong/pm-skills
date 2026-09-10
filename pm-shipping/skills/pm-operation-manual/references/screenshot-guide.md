@@ -80,7 +80,7 @@ npm install puppeteer --save-dev
 
 执行截图：
 ```bash
-node .agents/skills/pm-operation-manual/scripts/screenshot.cjs --config docs/screenshot-plan.json
+node ../scripts/screenshot.cjs --config docs/screenshot-plan.json
 ```
 
 > 注：如项目 package.json 包含 `"type": "module"`，必须使用 `.cjs` 版本。

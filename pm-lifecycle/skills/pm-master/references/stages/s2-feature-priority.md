@@ -27,7 +27,7 @@
 - P2（可选）功能列表
 ```
 
-**输出**：`docs/feature-priority.md`
+**输出**：`docs/feature-priority-{产品名}.md`（技能不落盘，**流程代写**；命名见 `../flow-engine.md` 代落盘规则）
 
 **完成标志**：功能优先级文档已写入，所有功能已分级
 

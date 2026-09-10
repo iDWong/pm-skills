@@ -13,6 +13,27 @@ description: '> 原型标注工具。在页面上标注需求说明（字段说�
 > - `.agents/agent-memory/**`（跨会话记忆）→ 跳过读写，改为在产出里写清本次的决定
 > - `.agents/rules/prd-to-srs-gate.md` → **已迁到 `../common/prd-to-srs-gate.md`**（库内权威副本）
 
+## 技能路径解析
+
+`generate-annotations.js` 在技能目录里，而它是**在用户项目根执行**的，相对路径不适用。先解析绝对路径：
+
+```bash
+resolve_skill() {
+  name="$(printf '%s' "$@")"
+  if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then
+    [ -d "$CLAUDE_PLUGIN_ROOT/skills/$name" ] && { printf '%s' "$CLAUDE_PLUGIN_ROOT/skills/$name"; return 0; }
+    for R in "$CLAUDE_PLUGIN_ROOT"/../*/skills; do
+      [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
+    done
+  fi
+  for R in "$HOME/.claude/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$HOME/.cursor/skills"; do
+    [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
+  done
+  echo "未找到技能：$name" >&2; return 1
+}
+ANNO="$(resolve_skill annotation)"
+```
+
 # 原型标注工具
 
 ## 核心设计思路

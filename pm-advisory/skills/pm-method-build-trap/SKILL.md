@@ -103,3 +103,12 @@ description: |
 5. 结尾声明边界，提示可换视角交叉验证（如"具体该验哪个假设，用 pm-advisor-torres 的 assumption test"）
 
 > 本 Skill 由 career-skill-factory 生成。内容提炼自原著，版权归原作者 Melissa Perri，仅供个人学习。
+
+---
+
+## 出处存档
+
+`references/framework.md` 是本技能的提炼存档：一手来源清单、论点的三重验证过程（跨域复现／生成力／排他性）、内在张力与外部争议。
+
+**平时不用读**——下文的心智模型与决策启发式已是提炼结果。**这两种情况打开它**：
+① 用户追问「《Escaping the Build Trap》 真这么说过吗／出处在哪」；② 你要引用一个下文没写的论点，先去存档确认它是否通过了验证、是否属于「保留矛盾」那一类。

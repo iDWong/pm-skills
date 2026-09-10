@@ -3,11 +3,12 @@
  * 自动生成标注数据
  * 从需求文档中提取功能说明，分析页面组件结构，生成标注 JSON
  *
- * 使用方式：
- * node .agents/skills/annotation/generate-annotations.js <page-path> <req-doc-path>
+ * 使用方式（在项目根执行，脚本在技能目录里，先解析出绝对路径）：
+ *   ANNO="$(resolve_skill annotation)"     # 解析器见 annotation/SKILL.md
+ *   node "$ANNO/generate-annotations.js" <page-path> <req-doc-path>
  *
  * 示例：
- * node .agents/skills/annotation/generate-annotations.js /equipment/vendor docs/需求说明书.md
+ *   node "$ANNO/generate-annotations.js" /equipment/vendor docs/SRS/需求说明书.md
  */
 
 import fs from 'fs'

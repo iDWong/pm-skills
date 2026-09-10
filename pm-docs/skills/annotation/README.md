@@ -152,10 +152,12 @@ Claude 会：
 目前需要逐个页面生成。未来可以扩展批量生成功能：
 
 ```bash
+ANNO="$(resolve_skill annotation)"        # 解析器见 SKILL.md「技能路径解析」
+
 # 遍历所有页面组件
 for page in src/views/**/*.vue; do
   # 调用生成脚本
-  node .agents/skills/annotation/generate-annotations.js $page
+  node "$ANNO/generate-annotations.js" "$page"
 done
 ```
 

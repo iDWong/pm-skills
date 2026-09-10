@@ -33,11 +33,29 @@ iOS / Android / RN / Flutter 读 `references/pro-rules.md`（**移动端专用**
 
 ## 运行搜索工具
 
-脚本位于技能目录，不在项目目录。始终使用完整路径：
+脚本位于技能目录，不在项目目录。**先解析出本技能的绝对路径，不要硬编码任何一个技能库根**——
+本技能同时存在于 Claude 平铺、Codex、Cursor 以及 Claude Code plugin 四种布局下，写死哪一个都会在别处断链：
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<query>" --domain <domain>
+resolve_skill() {
+  name="$(printf '%s' "$@")"
+  if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then                    # plugin 模式
+    [ -d "$CLAUDE_PLUGIN_ROOT/skills/$name" ] && { printf '%s' "$CLAUDE_PLUGIN_ROOT/skills/$name"; return 0; }
+    for R in "$CLAUDE_PLUGIN_ROOT"/../*/skills; do
+      [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
+    done
+  fi
+  for R in "$HOME/.claude/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$HOME/.cursor/skills"; do
+    [ -d "$R/$name" ] && { printf '%s' "$R/$name"; return 0; }
+  done
+  echo "未找到技能：$name" >&2; return 1
+}
+UIUX="$(resolve_skill ui-ux-pro-max)"
+
+python3 "$UIUX/scripts/search.py" "<query>" --domain <domain>
 ```
+
+下文命令一律用 `$UIUX` 代表本技能目录。
 
 若 `python3` 不可用，可依次尝试 `python`、`py -3`。需要 Python 3.x，无外部依赖。
 
@@ -74,13 +92,13 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<q
 新页面或项目需要统一视觉方向时运行：
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
+python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
 ```
 
 跨会话保存时添加 `--persist`，并始终用 `--output-dir` 指向项目根目录：
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --persist -p "Project Name" --output-dir "<project-root>"
+python3 "$UIUX/scripts/search.py" "<query>" --design-system --persist -p "Project Name" --output-dir "<project-root>"
 ```
 
 该命令创建 `design-system/<project-slug>/MASTER.md` 和页面覆盖目录 `pages/`。使用 `--page "dashboard"` 可创建页面级覆盖。若 Master 或页面文件已存在，先读取并保留；只有用户明确授权后才能使用 `--force` 覆盖。
@@ -90,7 +108,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<q
 可用三个 1–10 调节器控制变化、动效和密度：
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --variance <1-10> --motion <1-10> --density <1-10>
+python3 "$UIUX/scripts/search.py" "<query>" --design-system --variance <1-10> --motion <1-10> --density <1-10>
 ```
 
 低 `variance` 偏居中极简，高值偏大胆不对称；低 `motion` 偏微交互，高值偏复杂编排；低 `density` 偏宽松，高值偏紧凑仪表盘。未传参数时保持原有行为。
@@ -98,7 +116,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<q
 ### 3. 补充详细搜索
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<keyword>" --domain <domain> [-n <max_results>]
+python3 "$UIUX/scripts/search.py" "<keyword>" --domain <domain> [-n <max_results>]
 ```
 
 常用 domain：`product`、`style`、`color`、`typography`、`google-fonts`、`chart`、`ux`、`landing`、`icons`、`gsap`、`react`、`web`。自动检测可能因术语重叠而误路由，结果偏题时显式指定。
@@ -106,7 +124,7 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<k
 ### 4. 查询技术栈指南
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/ui-ux-pro-max/scripts/search.py" "<keyword>" --stack <stack>
+python3 "$UIUX/scripts/search.py" "<keyword>" --stack <stack>
 ```
 
 可用技术栈：`react`、`nextjs`、`vue`、`svelte`、`astro`、`nuxtjs`、`nuxt-ui`、`angular`、`laravel`、`swiftui`、`react-native`、`flutter`、`jetpack-compose`、`html-tailwind`、`shadcn`、`threejs`、`javafx`、`wpf`、`winui`、`avalonia`、`uno`、`uwp`。必须使用实际检测到的技术栈。

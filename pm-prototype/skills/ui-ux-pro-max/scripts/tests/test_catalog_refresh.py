@@ -10,12 +10,20 @@ import tempfile
 import unittest
 from pathlib import Path
 
+# 这些是上游仓库的目录刷新脚本，不随技能分发；平铺安装下找不到就整体跳过，
+# 而不是让 import 阶段抛 StopIteration 把整个 pytest 跑挂。
 REPO = next(
-    parent for parent in Path(__file__).resolve().parents
-    if all((parent / "scripts" / script).is_file() for script in (
-        "refresh-google-fonts.py", "refresh-icon-catalog.py",
-    ))
+    (parent for parent in Path(__file__).resolve().parents
+     if all((parent / "scripts" / script).is_file() for script in (
+         "refresh-google-fonts.py", "refresh-icon-catalog.py",
+     ))),
+    None,
 )
+if REPO is None:
+    raise unittest.SkipTest(
+        "缺少上游维护脚本 scripts/refresh-google-fonts.py / refresh-icon-catalog.py，"
+        "本技能只分发运行时脚本，跳过目录刷新契约测试"
+    )
 FIXTURES = Path(__file__).parent / "fixtures" / "catalogs"
 FONT_SCRIPT = REPO / "scripts" / "refresh-google-fonts.py"
 ICON_SCRIPT = REPO / "scripts" / "refresh-icon-catalog.py"

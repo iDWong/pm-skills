@@ -23,7 +23,7 @@
 4. 行业趋势和机会点
 5. 差异化定位建议
 
-**输出**：`docs/market-research.md`
+**输出**：`docs/market-research-{产品名}.md`（带产品名——一个 `docs/` 下可能并行多个产品）
 
 ```markdown
 # [产品名称] 市场调研报告

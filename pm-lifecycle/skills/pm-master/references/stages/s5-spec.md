@@ -75,7 +75,7 @@
 
 ### 5C. PRD → SRS 转写（门禁 · 含阶段6 时强制）
 
-**规则**：Read `.agents/rules/prd-to-srs-gate.md`。**含阶段6 时不可跳过。**
+**规则**：Read `common/prd-to-srs-gate.md`（库内权威副本；原 `.agents/rules/` 资源包已不存在）。**含阶段6 时不可跳过。**
 
 **触发**：阶段6 开始前 `SPEC_SOURCE` 仍指向 PRD；或用户说「进开发」且仅有 PRD。
 

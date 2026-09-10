@@ -14,10 +14,17 @@ import tempfile
 import unittest
 from pathlib import Path
 
+# generate-catalog-summary.py 是上游脚本，且它假设 src/ui-ux-pro-max/data 的仓库布局，
+# 平铺安装下两者都没有——找不到就整体跳过，不要在 import 阶段抛 StopIteration。
 REPO = next(
-    parent for parent in Path(__file__).resolve().parents
-    if (parent / "scripts" / "generate-catalog-summary.py").is_file()
+    (parent for parent in Path(__file__).resolve().parents
+     if (parent / "scripts" / "generate-catalog-summary.py").is_file()),
+    None,
 )
+if REPO is None:
+    raise unittest.SkipTest(
+        "缺少上游脚本 scripts/generate-catalog-summary.py，跳过 catalog 快照行尾回归测试"
+    )
 DATA = REPO / "src/ui-ux-pro-max/data"
 SNAPSHOT_FILES = (
     "google-fonts.csv",

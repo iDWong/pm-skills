@@ -183,9 +183,17 @@ Step 4: 写入文件
 
 发现问题立即用 Edit 修复，修复完成后再进入 A7。
 
-### A7：转换为 Word 文档
+### A7：转换为 Word 文档（可选，问一次）
 
-所有章节生成完毕且质量检查通过后，调用 docx 技能将 Markdown 文件转换为格式规范的 Word 文档：
+所有章节生成完毕且质量检查通过后，**问用户是否导出 Word**——不要不问就导。
+需要导出时走本技能 **Step D** 的流程，不要另找工具：
+
+```bash
+bash ../common/export-word.sh docs/规划/<可研报告文件名>.md feasibility-report
+```
+
+导出后按 Step D 的要求验图：`unzip -l <docx> | grep -c "word/media/"`，数字必须等于图片张数。
+失败先查技能根 `config.json` 的 `apiBaseUrl`。
 
 ---
 

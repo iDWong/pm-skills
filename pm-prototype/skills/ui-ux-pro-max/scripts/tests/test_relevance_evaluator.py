@@ -6,8 +6,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
-ROOT = next(parent for parent in Path(__file__).resolve().parents
-            if (parent / "scripts/evaluate-relevance.py").exists())
+# evaluate-relevance.py 是上游的检索评测脚本，不随技能分发。
+ROOT = next((parent for parent in Path(__file__).resolve().parents
+             if (parent / "scripts/evaluate-relevance.py").exists()), None)
+if ROOT is None:
+    raise unittest.SkipTest(
+        "缺少上游脚本 scripts/evaluate-relevance.py，跳过检索相关性评测"
+    )
 MODULE_PATH = ROOT / "scripts/evaluate-relevance.py"
 SPEC = importlib.util.spec_from_file_location("evaluate_relevance", MODULE_PATH)
 evaluator = importlib.util.module_from_spec(SPEC)

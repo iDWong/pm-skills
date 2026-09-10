@@ -107,7 +107,7 @@
 ## Word 导出
 
 ```bash
-bash .agents/skills/common/export-word.sh <markdown文件路径> test-cases
+bash ../common/export-word.sh <markdown文件路径> test-cases
 ```
 
 导出的 Word 文档自动处理：
