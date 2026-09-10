@@ -98,7 +98,7 @@ Word 导出接口只认 `images/<纯ASCII名>.png`（与文档同级的 `images/
 | SRS（`req-doc`） | `docs/SRS/` | `docs/SRS/images/` | `images/xxx.png` |
 | PRD（`prd-writer`／`pm-prd-spec`） | `docs/PRD/` | `docs/PRD/images/` | `images/xxx.png` |
 | 概要／详细设计（`hld-design`／`lld-design`） | `docs/架构/` | `docs/架构/images/` | `images/xxx.png` |
-| 可研／功能清单（`feasibility-report`／`feature-list`） | `docs/01-需求与规划/` | `docs/01-需求与规划/images/` | `images/xxx.png` |
+| 可研／功能清单（`feasibility-report`／`feature-list`） | `docs/规划/` | `docs/规划/images/` | `images/xxx.png` |
 | 流程阶段产出 | `docs/` 根 | `docs/images/` | `images/xxx.png` |
 
 **渲到 `docs/images/` 是老写法，只有当文档本身在 `docs/` 根下时才对**——SRS/PRD/设计说明书都不在根下，

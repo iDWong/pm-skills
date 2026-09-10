@@ -35,10 +35,12 @@ find docs/01-需求与规划/ -name "*SRS*.md" -o -name "*需求*说明书*.md" 
 find docs/PRD/ -name "*.md" 2>/dev/null
 find docs/ -name "*-PRD.md" 2>/dev/null   # 兼容旧路径
 # 查找已有交付计划
-ls docs/delivery-plan.md 2>/dev/null
+ls docs/delivery-plan-*.md 2>/dev/null
+ls docs/delivery-plan.md 2>/dev/null      # 兼容旧命名（无项目名）
 ```
 
-- 若已有 `docs/delivery-plan.md`，询问用户是否覆盖重新生成
+- 若已有 `docs/delivery-plan-{项目名称}.md`（或旧命名 `docs/delivery-plan-{项目名称}.md`），询问用户是否覆盖重新生成；
+  命中旧命名时**顺手 `mv` 成带项目名的新名**再更新，别在旧名上继续追加
 - **仅有 PRD、无合格 SRS** → 输出门禁 §3 话术，**中止**，路由 **`req-doc` Step F**
 - 若无 SRS 也无 PRD → 提示用户先用 `/req-doc` 或 `/prd-writer` + Step F
 
@@ -54,14 +56,14 @@ subagent_type: "delivery-analyzer"
 
 ### A3: 写入计划文件
 
-将 delivery-analyzer 的输出写入 `docs/delivery-plan.md`。
+将 delivery-analyzer 的输出写入 `docs/delivery-plan-{项目名称}.md`。
 
 写入后输出：
 
 ```
 [完成] 交付计划已生成
 
-文件：docs/delivery-plan.md
+文件：docs/delivery-plan-{项目名称}.md
 Phase 1 共 N 个功能模块，分 4 层实现
 
 第1层（N个）：系统基础，无依赖，可立即开始
@@ -78,7 +80,7 @@ Phase 1 共 N 个功能模块，分 4 层实现
 
 ## Step B: 查看模式
 
-读取 `docs/delivery-plan.md`，输出当前进度摘要：
+读取 `docs/delivery-plan-{项目名称}.md`，输出当前进度摘要：
 
 ```
 交付计划进度
@@ -109,7 +111,7 @@ Phase 2-4：待 Phase 1 完成后展开
 
 **执行步骤**：
 
-1. 读取 `docs/delivery-plan.md`
+1. 读取 `docs/delivery-plan-{项目名称}.md`
 2. 找到对应功能条目，将状态改为 [完成]，填写完成时间
 3. 更新总进度表计数
 4. 更新"最后更新"日期
@@ -136,14 +138,14 @@ Phase 1 进度：{已完成}/{总数}
 **触发词**："实现全部功能" / "按计划实现所有功能" / "自动实现" / "一直实现" / "连续实现"
 
 **核心原则（来自 ECC-main Infinite Agentic Loop）**：
-- delivery-plan.md 是 spec 文件，自动执行模式是 Orchestrator
+- delivery-plan-{项目名称}.md 是 spec 文件，自动执行模式是 Orchestrator
 - 读取计划 → 找下一个可实现功能 → 调用 page-generator 完整实现 → 更新计划 → 继续下一个
 - **不停止、不询问、不偷懒**，直到所有依赖满足的功能全部完成
 - 遇到依赖未满足的功能才暂停，并说明原因
 
 ### D1: 读取计划，确定执行队列
 
-读取 `docs/delivery-plan.md`，按以下规则构建执行队列：
+读取 `docs/delivery-plan-{项目名称}.md`，按以下规则构建执行队列：
 
 ```
 1. 遍历 Phase 1 所有条目
@@ -180,7 +182,7 @@ Phase 1 进度：{已完成}/{总数}
 **执行规则**：
 - 每个功能必须完整执行 page-generator 的全部7个步骤，不能跳步骤
 - 验收检查（Step 6）发现问题必须修复后才能继续，不能跳过
-- 每个功能完成后立即更新 delivery-plan.md（Step 7）
+- 每个功能完成后立即更新 delivery-plan-{项目名称}.md（Step 7）
 - 上一个功能的完成状态会解锁下一个功能的依赖，自动纳入队列
 
 ### D3: 暂停条件
@@ -236,10 +238,12 @@ find docs/01-需求与规划/ -name "*SRS*.md" -o -name "*需求*说明书*.md" 
 find docs/PRD/ -name "*.md" 2>/dev/null
 find docs/ -name "*-PRD.md" 2>/dev/null   # 兼容旧路径
 # 查找已有交付计划
-ls docs/delivery-plan.md 2>/dev/null
+ls docs/delivery-plan-*.md 2>/dev/null
+ls docs/delivery-plan.md 2>/dev/null      # 兼容旧命名（无项目名）
 ```
 
-- 若已有 `docs/delivery-plan.md`，询问用户是否覆盖重新生成
+- 若已有 `docs/delivery-plan-{项目名称}.md`（或旧命名 `docs/delivery-plan-{项目名称}.md`），询问用户是否覆盖重新生成；
+  命中旧命名时**顺手 `mv` 成带项目名的新名**再更新，别在旧名上继续追加
 - **仅有 PRD、无合格 SRS** → 输出门禁 §3 话术，**中止**，路由 **`req-doc` Step F**
 - 若无 SRS 也无 PRD → 提示用户先用 `/req-doc` 或 `/prd-writer` + Step F
 
@@ -255,14 +259,14 @@ subagent_type: "delivery-analyzer"
 
 ### A3: 写入计划文件
 
-将 delivery-analyzer 的输出写入 `docs/delivery-plan.md`。
+将 delivery-analyzer 的输出写入 `docs/delivery-plan-{项目名称}.md`。
 
 写入后输出：
 
 ```
 [完成] 交付计划已生成
 
-文件：docs/delivery-plan.md
+文件：docs/delivery-plan-{项目名称}.md
 Phase 1 共 N 个功能模块，分 4 层实现
 
 第1层（N个）：系统基础，无依赖，可立即开始
@@ -279,7 +283,7 @@ Phase 1 共 N 个功能模块，分 4 层实现
 
 ## Step B: 查看模式
 
-读取 `docs/delivery-plan.md`，输出当前进度摘要：
+读取 `docs/delivery-plan-{项目名称}.md`，输出当前进度摘要：
 
 ```
 交付计划进度
@@ -310,7 +314,7 @@ Phase 2-4：待 Phase 1 完成后展开
 
 **执行步骤**：
 
-1. 读取 `docs/delivery-plan.md`
+1. 读取 `docs/delivery-plan-{项目名称}.md`
 2. 找到对应功能条目，将状态改为 [完成]，填写完成时间
 3. 更新总进度表计数
 4. 更新"最后更新"日期
@@ -344,3 +348,35 @@ Phase 1 进度：{已完成}/{总数}
 5. 若当前层级全部完成，自动推进到下一层
 6. 若 Phase 1 全部完成，提示可以开始 Phase 2
 ```
+
+---
+
+## 文档命名规范
+
+`docs/delivery-plan-{项目名称}.md`
+
+| 片段 | 规则 |
+| --- | --- |
+| `delivery-plan-` | 固定前缀，与 `roadmap-`、`feature-priority-`、`release-notes-` 同族 |
+| `{项目名称}` | 项目/产品名，例 `zymix-drama`、`智慧厂区巡检`。**必填**——一个 `docs/` 下可能并行多个项目，不带名会直接互相覆盖 |
+
+示例：`docs/delivery-plan-智慧厂区巡检.md`
+
+**落在 `docs/` 根，不建子目录。** 交付计划全项目一份、不按形态或模块拆分，
+和 SRS/PRD/架构那种「一个项目多份、要归档留版本」的性质不同，给它单开目录只会多一层空壳。
+
+### ⚠️ 本文件是活文档，不带版本号、就地更新不改名
+
+**这是 `../common/README.md`「就地修订也必须改文件名」那条规则的明确例外。**
+
+交付计划在 Step C / Step D 里**每完成一个功能就要回写一次进度**，若按版本号规则走，
+一天之内会产出几十个 `-V1.1`、`-V1.2`……文件名，历史版本毫无价值，还会让「当前是哪一份」彻底失焦。
+所以：
+
+- 文件名**不含日期、不含 `-V{版本号}`**
+- 进度更新**就地改**，文件名保持不变
+- 需要留存某个时间点的快照时，由用户显式另存，技能不自动分版
+
+同族的活文档还有 `docs/requirements.md`。**其余所有正式交付文档**（SRS、PRD、可研、功能清单、
+概要设计、详细设计、测试用例、操作手册）**仍然适用**改内容必改文件名的规则，不要一并豁免。
+

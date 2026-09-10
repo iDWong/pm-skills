@@ -208,7 +208,7 @@ docs/
 ├── strategy.md、gtm.md、market-research-*.md …   ← 阶段 -2 至 4 的流程产出
 ├── SRS/          {日期}-{客户}{项目}-SRS需求规格说明书-V*.md   + images/
 ├── PRD/          {日期}-{客户}{项目}{形态}-产品需求文档-V*.md    + images/
-├── 01-需求与规划/  可研报告、功能清单、设计方案                 + images/
+├── 规划/         可研报告、功能清单、设计方案                  + images/
 ├── 架构/         概要设计、详细设计                           + images/
 └── images/       操作手册与阶段产出的图
 src/              ← 阶段 6

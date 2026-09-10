@@ -135,11 +135,11 @@ description: |
 
 | 挂在哪 | 技能 | 干什么 | 产出 |
 |---|---|---|---|
-| 阶段 -2 之前 / 阶段 4 之前 | `brainstorming` | 动手前先探索意图与方案空间（任何创意工作前的必经一步） | `docs/01-需求与规划/{日期}-{客户}{系统}-设计方案-v*.md` |
-| 阶段 -2、-1 之后 | `feasibility-report` | 可行性研究报告（立项报批用的正式文档） | `docs/01-需求与规划/{日期}-{项目}-可行性研究报告-V*.md` + Word |
+| 阶段 -2 之前 / 阶段 4 之前 | `brainstorming` | 动手前先探索意图与方案空间（任何创意工作前的必经一步） | `docs/规划/{日期}-{客户}{系统}-设计方案-v*.md` |
+| 阶段 -2、-1 之后 | `feasibility-report` | 可行性研究报告（立项报批用的正式文档） | `docs/规划/{日期}-{项目}-可行性研究报告-V*.md` + Word |
 | 阶段 5（真源）→ | `req-doc` | **SRS 需求规格说明书**——研发真源 | `docs/SRS/` |
-| 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `docs/01-需求与规划/{日期}-{项目}-功能清单-V*.{md,xlsx}` |
-| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `docs/delivery-plan.md` |
+| 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `docs/规划/{日期}-{项目}-功能清单-V*.{md,xlsx}` |
+| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `docs/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
 | 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `docs/架构/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
 | `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `docs/架构/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
 | 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `src/` |
@@ -148,7 +148,7 @@ description: |
 | 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 | `Prototype/<项目slug>/` |
 
 
-**三套目录别搞混**：SRS/PRD → `docs/SRS/`、`docs/PRD/`；可研／功能清单／设计方案 → `docs/01-需求与规划/`
+**三套目录别搞混**：SRS/PRD → `docs/SRS/`、`docs/PRD/`；可研／功能清单／设计方案 → `docs/规划/`
 （**这三类有意留在那儿，不是遗留**）；概要／详细设计 → `docs/架构/`；流程阶段产出 → `docs/` 根。
 细则见 `references/flow-engine.md` 的目录规范。
 

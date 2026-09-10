@@ -4,7 +4,7 @@
 
 **前置**：`SPEC_SOURCE` 指向 SRS；若为 PRD，先完成 **阶段5C**。
 
-**批量模式的前置**：用户要「实现全部功能／连续实现」时，`page-generator` 需要 `docs/delivery-plan.md`
+**批量模式的前置**：用户要「实现全部功能／连续实现」时，`page-generator` 需要交付计划 `docs/delivery-plan-{项目名称}.md`
 （由 `delivery-plan` 技能产出，按 SRS 模块依赖排顺序）。**流程里 `delivery-plan` 不是必需阶段**，
 所以进阶段6 前若用户要批量实现，**先问一句要不要跑 `delivery-plan`**——不跑就只能按 3.1 功能列表顺序做，
 没有依赖校验。单个功能实现（「实现xxx」）不需要它。

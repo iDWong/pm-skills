@@ -18,8 +18,9 @@ description: >
 Glob("docs/SRS/*.md")
 Glob("docs/01-需求与规划/*SRS*.md")          # 兼容旧归档路径
 Glob("**/*需求说明书*.md")
-Glob("docs/01-需求与规划/*可行性研究报告*.md")
-Glob("docs/01-需求与规划/*可研*.md")
+Glob("docs/规划/*可行性研究报告*.md")
+Glob("docs/规划/*可研*.md")
+Glob("docs/01-需求与规划/*可研*.md")   # 兼容旧归档路径
 ```
 
 找到文档后告知用户，说明将从哪些文档提取数据。若两类文档都找到，以 SRS 为主数据源（字段更完整），可研报告补充建设类型字段。
@@ -78,7 +79,7 @@ xlsx 走服务端专用接口 `/api/document/export/excel-from-data`，**不经�
        "autoFilter": true,
        "sheets": [{ "name": "功能清单", "data": [[表头行], [数据行...]] }]
      }' \
-     -o "docs/01-需求与规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.xlsx"
+     -o "docs/规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.xlsx"
    ```
 
 3. 导出成功后告知用户文件路径。
@@ -90,7 +91,7 @@ xlsx 走服务端专用接口 `/api/document/export/excel-from-data`，**不经�
 Word 走通用导出脚本，与 req-doc、feasibility-report 技能一致。
 
 1. 将数据写入 Markdown 中间文件：
-   `docs/01-需求与规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.md`
+   `docs/规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.md`
    格式参考 `references/md-template.md`
 
 2. 调用通用导出脚本：
@@ -104,7 +105,7 @@ Word 走通用导出脚本，与 req-doc、feasibility-report 技能一致。
 
 ## 文档命名规范
 
-`docs/01-需求与规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.{md|xlsx|docx}`
+`docs/规划/{YYYY-MM-DD}-{项目名称}-功能清单-V1.0.{md|xlsx|docx}`
 
 **修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 

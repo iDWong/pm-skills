@@ -60,16 +60,20 @@ Read `../common/prd-to-srs-gate.md`，执行检测：
 执行动作：
 
 **0. 判断触发模式**：
+
+> 下文的「交付计划」一律指 `docs/delivery-plan-*.md`（`delivery-plan` 技能产出，文件名带项目名）。
+> 用 `Glob("docs/delivery-plan-*.md")` 找；未命中再试旧命名 `docs/delivery-plan.md`。
+> 命中多个（一个 `docs/` 下并行多个项目）时**让用户选**，不要自己挑第一个。
 - 若用户说的是"按计划实现下一个功能"（批量模式自动触发）：
-  - 读取 `docs/delivery-plan.md`，找到当前推荐功能（"当前推荐"章节）
+  - 读取交付计划，找到当前推荐功能（"当前推荐"章节）
   - 将该功能名作为目标功能，继续执行步骤 1
   - 记录触发模式为"批量模式"
 - 若用户说的是"实现全部功能"/"连续实现"等批量指令：
-  - 读取 `docs/delivery-plan.md`，找到第一个依赖已满足的 ⬜ 功能
+  - 读取交付计划，找到第一个依赖已满足的 ⬜ 功能
   - 将该功能名作为目标功能，继续执行步骤 1
   - 记录触发模式为"批量模式"
 
-> **`docs/delivery-plan.md` 不存在时（批量模式的前置）**：不要中止，也不要自己猜实现顺序。
+> **交付计划不存在时（批量模式的前置）**：不要中止，也不要自己猜实现顺序。
 > 两个选择给用户挑：① 先跑 `delivery-plan` 生成交付计划（**推荐**，它会按 SRS 的模块依赖排出顺序）；
 > ② 直接从 `SPEC_SOURCE` 的 3.1 功能列表按顺序实现，此时**没有依赖检查**，可能先做了依赖别人的功能。
 > 选 ② 时在每个功能的产出里标注 `⚠ 无交付计划，未做依赖校验`。
@@ -90,7 +94,7 @@ Read `../common/prd-to-srs-gate.md`，执行检测：
    - 若只有一个子项目或根目录本身就是项目，直接用根目录作为 PROJECT_PATH
    - **WORKSPACE_PATH**：若 `{PROJECT_PATH}/.agents/knowledge/` 存在则等于 PROJECT_PATH；否则若 `{PROJECT_PATH}/../.agents/knowledge/` 存在则取 PROJECT_PATH 的父目录；否则等于 PROJECT_PATH
 
-2. 读取 **SRS**（步骤 0 已登记 `SPEC_SOURCE` 时直接用该路径；否则 `docs/SRS/*.md`、`docs/01-需求与规划/*SRS*.md` 或 `*需求*说明书*.md`）
+2. 读取 **SRS**（步骤 0 已登记 `SPEC_SOURCE` 时直接用该路径；否则 `docs/SRS/*.md`、`docs/01-需求与规划/*SRS*.md`（旧归档路径）或 `*需求*说明书*.md`）
    - **有合格 SRS** 时，按以下顺序读取对应章节（须为 req-doc 模板结构，**非 PRD**）：
 
    **第一步：读取菜单结构**（`3.1 总体功能架构` 的菜单结构文字说明）
@@ -378,11 +382,11 @@ WORKSPACE_PATH：{工作区根目录绝对路径，含 .agents/}
 
 执行动作：
 
-1. 检查 `docs/delivery-plan.md` 是否存在
+1. 检查交付计划是否存在（`Glob("docs/delivery-plan-*.md")`，旧命名 `docs/delivery-plan.md` 兜底）
    - **存在**：执行步骤 2-4
    - **不存在**：跳过本步骤，提示用户可用 `/delivery-plan` 生成交付计划
 
-2. 读取 `docs/delivery-plan.md`，找到当前功能对应的条目（按功能名匹配）
+2. 读取交付计划，找到当前功能对应的条目（按功能名匹配）
 
 3. 更新计划文件：
    - 将对应条目状态改为 `✅`

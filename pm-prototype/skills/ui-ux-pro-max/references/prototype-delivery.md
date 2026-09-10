@@ -548,7 +548,7 @@ EOF
 | 技能 | 在这条链路里负责 |
 | --- | --- |
 | `ui-ux-pro-max` | 先出/沿用 `design-system/<slug>/MASTER.md`（`--design-system` + 按形态取 variance/motion/density）；提供配色、字体、UX 规则、图表与图标选择；交付前按 `references/pro-rules.md` 走一遍精修与无障碍检查 |
-| `ui-frosted-gradient-clear-sleeve` | 提供三种产品表面（`.t-app` / `.t-web` / `.t-admin`）的玻璃材质、令牌、层级契约与降级；`assets/frosted.css`、`assets/tokens.json`、`assets/glass-tier.js` 直接内联进外壳 |
+| `ui-frosted-gradient-clear-sleeve` | 提供三种产品表面（`.t-app` / `.t-web` / `.t-admin`）的玻璃材质、令牌、层级契约与降级；其 `assets/frosted.css`、`assets/tokens.json`、`assets/glass-tier.js` 直接内联进外壳（路径用 `resolve_skill ui-frosted-gradient-clear-sleeve` 解析，别硬编码技能库根） |
 
 顺序：读 PRD/SRS → `ui-ux-pro-max` 定设计系统 → `ui-frosted-gradient-clear-sleeve` 定材质与层级 → 写 `_src/` 生成器 → build → 自查。
 

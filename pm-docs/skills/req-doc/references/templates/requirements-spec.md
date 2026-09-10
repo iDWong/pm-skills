@@ -132,7 +132,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 
 ### 2.4 业务流程图
 
-**必须调用 diagram-generator 技能生成**，参考模板：`examples/swimlane.xml`，图片命名：`images/business-flow.png`
+**必须调用 diagram-generator 技能生成**，参考模板：`diagram-generator/examples/swimlane.xml`（全部模板见同目录 `模板索引.md`），图片命名：`images/business-flow.png`
 
 ### 2.5 业务角色定义
 

@@ -286,13 +286,14 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 目录 | 谁往里写 | 状态 |
 |---|---|---|
 | `docs/SRS/`、`docs/PRD/` | `req-doc`（SRS）／`prd-writer`、`pm-prd-spec`、`prototype-to-prd`（PRD） | 现行 |
-| `docs/01-需求与规划/` | `feasibility-report`（可研）、`feature-list`（功能清单）、`brainstorming`（设计方案） | **现行——这三类有意留在这里** |
+| `docs/规划/` | `feasibility-report`（可研）、`feature-list`（功能清单）、`brainstorming`（设计方案） | **现行——这三类有意留在这里** |
 | `docs/架构/` | `hld-design`（概要设计）、`lld-design`（详细设计） | 现行 |
-| `docs/` 根 | 阶段 -2/-1/0–4 的流程产出、`delivery-plan.md` | 现行 |
+| `docs/` 根 | 阶段 -2/-1/0–4 的流程产出、`delivery-plan-{项目名称}.md` | 现行 |
 
-> **「`docs/01-需求与规划/` 是旧归档路径」这句话只对 SRS 和 PRD 成立**——那两类 2026-09-09 已迁到
-> `docs/SRS/`、`docs/PRD/`，01 目录里的 SRS/PRD 只做读取端 fallback，**不再往里写新的 SRS/PRD**。
-> 但可研报告、功能清单、设计方案**仍然写在 01 目录**，不要因为看到"旧归档"就去改它们的落盘路径。
+> **`docs/01-需求与规划/` 是旧目录名，只做读取端 fallback，不再往里写任何东西。**
+> 三次迁移的结果：SRS/PRD 于 2026-09-09 迁到 `docs/SRS/`、`docs/PRD/`；概要／详细设计迁到 `docs/架构/`；
+> 可研报告、功能清单、设计方案于 2026-09-10 从 `docs/01-需求与规划/` 迁到 **`docs/规划/`**（去掉编号前缀，
+> 与 `docs/架构/` 对仗）。存量项目里这些文件可能还在 `01-需求与规划/`，**读的时候要兜底，写一律用新名**。
 
 ---
 

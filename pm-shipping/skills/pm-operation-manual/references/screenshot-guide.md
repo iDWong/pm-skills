@@ -88,7 +88,7 @@ node .agents/skills/pm-operation-manual/scripts/screenshot.cjs --config docs/scr
 截图保存到 **`docs/images/`**（与手册同级，手册落在 `docs/` 根）。
 
 > **不要用 `docs/images/screenshots/` 这种二级子目录** —— Word 导出只认 `images/<纯ASCII名>.png` 一层，`images/screenshots/xxx.png` 会静默丢图（2026-09-10 实测）。文件名也必须纯 ASCII。
-> 手册若改落到别的目录（如 `docs/01-需求与规划/`），截图目录跟着改成那一级的 `images/`。
+> 手册若改落到别的目录（如 `docs/规划/`），截图目录跟着改成那一级的 `images/`。
 
 ## 常见问题
 
