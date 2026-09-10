@@ -28,12 +28,12 @@
 | Step 0 选择 / 信号 | 调用技能 | 阶段5 真源路径 |
 | --- | --- | --- |
 | **SRS**（默认，且含阶段6） | **`req-doc`** | `docs/SRS/{日期}-{项目}-SRS需求规格说明书-V*.md` |
-| **PRD**（只要文档 / 不对接研发） | **`prd-writer`** | `docs/PRD/YYYY-MM-DD-<主题>-PRD.md`（+ 可选 `-概念版.md`） |
+| **PRD**（只要文档 / 不对接研发） | **`prd-writer`** | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（+ 可选 `-概念版-V*.md`） |
 | **先 PRD 后 SRS** | **`prd-writer`** → **`req-doc`** | 最终以 **SRS 路径** 为真源；PRD 路径写入 SRS 文首引用 |
 | **已有 Axure/HTML/URL** | **`prototype-to-prd`** → **`prd-writer`** | 默认 PRD；若含阶段6，盘点+PRD 完成后 **须转 SRS**（`req-doc` 或用户确认转写） |
 | 用户未选但 **含阶段6** | **`req-doc`** | 同 SRS 行（page-generator 依赖 SRS 章节结构） |
 
-**禁止**：含阶段6 时仅以 `*PRD.md` 为真源调用 page-generator（除非用户明确接受手动对齐且跳过 SRS 模板）。
+**禁止**：含阶段6 时仅以 PRD（`docs/PRD/*.md`）为真源调用 page-generator（除非用户明确接受手动对齐且跳过 SRS 模板）。
 
 **交付模式**：传入各技能（`req-doc` A6 抽检 / `prd-writer` 快路径等），三档定义见 `../flow-engine.md` 问题6。
 
@@ -65,7 +65,7 @@
 - MVP 以 §4 🔴 为准，流水线内 **不另开** MVP 口头确认（除非 **严格** 模式）
 - 若后续含阶段6 且用户选「先 PRD 后 SRS」→ 本小节完成后执行 **5C**
 
-**输出**：`docs/PRD/YYYY-MM-DD-<主题>-PRD.md`（及可选 `-概念版.md`、`-原型盘点.md`）
+**输出**：`docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（及可选 `-概念版-V*.md`、`-原型盘点-V*.md`）
 
 **完成标志**：PRD §4 功能树覆盖 V1.0 范围
 
@@ -102,7 +102,7 @@
 ```
 SPEC_SOURCE 已登记 ✅
 含阶段6 → SPEC_SOURCE 指向 SRS 文件 ✅
-仅文档 + PRD → SPEC_SOURCE 指向 *PRD.md ✅
+仅文档 + PRD → SPEC_SOURCE 指向 `docs/PRD/*-产品需求文档-V*.md` ✅（概念版／评审／原型盘点都不算）
 ```
 
 ---

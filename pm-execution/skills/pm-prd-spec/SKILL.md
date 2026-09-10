@@ -250,12 +250,14 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 | `{客户名称}` | 甲方/客户简称；内部项目或问不到客户时**整段省略**，不要留空格或占位符 |
 | `{项目名称}` | 项目/产品名，例 `短视频运营日报`、`会员中心` |
 | `{形态}` | 固定五选一：`后台管理` / `APP` / `H5` / `小程序` / `官网`。跨形态拆多份 PRD 时靠这个后缀区分 |
-| `{版本号}` | 首版 `V1.0`；评审后修订 `V1.1`，结构性重写 `V2.0`。**新版本另存新文件，不要覆盖旧版** |
+| `{版本号}` | 首版 `V1.0`；评审后修订 `V1.1`，结构性重写 `V2.0`。**改了内容就得改文件名**：小文档另存新版留档，大文档就地 `Edit` + `mv` 重命名（见下） |
 
 示例：
 
 - `docs/PRD/20260908-PM能源科技短视频运营日报后台管理-产品需求文档-V1.0.md`
 - `docs/PRD/20260908-会员中心APP-产品需求文档-V1.0.md`（无客户名称）
+
+**修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
 **交付包 README 落盘：`README-PRD.md`，不准用裸 `README.md`**
 
@@ -393,16 +395,12 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 | 后台专项（三条） | ① **顶栏三件套真能点开**：通知铃铛下拉列待办型消息（交易失败率飙升 / 高危风控预警 / 成就审核超时 / 紧急工单 / 解密审批 / 退款复核）且每条直达对应模块；账号菜单含个人信息 / 修改密码 / 我的权限 / 我的操作日志 / 退出登录；全局搜索覆盖用户 / 订单 / 工单。② **抽屉与弹窗**由表格「操作」列或页面按钮打开，`Esc` 与点遮罩都能关，**同时只允许一层**；层内 Tab、筛选芯片、开关、单选组真能切，数据为静态 Mock。③ **敏感数据**（钱包地址、联系方式、消息正文）在设计稿里就按脱敏展示，旁边保留「申请解密」审批入口，标注面板写明审计留痕。细则见契约「WEB端运营管理系统专项」 |
 | 主题一致 | 索引页支持 `?theme=light\|dark&lang=zh\|en`；**只有墙内 iframe 的 `src` 拼 theme 参数**（换主题重载 iframe，保证墙上与全屏同色），跨墙互跳链接不拼（见上「跨墙互跳」行，靠 `localStorage` 继承） |
 
-**参考索引（照它的结构写，不要另起一套）**：
+**目录骨架**：三张墙 `index.html`（移动端）/ `web-index.html`（官网）/ `admin-index.html`（后台），
+页面文件与生成脚本各自成目录。**一套结构贯穿三张墙，不要每张墙另起一套。**
 
-```
-file://<你的参考实现目录>/index.html?theme=light&lang=zh
-```
-
-作者本机有一份 68 个 HTML 的参考实现（3 张墙 + 65 个页面），**不随本仓库分发**——
-按契约正文的规格做即可，不要去找它。其结构是三张墙
-（`index.html` 移动端 / `web-index.html` 官网 / `admin-index.html` 后台）+ `_src/` Python 生成器。
-重点对齐 `_src/index_shared.py`（卡片与页头零件）、`_src/shell.py`（`.pv__frame` CSS、`fitWall` / `mountWall`、`in-frame` 判定、devbar 与 annopanel）、`_src/comp.py`、`_src/build.py`。
+墙与全屏页之间这几样必须前后一致（细则见契约正文，别自创写法）：卡片与页头零件、`.pv__frame` 的
+尺寸与缩放 CSS、`fitWall` / `mountWall` 的挂载与懒加载、`in-frame` 判定（决定 devbar 只在全屏页出），
+以及 devbar 与 annopanel 的结构与样式。
 
 **自查**用契约文末的「交付前自查」清单，重点三条：随便挑三页双击打开——控制台零报错、无外链请求；
 墙内看不到 devbar、全屏页看得到；卡片数 = 实际页面数且每张图注带 `PRD 章节号 · 文件名`。
@@ -439,7 +437,7 @@ file://<你的参考实现目录>/index.html?theme=light&lang=zh
 
 用户接着说"进开发 / 实现 / 生成页面 / 出交付计划 / 做概要设计"时：
 
-- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan` 这六个技能**不得**以 `*-PRD.md` 为规格真源。
+- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan` 这六个技能**不得**以 PRD（`docs/PRD/*.md`）为规格真源。
 - 正确路径：先跑 `req-doc` **Step F**（PRD → SRS 转写），落 `docs/SRS/{日期}-{客户}{项目}-SRS需求规格说明书-V*.md`，再进下游。
 - 交付时主动提示这一步，**不要问"是否转写"**——直接说明下一步是 Step F。SRS 落盘后要不要导 Word，仍按 Step 7 的规则**问一次**。
 - 唯一豁免：用户**原话**说"跳过 SRS"或"按 PRD 手动对齐"，且仅限单次。
@@ -467,7 +465,7 @@ file://<你的参考实现目录>/index.html?theme=light&lang=zh
 | `references/wireframe.md` | 画原型图前必读——工具链、各形态画布尺寸、ASCII 文件名坑 |
 | `references/module-templates.md` | Web 后台形态的页面模板库（其他形态的模板在各自 profile 里） |
 | `references/review-checklist.md` | Step 6 逐项过 |
-| `$(resolve_skill ui-ux-pro-max)/references/prototype-delivery.md` | **Step 8 启动前必读**——预览墙三种尺寸、墙内/全屏差异、devbar 与标注面板契约、参考实现 |
+| `$(resolve_skill ui-ux-pro-max)/references/prototype-delivery.md` | **Step 8 启动前必读**——预览墙三种尺寸、墙内/全屏差异、devbar 与标注面板契约、目录骨架 |
 | `scripts/wireframe.py` | SVG 组件库 |
 | `scripts/render.sh` | SVG → PNG 渲染 + 裁边 |
 | `scripts/selftest.py` | 改过 `wireframe.py` 后跑一遍：验证组件不重叠、不出框、度量不低估 |

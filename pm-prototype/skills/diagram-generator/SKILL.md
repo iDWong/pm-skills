@@ -97,7 +97,7 @@ Word 导出接口只认 `images/<纯ASCII名>.png`（与文档同级的 `images/
 |---|---|---|---|
 | SRS（`req-doc`） | `docs/SRS/` | `docs/SRS/images/` | `images/xxx.png` |
 | PRD（`prd-writer`／`pm-prd-spec`） | `docs/PRD/` | `docs/PRD/images/` | `images/xxx.png` |
-| 概要／详细设计（`hld-design`／`lld-design`） | `docs/02-架构与设计/` | `docs/02-架构与设计/images/` | `images/xxx.png` |
+| 概要／详细设计（`hld-design`／`lld-design`） | `docs/架构/` | `docs/架构/images/` | `images/xxx.png` |
 | 可研／功能清单（`feasibility-report`／`feature-list`） | `docs/01-需求与规划/` | `docs/01-需求与规划/images/` | `images/xxx.png` |
 | 流程阶段产出 | `docs/` 根 | `docs/images/` | `images/xxx.png` |
 
@@ -107,7 +107,7 @@ Word 导出接口只认 `images/<纯ASCII名>.png`（与文档同级的 `images/
 
 XML 源文件同理放 `<文档目录>/images/src/`，与 PNG 同级便于对照。首次使用前确保这两个目录存在。
 
-下面示例用 `<DOC_DIR>` 代表目标文档所在目录（如 `docs/SRS`、`docs/PRD`、`docs/02-架构与设计`、`docs`）。
+下面示例用 `<DOC_DIR>` 代表目标文档所在目录（如 `docs/SRS`、`docs/PRD`、`docs/架构`、`docs`）。
 
 **Windows（PowerShell，需 Python 3）：**
 

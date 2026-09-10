@@ -27,7 +27,7 @@
 
 - **阶段 5 不可跳过**：后续阶段全靠它登记的 `SPEC_SOURCE` 读规格。
 - **六个技能只认 SRS**：`page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、
-  `delivery-plan` 不接受 `*-PRD.md` 作为规格真源，只有 PRD 时门禁会路由 `req-doc` Step F 转写。
+  `delivery-plan` 不接受 PRD（`docs/PRD/*.md`）作为规格真源，只有 PRD 时门禁会路由 `req-doc` Step F 转写。
 - **Word 导出的图片只有一种可用写法**：`images/<纯ASCII名>.png`，且 `images/` 要与文档**实际落盘目录**同级。
   其余形式（`img/`、`images/sub/`、`../images/`、与文档同目录、中文文件名）会**静默丢图**——
   导出后务必验 `unzip -l <docx> | grep -c "word/media/"`。

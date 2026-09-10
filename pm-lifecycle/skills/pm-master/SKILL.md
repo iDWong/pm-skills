@@ -140,8 +140,8 @@ description: |
 | 阶段 5（真源）→ | `req-doc` | **SRS 需求规格说明书**——研发真源 | `docs/SRS/` |
 | 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `docs/01-需求与规划/{日期}-{项目}-功能清单-V*.{md,xlsx}` |
 | 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `docs/delivery-plan.md` |
-| 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `docs/02-架构与设计/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
-| `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `docs/02-架构与设计/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
+| 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `docs/架构/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
+| `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `docs/架构/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
 | 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `src/` |
 | 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `docs/PRD/` |
 | 阶段 6 之后 | `annotation` | 往 **`src/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
@@ -149,7 +149,7 @@ description: |
 
 
 **三套目录别搞混**：SRS/PRD → `docs/SRS/`、`docs/PRD/`；可研／功能清单／设计方案 → `docs/01-需求与规划/`
-（**这三类有意留在那儿，不是遗留**）；概要／详细设计 → `docs/02-架构与设计/`；流程阶段产出 → `docs/` 根。
+（**这三类有意留在那儿，不是遗留**）；概要／详细设计 → `docs/架构/`；流程阶段产出 → `docs/` 根。
 细则见 `references/flow-engine.md` 的目录规范。
 
 ### 「设计稿」和「前端原型」是两条不同的路，别混
@@ -197,7 +197,7 @@ description: |
 ### 硬规则：这六个技能只认 SRS，不认 PRD
 
 **`page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`
-不得以 `*-PRD.md` 为规格真源。**
+不得以 PRD（`docs/PRD/*.md`）为规格真源。**
 
 所以阶段 5 的文档类型选择（Step 0 问题5）直接决定下游能不能走：
 

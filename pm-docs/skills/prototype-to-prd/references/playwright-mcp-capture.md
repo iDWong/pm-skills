@@ -21,7 +21,7 @@
 4. browser_evaluate → document.body.innerText / 路由列表（SPA 内页）
 5. 逐路由 browser_navigate 或 browser_click → 重复 2–4
 6. （可选）browser_take_screenshot → 存 imports/mcp-export/
-7. 汇总写入 -原型盘点.md，§1 标注 [来源：MCP 浏览器抓取]
+7. 汇总写入 -原型盘点-V*.md，§1 标注 [来源：MCP 浏览器抓取]
 ```
 
 ## 3. 常用 MCP 工具

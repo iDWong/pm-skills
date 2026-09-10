@@ -94,11 +94,11 @@ description: |
 
 按 `references/inventory-template.md` 写入：
 
-**路径**：`docs/PRD/YYYY-MM-DD-<主题>-原型盘点.md`
+**路径**：`docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md`
 
 写完后用 3–5 句摘要告知用户，并说明：
 
-> 盘点已写入 `-原型盘点.md`。若无漏页/理解偏差，我将按 **prd-writer** 继续写 PRD；有需要更正请直接指出。
+> 盘点已写入 `-原型盘点-V*.md`。若无漏页/理解偏差，我将按 **prd-writer** 继续写 PRD；有需要更正请直接指出。
 
 - **标准 / 快速**：用户 **未在下一轮消息中纠正** → 视为可继续，**不阻塞**等待「确认」
 - **严格**：须用户 **明确确认** 盘点无误后再写概念版
@@ -124,10 +124,10 @@ description: |
 
 | 步骤 | 模板 | 路径 |
 | --- | --- | --- |
-| 概念版 | `prd-writer/references/concept-template.md` | `docs/PRD/YYYY-MM-DD-<主题>-概念版.md` |
-| 落地版 | `prd-writer/references/prd-template.md` | `docs/PRD/YYYY-MM-DD-<主题>-PRD.md` |
+| 概念版 | `prd-writer/references/concept-template.md` | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` |
+| 落地版 | `prd-writer/references/prd-template.md` | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` |
 
-**概念版「已有输入摘要」**：链回 `-原型盘点.md`，并注明输入源（Axure 路径 / URL）。
+**概念版「已有输入摘要」**：链回 `-原型盘点-V*.md`，并注明输入源（Axure 路径 / URL）。
 
 **落地版额外规则**：
 
@@ -144,10 +144,14 @@ description: |
 
 | 产物 | 路径 | 说明 |
 | --- | --- | --- |
-| 原型盘点 | `docs/PRD/YYYY-MM-DD-<主题>-原型盘点.md` | 真源摘录 + 来源标注 |
-| 概念版 | `docs/PRD/YYYY-MM-DD-<主题>-概念版.md` | 方向对齐 |
-| 落地 PRD | `docs/PRD/YYYY-MM-DD-<主题>-PRD.md` | 文首链回概念版与盘点稿 |
+| 原型盘点 | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md` | 真源摘录 + 来源标注 |
+| 概念版 | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` | 方向对齐 |
+| 落地 PRD | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` | 文首链回概念版与盘点稿 |
 | Word 导出 | 与源 Markdown 同目录 `.docx` | **可选**；自检后用户要求时用 `formal` 等模板（见 §8） |
+
+命名片段（`{客户名称}` 可省、`{形态}` 五选一、`{版本号}` 首版 `V1.0`）见 `prd-writer` §4「命名片段规则」，三份产物共用同一前缀。
+
+**修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
 **进研发门禁**：PRD 落盘后若用户要开发 → 适用 `prd-writer` §10 / `../common/prd-to-srs-gate.md`，须 **`req-doc` Step F** 再 `page-generator`。
 
@@ -188,9 +192,9 @@ Markdown 落盘并通过 `prd-writer/references/self-check.md` 后，若用户�
 
 | 文件 | 模板 | 说明 |
 | --- | --- | --- |
-| 落地版 `*-PRD.md` | **`formal`** | 默认导出对象 |
-| 概念版 `*-概念版.md` | `formal` 或 `simple` | 用户指定时 |
-| 原型盘点 `*-原型盘点.md` | `feature-list` 或 `simple` | 用户指定时 |
+| 落地版 `*-产品需求文档-V*.md` | **`formal`** | 默认导出对象 |
+| 概念版 `*-产品需求文档-概念版-V*.md` | `formal` 或 `simple` | 用户指定时 |
+| 原型盘点 `*-原型盘点-V*.md` | `feature-list` 或 `simple` | 用户指定时 |
 
 ### 命令
 
@@ -203,7 +207,7 @@ Markdown 落盘并通过 `prd-writer/references/self-check.md` 后，若用户�
 **示例**（文件名遵循 §5 落地版命名，`<主题>` 替换为实际项目名）：
 
 ```powershell
-../common/export-word.ps1 docs/PRD/YYYY-MM-DD-<主题>-PRD.md formal
+../common/export-word.ps1 docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md formal
 ```
 
 ### 输出与依赖

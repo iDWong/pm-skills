@@ -76,7 +76,7 @@ Markdown 里写 `![图注](images/wf-01-daily-report.png)`。
 |---|---|---|
 | SRS | `docs/SRS/` | `docs/SRS/images/` |
 | PRD | `docs/PRD/` | `docs/PRD/images/` |
-| 概要／详细设计 | `docs/02-架构与设计/` | `docs/02-架构与设计/images/` |
+| 概要／详细设计 | `docs/架构/` | `docs/架构/images/` |
 | 可研／功能清单 | `docs/01-需求与规划/` | `docs/01-需求与规划/images/` |
 | 流程阶段产出 | `docs/` 根 | `docs/images/` |
 
@@ -115,3 +115,35 @@ unzip -l <生成的.docx> | grep -c "word/media/"
 
 适用于所有走本脚本的技能：`req-doc`、`prd-writer`、`prototype-to-prd`、`feasibility-report`、
 `feature-list`、`hld-design`、`lld-design`、`pm-test-cases`、`pm-operation-manual`、`pm-prd-spec`。
+
+---
+
+## ⚠️ 就地修订也必须改文件名
+
+**文件名里的版本号、文首「文档版本」、版本历史表末行，三者必须一致。** 文档落盘后再动内容，就是一个新版本。
+
+| 文档体量 | 怎么改 |
+| --- | --- |
+| 小（几百行以内） | 整份另存新版本文件，旧版留档 |
+| **大（几千行 / MB 级：PRD、SRS、详细设计）** | **就地 `Edit` 改**，别整份重写——但改完**必须把文件名的版本号一起改掉** |
+
+就地修订三件事，缺一不可：
+
+```bash
+# ① Edit 改内容  ② 改文首「文档版本」+ 版本历史表加一行  ③ mv 改文件名
+mv "docs/SRS/20260518-XX项目-SRS需求规格说明书-V1.0.md" \
+   "docs/SRS/$(date +%Y%m%d)-XX项目-SRS需求规格说明书-V1.1.md"
+```
+
+版本步进：局部修订 `+0.1`（`V1.0` → `V1.1`），结构性重写进大版本（`V2.0`）。日期取本次改动当天。
+
+**最常犯的错：内容已经是 V1.1，文件名还写 V1.0。** 评审时没人知道手上是哪一版，`.docx` 导出稿与 Markdown 也对不上号。
+
+改完名**同步改引用它的地方**，否则下游静默断链：
+
+- 项目根 `README-PRD.md` / `README-SRS.md` 的清单行与目录树
+- 下游文档文首的「来源 PRD」「来源 SRS」行
+- `tools/` 下硬编码该路径的脚本、原型 `_src/` 里的出稿口径文案
+- 已导出的 `.docx`（旧名那份要么一起改名，要么重导）
+
+`grep -rn "<旧文件名去掉扩展名>" .` 扫一遍，确认零残留再算改完。

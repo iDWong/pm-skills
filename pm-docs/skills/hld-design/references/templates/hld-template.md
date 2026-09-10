@@ -86,7 +86,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 
 ### 3.3 系统总体架构图
 
-> **图片落盘目录**：PNG 必须渲到 **`docs/02-架构与设计/images/`**（与本说明书同级），文档里引用写 `images/xxx.png`。渲到 `docs/images/` 会导致 Word 导出丢图（实测）。调 `diagram-generator` 时直接把输出路径指到 `docs/02-架构与设计/images/`。
+> **图片落盘目录**：PNG 必须渲到 **`docs/架构/images/`**（与本说明书同级），文档里引用写 `images/xxx.png`。渲到 `docs/images/` 会导致 Word 导出丢图（实测）。调 `diagram-generator` 时直接把输出路径指到 `docs/架构/images/`。
 
 **必须调用 diagram-generator 技能生成**（DIAGRAM_TYPE: architecture），图片命名：`images/hld-system-architecture.png`
 

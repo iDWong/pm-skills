@@ -2,7 +2,7 @@
 
 **目标**：基于阶段5 真源生成测试用例。
 
-**输入**：`SPEC_SOURCE`（SRS 优先；仅 PRD 时读 `*PRD.md` 并注明「非 SRS 结构」）
+**输入**：`SPEC_SOURCE`（SRS 优先；仅 PRD 时读 `docs/PRD/*-产品需求文档-V*.md` 并注明「非 SRS 结构」）
 
 **执行方式**：调用 `pm-test-cases` skill
 

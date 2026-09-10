@@ -165,7 +165,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 2 | `docs/feature-priority*.md`（**技能不落盘，见下方代落盘规则**） | 3 |
 | 3 | `docs/roadmap*.md` | 4 |
 | 4 | `docs/requirements*.md` | 5 |
-| 5 | `SPEC_SOURCE` 已登记（指向 `docs/SRS/*.md` 或 `docs/PRD/*.md`） | 6／7／8 |
+| 5 | `SPEC_SOURCE` 已登记（指向 `docs/SRS/*.md` 或 `docs/PRD/*-产品需求文档-V*.md`） | 6／7／8 |
 | 6 | `src/` 有代码 | 8（手册可对齐原型） |
 | 7 | `docs/*测试用例*.md` 或 `docs/*test-case*.md` | — |
 | 8 | `docs/*操作手册*.md` 或 `docs/*operation-manual*.md` | 9 |
@@ -268,9 +268,9 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 │   ├── SRS/
 │   │   └── *-SRS需求规格说明书-V*.md       ← 阶段5A/5C（研发真源）
 │   ├── PRD/
-│   │   ├── YYYY-MM-DD-<主题>-PRD.md        ← 阶段5B（可选）
-│   │   ├── YYYY-MM-DD-<主题>-概念版.md     ← 阶段5B（可选）
-│   │   └── YYYY-MM-DD-<主题>-原型盘点.md   ← 阶段5D（可选）
+│   │   ├── *-产品需求文档-V*.md            ← 阶段5B（可选）
+│   │   ├── *-产品需求文档-概念版-V*.md      ← 阶段5B（可选）
+│   │   └── *-原型盘点-V*.md                ← 阶段5D（可选）
 │   ├── {日期}-{项目}-测试用例-V{版本}.md      ← 阶段7（技能自带命名）
 │   ├── {日期}-{项目}-用户操作手册-V{版本}.md   ← 阶段8
 │   ├── quick-start.md
@@ -287,7 +287,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 |---|---|---|
 | `docs/SRS/`、`docs/PRD/` | `req-doc`（SRS）／`prd-writer`、`pm-prd-spec`、`prototype-to-prd`（PRD） | 现行 |
 | `docs/01-需求与规划/` | `feasibility-report`（可研）、`feature-list`（功能清单）、`brainstorming`（设计方案） | **现行——这三类有意留在这里** |
-| `docs/02-架构与设计/` | `hld-design`（概要设计）、`lld-design`（详细设计） | 现行 |
+| `docs/架构/` | `hld-design`（概要设计）、`lld-design`（详细设计） | 现行 |
 | `docs/` 根 | 阶段 -2/-1/0–4 的流程产出、`delivery-plan.md` | 现行 |
 
 > **「`docs/01-需求与规划/` 是旧归档路径」这句话只对 SRS 和 PRD 成立**——那两类 2026-09-09 已迁到
@@ -316,7 +316,9 @@ docs/user-persona*.md            → 阶段1已完成
 docs/feature-priority*.md        → 阶段2已完成
 docs/roadmap*.md                 → 阶段3已完成
 docs/requirements*.md            → 阶段4已完成
-docs/SRS/*.md 或 docs/PRD/*.md   → 阶段5已完成（登记 SPEC_SOURCE）
+docs/SRS/*.md 或
+docs/PRD/*-产品需求文档-V*.md    → 阶段5已完成（登记 SPEC_SOURCE）
+                                  ⚠️ 只有 -概念版- / -评审- / -原型盘点- 时**阶段5 未完成**
 src/ 有代码                       → 阶段6已完成或进行中
 docs/*测试用例*.md / *test-case*  → 阶段7已完成
 docs/*操作手册*.md / *operation-manual* → 阶段8已完成

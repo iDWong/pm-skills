@@ -7,7 +7,7 @@
 
 ## §1 适用范围：哪些技能必须过这道门禁
 
-以下技能**不得以 `*-PRD.md` 为规格真源**，必须先有合格 SRS：
+以下技能**不得以 PRD（`docs/PRD/*.md`）为规格真源**，必须先有合格 SRS：
 
 `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`
 

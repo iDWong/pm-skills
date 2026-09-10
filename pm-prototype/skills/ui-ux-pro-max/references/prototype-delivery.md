@@ -2,7 +2,7 @@
 
 本文件是**跨宿主唯一权威契约**。`ui-ux-pro-max`（设计智能）与
 `ui-frosted-gradient-clear-sleeve`（材质皮肤）在"根据 PRD/SRS 出设计稿"这件事上都读它，
-`pm-prd-spec` / `req-doc` 交付后路由到它。参考实现见文末。
+`pm-prd-spec` / `req-doc` 交付后路由到它。目录骨架与一致性要求见文末。
 
 ## 何时启动
 
@@ -224,8 +224,8 @@ body.t-admin.is-index            { --wall-img:url(images/wall-light.jpg); --wall
 | href | **裸文件名**（`web-index.html`），**不拼 `?theme=`**——跨墙主题靠 `localStorage` 继承（见下一节）；只有**墙内 iframe 的 src** 才需要带 theme 参数，两者别搞混 |
 | 缺墙 | 项目不含某形态时该胶囊不渲染，不留死链 |
 
-参考实现是 `_src/index_shared.py` 的 `cross_links(active)`。同文件里的 `xlinks()` 是已废弃的旧单独区块（返回空串），
-**别照它写**，也别以为互跳要单独占一行。
+**互跳胶囊跟着 KPI 行走，不单独占一行、不另起一个区块。** 三张墙共用同一个渲染函数，靠「当前是哪张墙」
+这一个参数决定不自指，别为每张墙各写一份。
 
 ### URL 参数与主题继承
 
@@ -587,13 +587,17 @@ EOF
 - [ ] 后台专项过一遍：铃铛/账号/全局搜索都点开过且铃铛条目能跳模块；抽屉用 `Esc` 与点遮罩都关得掉、开第二层时旧层自动关；钱包地址与联系方式已脱敏且「申请解密」能提交出 Toast
 - [ ] 两个主题下正文对比度 ≥ 4.5:1；`setGlass('off')` 后无残留模糊（见 `ui-frosted-gradient-clear-sleeve/references/degradation.md`）
 
-## 参考实现
+## 目录骨架与一致性要求
 
-存在一份 68 个 HTML 产物的参考实现（3 张墙 + 65 个页面）+ `_src/` Python 生成器，
-三张索引墙（`index.html` / `web-index.html` / `admin-index.html`）。
-**该实现不随本仓库分发**，作者本机之外不存在——**按本契约正文的规格做即可，不要去找它**。
-若你手上有同类实现，用 `file://<你的参考实现目录>/index.html?theme=light&lang=zh` 打开对照。
+三张索引墙固定为 `index.html`（移动端）/ `web-index.html`（官网）/ `admin-index.html`（后台），
+页面文件与生成脚本各自成目录。**一套结构贯穿三张墙，不要每张墙另起一套。**
 
-对齐时重点看：`_src/index_shared.py`（卡片与页头零件）、`_src/shell.py`（`.pv__frame` CSS、
-`fitWall` / `mountWall`、`in-frame` 判定、devbar 与 annopanel 的 CSS）、`_src/comp.py` 的
-`devbar()` / `annopanel()`、`_src/build.py`（外壳合成与页面注册）。**照它的结构写，不要另起一套。**
+下面几样在三张墙与全屏页之间必须完全一致，写法以本契约正文为准：
+
+| 零件 | 一致性要求 |
+| --- | --- |
+| 卡片与页头零件 | 卡片、KPI 行、互跳胶囊三张墙共用同一套结构与类名 |
+| `.pv__frame` | 墙内 iframe 的尺寸、缩放与裁切规则三张墙同源，只有画布尺寸不同 |
+| `fitWall` / `mountWall` | 挂载与懒加载逻辑共用；后台墙靠它做滚动懒挂 |
+| `in-frame` 判定 | 唯一决定 devbar 出不出——墙内隐藏、全屏页显示 |
+| devbar / annopanel | 结构、样式与开关行为共用，只有内容按页不同 |

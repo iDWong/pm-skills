@@ -177,7 +177,7 @@ cp pm-docs/skills/config.example.json <技能根>/config.json
 | `img/…`、`images/sub/…`、`assets/img/…`、`../images/…`、与文档同目录、中文名 | ❌ **静默丢图** |
 
 「与文档同级」按文档**实际落盘目录**算：SRS 在 `docs/SRS/` → 图放 `docs/SRS/images/`；
-设计说明书在 `docs/02-架构与设计/` → 图放那一级的 `images/`。
+设计说明书在 `docs/架构/` → 图放那一级的 `images/`。
 **导出后必须验**：`unzip -l <docx> | grep -c "word/media/"`，数字要等于图片张数。
 
 **③ 「设计稿」和「前端原型」是两条不同的路**
@@ -199,9 +199,9 @@ cp pm-docs/skills/config.example.json <技能根>/config.json
 docs/
 ├── strategy.md、gtm.md、market-research-*.md …   ← 阶段 -2 至 4 的流程产出
 ├── SRS/          {日期}-{客户}{项目}-SRS需求规格说明书-V*.md   + images/
-├── PRD/          {日期}-{主题}-PRD.md                        + images/
+├── PRD/          {日期}-{客户}{项目}{形态}-产品需求文档-V*.md    + images/
 ├── 01-需求与规划/  可研报告、功能清单、设计方案                 + images/
-├── 02-架构与设计/  概要设计、详细设计                          + images/
+├── 架构/         概要设计、详细设计                           + images/
 └── images/       操作手册与阶段产出的图
 src/              ← 阶段 6
 reports/          ← 阶段 10 审计报告（与 docs 分开）

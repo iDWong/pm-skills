@@ -6,7 +6,7 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
   "代码和需求对齐", (5) "审查需求说明书" "检查需求文档" "需求文档审查" "需求说明书有没有问题" "审查SRS", (6) "从Word生成模板"
   "导入需求模板" "提炼模板" "生成新模板" 或用户提供.docx路径并提到"模板", (7) 用户提供需求概述，需要输出详细规格说明时， (8) 用户需要细化现有需求说明书的特定章节时，
   (9) 用户需要将现有前端代码/页面同步回需求文档时， (10) "PRD转SRS" "PRD 转 SRS" "进开发" "转写需求" "按 PRD 写 SRS"
-  "PRD 转需求说明书" 或仅有 *-PRD.md 却要 page-generator / 交付计划 / 概要设计时。 支持完整生成、局部完善、审查修复、从代码反向同步、从
+  "PRD 转需求说明书" 或仅有 PRD 却要 page-generator / 交付计划 / 概要设计时。 支持完整生成、局部完善、审查修复、从代码反向同步、从
   Word 生成模板、**PRD→SRS 转写（Step F）**。'
 ---
 
@@ -695,8 +695,9 @@ ls {PROJECT_PATH}/../req-doc/references/templates/*.md
 ### F0: 门禁与输入确认
 
 1. Read `../common/prd-to-srs-gate.md` 与 `references/prd-to-srs-handoff.md`
-2. 扫描 PRD：`Glob("docs/PRD/*.md")`；未命中再 `Glob("docs/**/*-PRD.md")`（兼容旧路径）；登记 `PRD_SOURCE`
-3. 可选补充：`Glob("docs/PRD/*-概念版.md")`、`Glob("docs/PRD/*-原型盘点.md")`（旧路径 `docs/*-概念版.md` / `docs/*-原型盘点.md`）
+2. 扫描 PRD **落地版**：`Glob("docs/PRD/*-产品需求文档-V*.md")`；未命中再 `Glob("docs/PRD/*-PRD.md")`、`Glob("docs/**/*-PRD.md")`（兼容旧命名与旧路径）；登记 `PRD_SOURCE`。
+   **概念版／评审／原型盘点不能当转写源**——它们只在下一条作补充材料；只找到这三类时按「无落地版 PRD」中止并说明
+3. 可选补充：`Glob("docs/PRD/*-概念版-V*.md")`、`Glob("docs/PRD/*-原型盘点-V*.md")`（旧命名 `docs/PRD/*-概念版.md` / `docs/PRD/*-原型盘点.md`，旧路径 `docs/*-概念版.md` / `docs/*-原型盘点.md`）
 4. 执行 `references/prd-to-srs-handoff.md` **转写前检查**；不通过则中止并说明
 5. 扫描是否已有 SRS：若已有且用户未要求覆盖 → 转 **Step C** 增量同步，或询问覆盖/新建版本
 
@@ -821,6 +822,8 @@ unzip -l "<导出的.docx>" | grep -c "word/media/"
 **SRS 一律落 `docs/SRS/`**（目录不存在先 `mkdir -p docs/SRS`）；PRD 落 `docs/PRD/`，两者分目录归档，不要混放。
 
 示例：`docs/SRS/20260411-PM能源科技智慧厂区巡检平台-SRS需求规格说明书-V1.0.md`
+
+**修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
 ### 交付包 README：`README-SRS.md`，不准用裸 `README.md`
 
