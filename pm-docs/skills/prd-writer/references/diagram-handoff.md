@@ -7,7 +7,7 @@ PRD 中的图用于 **对齐流程与结构**，不替代专业制图交付物�
 | 复杂度 | 处理方式 |
 | --- | --- |
 | **简单主流程**（单角色、≤15 节点、无泳道） | PRD 内嵌 **Mermaid** `flowchart`，含主流程 + 1–2 条异常分支 |
-| **复杂流程**（多角色泳道、跨系统、需插图进汇报/PRD PDF） | 调用 **`diagram-generator`** 技能渲染 PNG 到 **`docs/PRD/images/`**（与 PRD 同级），PRD 内写：`![流程图](images/xxx.png)` 并链回源 XML（`docs/PRD/images/src/xxx.xml`）。**不要写 `docs/images/xxx.png`** —— PRD 在 `docs/PRD/` 下，那样会解析成 `docs/PRD/docs/images/`，Word 导出丢图 |
+| **复杂流程**（多角色泳道、跨系统、需插图进汇报/PRD PDF） | 调用 **`diagram-generator`** 技能渲染 PNG 到 **`prd/PRD/images/`**（与 PRD 同级），PRD 内写：`![流程图](images/xxx.png)` 并链回源 XML（`prd/PRD/images/src/xxx.xml`）。**不要写 `docs/images/xxx.png`** —— PRD 在 `prd/PRD/` 下，那样会解析成 `prd/PRD/docs/images/`，Word 导出丢图 |
 | **状态机**（单功能多状态切换） | 优先 Mermaid `stateDiagram-v2`；节点过多时用表格 + 简短 Mermaid |
 
 ## 页面骨架（§4.1）

@@ -88,12 +88,13 @@ annotation skill（主流程）
 
 扫描需求文档（**须 SRS 真源**）：
 ```
-Glob("docs/SRS/*.md")
-Glob("docs/01-需求与规划/*SRS*.md")   # 兼容旧归档路径
+Glob("dev/SRS/*.md")
+Glob("docs/SRS/*.md")                 # 兼容旧根
+Glob("docs/01-需求与规划/*SRS*.md")   # 兼容更旧的归档路径
 Glob("**/*需求*说明书*.md")
 ```
 
-**门禁**：若未找到 SRS 但存在 `docs/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`） → Read `../common/prd-to-srs-gate.md`，**中止**，路由 **`req-doc` Step F**。
+**门禁**：若未找到 SRS 但存在 `prd/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`） → Read `../common/prd-to-srs-gate.md`，**中止**，路由 **`req-doc` Step F**。
 
 找到合格 SRS 后记录路径。若既无 SRS 也无 PRD，告知 prd-analyzer 由其根据功能名称推断（降级，须在输出中标注）。
 

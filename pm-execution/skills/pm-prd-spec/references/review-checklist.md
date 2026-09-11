@@ -145,8 +145,8 @@ Step 6 逐项过。**P0 必须当场修完再交付**；P1/P2 汇总成清单随
 
 ## 交付动作
 
-- [ ] 落盘 `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（形态五选一：后台管理 / APP / H5 / 小程序 / 官网；无客户名称则整段省略；首版 V1.0；修订后文件名版本号必须跟着改——小文档另存新版，大文档就地改 + `mv` 重命名，不允许内容 V1.1 而文件名还写 V1.0）
-- [ ] 原型图 PNG 落在与 md 同级的 `images/` 下（`docs/PRD/images/`），文件名纯 ASCII，Markdown 里引用相对路径 `images/xxx.png`
+- [ ] 落盘 `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（形态五选一：后台管理 / APP / H5 / 小程序 / 官网；无客户名称则整段省略；首版 V1.0；修订后文件名版本号必须跟着改——小文档另存新版，大文档就地改 + `mv` 重命名，不允许内容 V1.1 而文件名还写 V1.0）
+- [ ] 原型图 PNG 落在与 md 同级的 `images/` 下（`prd/PRD/images/`），文件名纯 ASCII，Markdown 里引用相对路径 `images/xxx.png`
 - [ ] 交付包 README 落项目根 `README-PRD.md`（**不是裸 `README.md`**；SRS 侧是 `README-SRS.md`）；多形态合写一份、按形态分行；已存在则增量更新对应行
 - [ ] 生成脚本落在项目根 `tools/`（`tools/gen_wireframes.py` 等），SVG 中间产物落 `tools/svg/`，都没散在项目根、`docs/` 或系统临时目录
 - [ ] **先问用户「是否导出 Word」并拿到明确答复**（见 SKILL.md Step 7；用户本轮已明确要 docx 才免问）

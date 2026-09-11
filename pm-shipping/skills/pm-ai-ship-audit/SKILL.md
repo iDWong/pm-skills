@@ -34,7 +34,9 @@ comments, or config that looks official.
 
 ## Read-only by construction
 
-The audit flows never edit the code under audit. Reports are written under `reports/`, docs under
+The audit flows never edit the code under audit. Reports are written under `dev/reports/` when the dev chain
+(`dev-master`) is driving and `prd/reports/` when the product chain (`pm-master`) is — falling back to `reports/`
+when neither root exists. Docs go under
 `documentation/` — both repo-relative, never absolute paths. If a flow appears to require editing audited
 code, stop and report instead.
 

@@ -80,7 +80,7 @@ g.save("tools/svg/pt-01-daily-report.svg")   # ← 文件名纯 ASCII；SVG 落 
 
 ```bash
 python3 tools/gen_wireframes.py
-bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg docs/PRD/images 2400
+bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg prd/PRD/images 2400
 ```
 
 `render.sh` 会打印每张图的 `原尺寸 -> 裁后尺寸`。**裁后比例必须等于 SVG 内容比例**，否则说明裁边失败（通常是画布没做成正方形），不要将就。

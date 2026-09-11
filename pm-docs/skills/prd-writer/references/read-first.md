@@ -1,6 +1,6 @@
 # 启动前：先读已有材料
 
-用户 **@ 文件**、粘贴文档，或工作区 **`docs/`** 下已有相关稿时，**必须先读再问诊**，不得以空上下文从零重写。
+用户 **@ 文件**、粘贴文档，或工作区 **`prd/`**（旧项目 `docs/`）下已有相关稿时，**必须先读再问诊**，不得以空上下文从零重写。
 
 ## 1. 扫描并读取
 
@@ -8,9 +8,9 @@
 
 | 类型 | 常见路径 |
 | --- | --- |
-| 已有 PRD / 概念稿 | `docs/PRD/*.md`（旧路径 `docs/*-PRD.md`）、`*评审*.md`、`*概念版*.md` |
-| 需求与规划 | `docs/requirements.md`、`docs/roadmap.md` |
-| 调研与画像 | `docs/*market*`、`*research*`、`*persona*`、`*用户*` |
+| 已有 PRD / 概念稿 | `prd/PRD/*.md`（旧路径 `docs/*-PRD.md`）、`*评审*.md`、`*概念版*.md` |
+| 需求与规划 | `prd/planning/requirements.md`、`prd/planning/roadmap.md` |
+| 调研与画像 | `prd/research/*`（旧根 `docs/*market*`、`*research*`、`*persona*`、`*用户*`） |
 | 用户 @ 的路径 | 用户消息中明确给出的任意 `.md` / `.txt` |
 
 ## 2. 摘录真源

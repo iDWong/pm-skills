@@ -169,5 +169,5 @@ description: "产品 OKR/KPI 体系设计技能。适用场景：(1) 制定产�
 
 ## 保存规范
 
-- OKR 文档：`docs/okr-[产品名]-[年季].md`
-- KPI 体系：`docs/kpi-metrics-[产品名].md`
+- OKR 文档：`prd/planning/okr-[产品名]-[年季].md`
+- KPI 体系：`prd/planning/kpi-metrics-[产品名].md`

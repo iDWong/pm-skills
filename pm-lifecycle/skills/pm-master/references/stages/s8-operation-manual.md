@@ -6,7 +6,7 @@
 - `SPEC_SOURCE`
 - `src/`（阶段6，若有）
 
-**输出**：`docs/{日期}-{项目名称}-{手册类型}-V{版本号}.md`（**技能自带命名**，见 `pm-operation-manual` 的「文档命名规范」；`{手册类型}` 按管理员手册／终端用户手册拆分）+ `docs/quick-start.md`（可选快速入门）
+**输出**：`prd/release/{日期}-{项目名称}-{手册类型}-V{版本号}.md`（**技能自带命名**，见 `pm-operation-manual` 的「文档命名规范」；`{手册类型}` 按管理员手册／终端用户手册拆分）+ `prd/release/quick-start.md`（可选快速入门）
 
 **执行方式**：调用 `pm-operation-manual` skill
 

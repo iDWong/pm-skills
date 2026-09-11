@@ -15,7 +15,7 @@ OpenClaw 通过 `browser-use` skill 直接控制真实浏览器，能截取弹�
 
 截图指令格式：
 ```
-请使用 OpenClaw 的 browser-use skill 按以下步骤截图并保存到 docs/images/：
+请使用 OpenClaw 的 browser-use skill 按以下步骤截图并保存到手册同级的 images/（如 prd/release/images/）：
 1. 打开浏览器访问 http://localhost:5173/login
 2. 截图保存为 login.png
 3. 输入账号 admin / 密码 123456，点击登录
@@ -37,11 +37,11 @@ npx playwright install chromium
 npm install puppeteer --save-dev
 ```
 
-生成截图计划文件 `docs/screenshot-plan.json`：
+生成截图计划文件 `prd/release/screenshot-plan.json`：
 ```json
 {
   "baseUrl": "http://localhost:5173",
-  "outputDir": "docs/images",
+  "outputDir": "prd/release/images",
   "loginUrl": "/login",
   "loginCredentials": { "username": "admin", "password": "123456" },
   "usernameSelector": "input[type='text']",
@@ -80,15 +80,15 @@ npm install puppeteer --save-dev
 
 执行截图：
 ```bash
-node ../scripts/screenshot.cjs --config docs/screenshot-plan.json
+node ../scripts/screenshot.cjs --config prd/release/screenshot-plan.json
 ```
 
 > 注：如项目 package.json 包含 `"type": "module"`，必须使用 `.cjs` 版本。
 
-截图保存到 **`docs/images/`**（与手册同级，手册落在 `docs/` 根）。
+截图保存到 **手册同级的 `images/`**（手册落 `prd/release/` 时即 `prd/release/images/`）。
 
-> **不要用 `docs/images/screenshots/` 这种二级子目录** —— Word 导出只认 `images/<纯ASCII名>.png` 一层，`images/screenshots/xxx.png` 会静默丢图（2026-09-10 实测）。文件名也必须纯 ASCII。
-> 手册若改落到别的目录（如 `docs/规划/`），截图目录跟着改成那一级的 `images/`。
+> **不要用 `images/screenshots/` 这种二级子目录** —— Word 导出只认 `images/<纯ASCII名>.png` 一层，`images/screenshots/xxx.png` 会静默丢图（2026-09-10 实测）。文件名也必须纯 ASCII。
+> 手册若改落到别的目录（如 `prd/planning/`），截图目录跟着改成那一级的 `images/`。
 
 ## 常见问题
 

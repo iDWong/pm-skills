@@ -67,7 +67,7 @@ hld-design skill（主流程：调度 + 文件写入）
 | 中 | 已有概要设计 | `Glob("**/*概要设计*.md")` |
 | 低 | 路由/代码 | `src/router/`, `src/views/`, `src/api/`, `package.json` |
 
-- 未找到 SRS 但存在 `docs/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`） → Read `../common/prd-to-srs-gate.md`，**中止**，路由 **`req-doc` Step F**
+- 未找到 SRS 但存在 `prd/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`） → Read `../common/prd-to-srs-gate.md`，**中止**，路由 **`req-doc` Step F**
 - 未找到 SRS 且无 PRD → 提示用户先用 `/req-doc` 生成需求说明书（HLD 以 SRS 为依据）
 - 找到已有 HLD → 转 Step B / C
 
@@ -202,13 +202,13 @@ design-writer 调用：
 bash ../common/export-word.sh <markdown文件路径> formal
 ```
 
-找到文件：`Glob("docs/**/*概要设计*.md")`，多个让用户选。导出失败检查 `../config.json` 的 `apiBaseUrl`。
+找到文件：`Glob("dev/design/**/*概要设计*.md")`（旧根 `Glob("docs/**/*概要设计*.md")`），多个让用户选。导出失败检查 `../config.json` 的 `apiBaseUrl`。
 
 ## 文档命名规范
 
-`docs/架构/{日期}-{客户名称}{项目名称}-概要设计说明书-V{版本号}.md`
+`dev/design/{日期}-{客户名称}{项目名称}-概要设计说明书-V{版本号}.md`
 
-示例：`docs/架构/20260530-PM能源科技智慧厂区巡检平台-概要设计说明书-V1.0.md`
+示例：`dev/design/20260530-PM能源科技智慧厂区巡检平台-概要设计说明书-V1.0.md`
 
 **修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 

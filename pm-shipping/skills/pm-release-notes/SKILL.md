@@ -6,7 +6,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 
 > **流程位置**：`pm-master` 阶段9 发版说明 ／ `dev-master` **阶段12 文档与发版**；也可单点直接调用。
 > （两条流程的阶段号不同，按当前在跑的那条读。）
-> 流程内落盘路径 `docs/release-notes-{产品名}-{版本}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
+> 流程内落盘路径 `prd/release/release-notes-{产品名}-{版本}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
 > **本技能是纯对话输出不写文件**，流程内使用时由流程代写到该路径。
 
 # 发版说明撰写

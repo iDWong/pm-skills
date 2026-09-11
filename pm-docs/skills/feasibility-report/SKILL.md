@@ -53,7 +53,7 @@ feasibility-report skill（主流程：调度 + 文件写入）
 | 优先级 | 文件类型 | 查找方式 |
 |--------|---------|---------|
 | 最高 | SRS需求规格说明书 | `Glob("**/*需求*说明书*.md")` |
-| 高 | 设计方案 | `Glob("**/*设计*方案*.md")` `Glob("docs/**/*v1*.md")` |
+| 高 | 设计方案 | `Glob("**/*设计*方案*.md")` `Glob("prd/planning/**/*v1*.md")` `Glob("docs/**/*v1*.md")`（旧根） |
 | 中 | 可研报告（已有版本） | `Glob("**/*可行性*研究*.md")` `Glob("**/*可研*.md")` |
 | 低 | 路由/代码 | `src/router/`, `src/views/`, `src/api/` |
 
@@ -118,7 +118,7 @@ MODE: from_docs
 ### A5：生成文档
 
 **文件命名规范：**
-`docs/规划/{YYYY-MM-DD}-{项目名称}-可行性研究报告-V1.0.md`
+`prd/planning/{YYYY-MM-DD}-{项目名称}-可行性研究报告-V1.0.md`
 
 **任务1（主流程直接写）：** 用 Write 创建文件，写入 YAML frontmatter 封面和文档信息表。
 
@@ -128,8 +128,8 @@ MODE: from_docs
 ---
 title: "可行性研究报告"
 subtitle: "{项目名称}"
-author: "{客户单位名称}"
-date: "编制单位：{编制单位名称}\n\n{年月中文，如：二零二六年五月}"
+author: "Wong"
+date: "编制单位：Wong's Development Team\n\n{年月中文，如：二零二六年五月}"
 lang: zh-CN
 toc: true
 toc-depth: 3
@@ -189,7 +189,7 @@ Step 4: 写入文件
 需要导出时走本技能 **Step D** 的流程，不要另找工具：
 
 ```bash
-bash ../common/export-word.sh docs/规划/<可研报告文件名>.md feasibility-report
+bash ../common/export-word.sh prd/planning/<可研报告文件名>.md feasibility-report
 ```
 
 导出后按 Step D 的要求验图：`unzip -l <docx> | grep -c "word/media/"`，数字必须等于图片张数。
@@ -326,8 +326,9 @@ YAML frontmatter 封面
 **Step 1：找到可研报告 Markdown 文件**
 
 ```
-Glob("docs/规划/*可行性研究报告*.md")
-Glob("docs/01-需求与规划/*可行性研究报告*.md")   # 兼容旧归档路径
+Glob("prd/planning/*可行性研究报告*.md")
+Glob("docs/规划/*可行性研究报告*.md")             # 兼容旧根
+Glob("docs/01-需求与规划/*可行性研究报告*.md")   # 兼容更旧的归档路径
 ```
 
 若找到多个文件，列出让用户选择；若只有一个，直接使用。
@@ -342,15 +343,15 @@ bash ../common/export-word.sh <markdown文件路径> feasibility-report
 
 **Step 3：反馈结果**
 
-- 导出成功：告知用户文件已生成，路径为 `docs/规划/<文件名>.docx`
+- 导出成功：告知用户文件已生成，路径为 `prd/planning/<文件名>.docx`
 - 导出失败：检查 `../config.json` 中的 `apiBaseUrl` 是否配置正确
 
 ---
 
 ## 文档命名规范
 
-`docs/规划/{YYYY-MM-DD}-{项目名称}-可行性研究报告-V{版本号}.md`
+`prd/planning/{YYYY-MM-DD}-{项目名称}-可行性研究报告-V{版本号}.md`
 
-示例：`docs/规划/2026-05-04-能源厂区设备巡检系统-可行性研究报告-V1.0.md`
+示例：`prd/planning/2026-05-04-能源厂区设备巡检系统-可行性研究报告-V1.0.md`
 
 **修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。

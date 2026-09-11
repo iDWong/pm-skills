@@ -1,18 +1,18 @@
 ## 阶段10：上线审计（代码由 AI 生成时跑）
 
-**技能**：`pm-ai-ship-audit`　**输出**：`reports/`（**不是 docs/**——审计报告与设计文档分开放）
+**技能**：`pm-ai-ship-audit`　**输出**：`prd/reports/`（审计报告与产品文档分开放；研发链跑同一技能时落 `dev/reports/`）
 
 **输入**：
 - `src/`（阶段6 或任何来源的代码——本阶段唯一的硬输入）
 - `documentation/*.md`（意图基线；**不存在时先跑 `document-app` 反向补齐**，意图审计需要意图在册）
 - `SPEC_SOURCE`（阶段5 的 SRS／PRD，作为「文档写了什么」的对照）
-- `docs/test-cases.md`（阶段7，与 `derive-tests` 的覆盖地图对齐）
+- `prd/test/test-cases.md`（阶段7，与 `derive-tests` 的覆盖地图对齐）
 
 **何时跑**：阶段6 的前端原型或后续实现由 AI 生成、且准备真上线时。纯文档交付不跑。
 
 **做什么**：
 1. `document-app` 反向补齐文档基线（若 `documentation/` 为空）——**意图审计需要意图在册**
-2. `derive-tests` 出测试覆盖地图，与阶段7 的 `docs/test-cases.md` 对齐
+2. `derive-tests` 出测试覆盖地图，与阶段7 的 `prd/test/test-cases.md` 对齐
 3. `security-audit-static` + `performance-audit-static` 并行跑
 4. 每条发现必须带 `file:line` + 原文片段，且经过自我反驳；引用在出报告前重新核对一遍
 

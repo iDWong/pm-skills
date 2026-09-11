@@ -261,7 +261,7 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 
 ### Step 7：交付
 
-**文件命名**：`docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`——**PRD 一律落 `docs/PRD/`**（目录不存在先 `mkdir -p docs/PRD`），与 `req-doc` 的 SRS（`docs/SRS/`）分目录归档；命名格式与 SRS、`hld-design`/`lld-design` 的设计说明书保持一致，评审稿归档口径一致。
+**文件命名**：`prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`——**PRD 一律落 `prd/PRD/`**（目录不存在先 `mkdir -p prd/PRD`），与 `req-doc` 的 SRS（`dev/SRS/`）分目录归档；命名格式与 SRS、`hld-design`/`lld-design` 的设计说明书保持一致，评审稿归档口径一致。
 
 | 片段 | 规则 |
 | --- | --- |
@@ -273,8 +273,8 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 
 示例：
 
-- `docs/PRD/20260908-PM能源科技短视频运营日报后台管理-产品需求文档-V1.0.md`
-- `docs/PRD/20260908-会员中心APP-产品需求文档-V1.0.md`（无客户名称）
+- `prd/PRD/20260908-PM能源科技短视频运营日报后台管理-产品需求文档-V1.0.md`
+- `prd/PRD/20260908-会员中心APP-产品需求文档-V1.0.md`（无客户名称）
 
 **修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
@@ -289,7 +289,7 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 
 多份 PRD（跨形态拆分）**合写一份 `README-PRD.md`**，用表格分行，不要每个形态再拆一个 README。已存在 `README-PRD.md` 时**增量更新**对应行，不要整篇重写覆盖别人写的行。
 
-**原型图落盘**：PNG 放在与 md **同级**的 `images/` 下，即 `docs/PRD/images/pt-01-daily-report.png`；Markdown 里写相对路径 `images/pt-01-daily-report.png`（`export-word.sh` 以 md 所在目录解析相对路径）。文件名一律纯 ASCII。
+**原型图落盘**：PNG 放在与 md **同级**的 `images/` 下，即 `prd/PRD/images/pt-01-daily-report.png`；Markdown 里写相对路径 `images/pt-01-daily-report.png`（`export-word.sh` 以 md 所在目录解析相对路径）。文件名一律纯 ASCII。
 
 **脚本落盘：一律放项目根的 `tools/`**
 
@@ -300,14 +300,14 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 | 原型图生成脚本 | `tools/` | `tools/gen_wireframes.py` |
 | SVG 中间产物 | `tools/svg/` | `tools/svg/pt-01-daily-report.svg` |
 | 其他一次性脚本（校验、批量改名、口径核算） | `tools/` | `tools/check_metrics.py` |
-| PNG 成品 | `docs/PRD/images/` | 见上一条 |
+| PNG 成品 | `prd/PRD/images/` | 见上一条 |
 
 脚本文件名纯 ASCII + 蛇形命名；文件顶部写一行注释说明「生成什么、怎么跑」。SVG 中间产物**留着不要删**，改图靠它增量重渲。
 
 ```bash
 mkdir -p tools/svg
 python3 tools/gen_wireframes.py      # 脚本内每张图 assert not g.collisions()
-bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg docs/PRD/images 2400
+bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg prd/PRD/images 2400
 ```
 
 **Word 导出：必须先问用户，不得默认导出（对齐点 ★）**
@@ -315,7 +315,7 @@ bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg docs/PRD/images 
 md 落盘后**停下来问一次**，拿到明确答复再动：
 
 ```
-PRD 已落盘：docs/PRD/20260908-会员中心APP-产品需求文档-V1.0.md
+PRD 已落盘：prd/PRD/20260908-会员中心APP-产品需求文档-V1.0.md
 需要导出 Word 评审稿（.docx）吗？
   1) 导出
   2) 不导出（后续要的话说一声，随时可补）
@@ -334,7 +334,7 @@ PRD 已落盘：docs/PRD/20260908-会员中心APP-产品需求文档-V1.0.md
 **SRS 同样先问再导。** 本技能在下游衔接里触发 `req-doc` **Step F** 转写出 SRS 后，SRS 落盘也停下来问一次，答复处理与上表完全一致：
 
 ```
-SRS 已落盘：docs/SRS/20260908-会员中心-SRS需求规格说明书-V1.0.md
+SRS 已落盘：dev/SRS/20260908-会员中心-SRS需求规格说明书-V1.0.md
 需要导出 Word 评审稿（.docx）吗？
   1) 导出
   2) 不导出（后续要的话说一声，随时可补）
@@ -373,7 +373,7 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 
 | 条件 | 处理 |
 | --- | --- |
-| PRD 与 SRS 都已落盘（`docs/PRD/*.md` + `docs/SRS/*.md`） | 可启动 |
+| PRD 与 SRS 都已落盘（`prd/PRD/*.md` + `dev/SRS/*.md`） | 可启动 |
 | 只有 PRD，SRS 未落盘 | 先按「下游衔接」跑 `req-doc` **Step F** 转写 SRS，再启动；用户**原话**说"跳过 SRS"时才允许只用 PRD，并在索引页注明"SRS 未落盘" |
 | 两份都没有 | 不许凭空造页面：回 **Step 0** 从形态路由开始把 PRD 走完，再按上一行处理 SRS |
 
@@ -456,8 +456,8 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 
 用户接着说"进开发 / 实现 / 生成页面 / 出交付计划 / 做概要设计"时：
 
-- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`、`dev-fullstack-product` 这七个技能**不得**以 PRD（`docs/PRD/*.md`）为规格真源（`dev-fullstack-product` 来自姊妹库 `dev-skills`，只装 `pm-skills` 时忽略它，其余六个不变）。
-- 正确路径：先跑 `req-doc` **Step F**（PRD → SRS 转写），落 `docs/SRS/{日期}-{客户}{项目}-SRS需求规格说明书-V*.md`，再进下游。
+- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`、`dev-fullstack-product` 这七个技能**不得**以 PRD（`prd/PRD/*.md`）为规格真源（`dev-fullstack-product` 来自姊妹库 `dev-skills`，只装 `pm-skills` 时忽略它，其余六个不变）。
+- 正确路径：先跑 `req-doc` **Step F**（PRD → SRS 转写），落 `dev/SRS/{日期}-{客户}{项目}-SRS需求规格说明书-V*.md`，再进下游。
 - 交付时主动提示这一步，**不要问"是否转写"**——直接说明下一步是 Step F。SRS 落盘后要不要导 Word，仍按 Step 7 的规则**问一次**。
 - 唯一豁免：用户**原话**说"跳过 SRS"或"按 PRD 手动对齐"，且仅限单次。
 

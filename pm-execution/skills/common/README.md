@@ -11,21 +11,21 @@ Cross-platform helpers for exporting Markdown to `.docx`. 端点从 `<skills-roo
 
 ```powershell
 # 从任一技能目录执行
-../common/export-word.ps1 docs/spec.md req-doc
+../common/export-word.ps1 dev/SRS/你的文档.md req-doc
 ```
 
 ## Git Bash / Linux / macOS
 
 ```bash
 # 从任一技能目录执行
-bash ../common/export-word.sh docs/spec.md req-doc
+bash ../common/export-word.sh dev/SRS/你的文档.md req-doc
 ```
 
 ## Cross-platform (Python 3)
 
 ```bash
 # 从任一技能目录执行
-python ../common/export-word.py docs/spec.md req-doc
+python ../common/export-word.py dev/SRS/你的文档.md req-doc
 ```
 
 ## Templates
@@ -62,7 +62,7 @@ Output file: same directory as the Markdown file, same basename with `.docx`.
 ### 唯一可用的写法
 
 ```
-docs/
+<文档所在目录>/            ← 如 dev/SRS/、prd/PRD/
 ├── 你的文档.md
 └── images/
     └── wf-01-daily-report.png    ← 与文档同级的 images/ 子目录，纯 ASCII 文件名
@@ -74,13 +74,14 @@ Markdown 里写 `![图注](images/wf-01-daily-report.png)`。
 
 | 文档 | 落在 | 图片放 |
 |---|---|---|
-| SRS | `docs/SRS/` | `docs/SRS/images/` |
-| PRD | `docs/PRD/` | `docs/PRD/images/` |
-| 概要／详细设计 | `docs/架构/` | `docs/架构/images/` |
-| 可研／功能清单 | `docs/规划/` | `docs/规划/images/` |
-| 流程阶段产出 | `docs/` 根 | `docs/images/` |
+| SRS | `dev/SRS/` | `dev/SRS/images/` |
+| PRD | `prd/PRD/` | `prd/PRD/images/` |
+| 概要／详细设计 / 功能清单 | `dev/design/` | `dev/design/images/` |
+| 可研／设计方案 | `prd/planning/` | `prd/planning/images/` |
+| 产品链阶段产出 | `prd/{strategy,research,planning}/` | 各自的 `images/` |
+| 研发链测试／审计／发版 | `dev/{test,reports,release}/` | 各自的 `images/` |
 
-调 `diagram-generator` 渲图时**直接把输出路径指到目标文档的 `images/`**，别渲到 `docs/images/` 再想着引用。
+调 `diagram-generator` 渲图时**直接把输出路径指到目标文档的 `images/`**，别渲到一个集中目录再想着引用。
 
 ### 实测边界（2026-09-10 全部跑过一遍）
 
@@ -128,9 +129,11 @@ unzip -l <生成的.docx> | grep -c "word/media/"
 | 文档信息表「编制人」/「起草人」 | `Wong` |
 | 历史版本 / 修订历史表的「作者」「修订人」列 | `Wong`（每一行都写，含历史行） |
 | 审核人 / 批准人 / 复审人 | 维持 `-`（不是署名，是评审角色） |
-| 客户单位 / 编制单位 / YAML `author:`（封面单位名） | **不动**，那是单位不是人 |
+| 文档信息表「编制单位」+ 封面 YAML 里的 `编制单位：` | `Wong's Development Team` |
+| 封面 YAML 的 `author:`（不带「编制单位：」前缀的那种） | `Wong` |
+| 文档信息表「客户单位」行 | **不动**，保留甲方原值（内部产品写 `-`） |
 
-模板里已经把这些位置写死成 `Wong`，照抄即可；就地修订加版本历史行时也写 `Wong`。
+模板里已经把这些位置写死（署名 `Wong`、单位 `Wong's Development Team`），照抄即可；就地修订加版本历史行时也写 `Wong`。
 适用于所有产出正式文档的技能：`req-doc`、`prd-writer`、`pm-prd-spec`、`prototype-to-prd`、
 `feasibility-report`、`feature-list`、`hld-design`、`lld-design`、`pm-test-cases`、
 `pm-operation-manual`、`pm-market-research`、`pm-tracking-spec-writer`。
@@ -150,8 +153,8 @@ unzip -l <生成的.docx> | grep -c "word/media/"
 
 ```bash
 # ① Edit 改内容  ② 改文首「文档版本」+ 版本历史表加一行  ③ mv 改文件名
-mv "docs/SRS/20260518-XX项目-SRS需求规格说明书-V1.0.md" \
-   "docs/SRS/$(date +%Y%m%d)-XX项目-SRS需求规格说明书-V1.1.md"
+mv "dev/SRS/20260518-XX项目-SRS需求规格说明书-V1.0.md" \
+   "dev/SRS/$(date +%Y%m%d)-XX项目-SRS需求规格说明书-V1.1.md"
 ```
 
 版本步进：局部修订 `+0.1`（`V1.0` → `V1.1`），结构性重写进大版本（`V2.0`）。日期取本次改动当天。
@@ -174,8 +177,8 @@ mv "docs/SRS/20260518-XX项目-SRS需求规格说明书-V1.0.md" \
 
 | 文件 | 为什么例外 |
 | --- | --- |
-| `docs/delivery-plan-{项目名称}.md` | 每完成一个功能就回写进度，按版本走一天能产出几十个文件，历史版本无价值 |
-| `docs/requirements.md` | 需求澄清阶段的工作底稿，随讨论持续增补 |
+| `dev/plan/delivery-plan-{项目名称}.md` | 每完成一个功能就回写进度，按版本走一天能产出几十个文件，历史版本无价值 |
+| `prd/planning/requirements.md` | 需求澄清阶段的工作底稿，随讨论持续增补 |
 
 **只有这两类例外。** SRS、PRD、可研、功能清单、概要设计、详细设计、测试用例、操作手册
 全部适用上面的规则，不要因为「改起来麻烦」就往例外里塞。

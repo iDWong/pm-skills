@@ -77,8 +77,8 @@ a prospect. For deep competitive analysis use `pm-competitor-deconstructor` and 
 - **Product has no plausible growth loop**: say so. Not every product is loop-driven; some are legitimately sales-led. Don't fabricate a viral mechanism
 - **Battlecard on an unfamiliar competitor with no data**: list what needs researching rather than guessing feature parity
 
-**Flow output path**: when run as `pm-master` stage -1, write the GTM plan to `docs/gtm.md`
-(the flow's gate globs `docs/gtm*.md`). Standalone runs may write anywhere the user asks.
+**Flow output path**: when run as `pm-master` stage -1, write the GTM plan to `prd/strategy/gtm.md`
+(the flow's gate globs `prd/strategy/gtm*.md`). Standalone runs may write anywhere the user asks.
 
 ## Handoffs
 

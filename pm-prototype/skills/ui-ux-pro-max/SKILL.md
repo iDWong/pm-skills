@@ -146,7 +146,7 @@ python3 "$UIUX/scripts/search.py" "<keyword>" --stack <stack>
 
 ## UI/UX设计稿交付（PRD/SRS → `Prototype/`）
 
-用户要 **设计稿 / 高保真原型 / 可点原型 / 交互原型 / 预览墙**（任意一个），且项目里 **PRD 与 SRS 都已落盘**（`docs/PRD/*.md` + `docs/SRS/*.md`；缺一份按契约「何时启动」的缺件表处理）时，
+用户要 **设计稿 / 高保真原型 / 可点原型 / 交互原型 / 预览墙**（任意一个），且项目里 **PRD 与 SRS 都已落盘**（`prd/PRD/*.md` + `dev/SRS/*.md`；缺一份按契约「何时启动」的缺件表处理）时，
 **先完整读取 `references/prototype-delivery.md` 再动手**——那份是跨宿主唯一权威契约，本节只是索引。
 
 要点（细则全在契约里，不要凭记忆做）：

@@ -184,8 +184,8 @@ cp pm-docs/skills/config.example.json <技能根>/config.json
 | `images/wf-01-flow.png` | ✅ 唯一可用形式 |
 | `img/…`、`images/sub/…`、`assets/img/…`、`../images/…`、与文档同目录、中文名 | ❌ **静默丢图** |
 
-「与文档同级」按文档**实际落盘目录**算：SRS 在 `docs/SRS/` → 图放 `docs/SRS/images/`；
-设计说明书在 `docs/架构/` → 图放那一级的 `images/`。
+「与文档同级」按文档**实际落盘目录**算：SRS 在 `dev/SRS/` → 图放 `dev/SRS/images/`；
+PRD 在 `prd/PRD/` → 图放 `prd/PRD/images/`；设计说明书在 `dev/design/` → 图放那一级的 `images/`。
 **导出后必须验**：`unzip -l <docx> | grep -c "word/media/"`，数字要等于图片张数。
 
 **③ 「设计稿」和「前端原型」是两条不同的路**

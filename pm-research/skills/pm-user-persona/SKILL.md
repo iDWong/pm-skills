@@ -4,8 +4,8 @@ description: "产品经理用户画像设计技能。适用场景：(1) 创建�
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段1 用户画像**，也可单点直接调用。
-> 流程内落盘路径 `docs/user-persona-{产品名}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
-> 上游读 `docs/market-research*.md`。
+> 流程内落盘路径 `prd/research/user-persona-{产品名}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
+> 上游读 `prd/research/market-research*.md`。
 
 # 用户画像设计
 
@@ -129,4 +129,4 @@ description: "产品经理用户画像设计技能。适用场景：(1) 创建�
 - 每个产品建议创建 2-4 个 Persona（核心用户1-2个，次级用户1-2个）
 - Persona 需基于真实数据或合理假设，明确标注"基于[数据来源]"
 - 避免创建过多 Persona 导致焦点分散
-- 保存至 `docs/user-persona-[产品名].md`
+- 保存至 `prd/research/user-persona-[产品名].md`

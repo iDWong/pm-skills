@@ -48,26 +48,26 @@ description: |
 
 | # | 阶段 | 默认档 | 深度档 | 产出 |
 |---|---|---|---|---|
-| -2 | 战略框架 | `pm-strategy-frameworks` | — | `docs/strategy.md` |
-| -1 | 上市与 ICP | `pm-gtm` | — | `docs/gtm.md` |
-| 0 | 市场调研 | `pm-market-research` | — | `docs/market-research-*.md` |
-| 1 | 用户画像 | `pm-user-persona` | — | `docs/user-persona-*.md` |
-| 2 | 功能优先级 | `pm-feature-prioritization` | `pm-prioritization-engine` | `docs/feature-priority-*.md`（**流程代写**） |
-| 3 | 产品路线图 | `pm-roadmap` | `pm-roadmap-planner` | `docs/roadmap-*.md` |
-| 4 | 需求澄清 | （本技能直接做） | — | `docs/requirements.md` |
-| 5 | 需求文档 | `req-doc`（SRS）／`prd-writer`（PRD） | `pm-prd-spec`（字段级+线框图，**流程须代为登记 SPEC_SOURCE**） | `docs/SRS/` 或 `docs/PRD/` |
+| -2 | 战略框架 | `pm-strategy-frameworks` | — | `prd/strategy/strategy.md` |
+| -1 | 上市与 ICP | `pm-gtm` | — | `prd/strategy/gtm.md` |
+| 0 | 市场调研 | `pm-market-research` | — | `prd/research/market-research-*.md` |
+| 1 | 用户画像 | `pm-user-persona` | — | `prd/research/user-persona-*.md` |
+| 2 | 功能优先级 | `pm-feature-prioritization` | `pm-prioritization-engine` | `prd/planning/feature-priority-*.md`（**流程代写**） |
+| 3 | 产品路线图 | `pm-roadmap` | `pm-roadmap-planner` | `prd/planning/roadmap-*.md` |
+| 4 | 需求澄清 | （本技能直接做） | — | `prd/planning/requirements.md` |
+| 5 | 需求文档 | `req-doc`（SRS）／`prd-writer`（PRD） | `pm-prd-spec`（字段级+线框图，**流程须代为登记 SPEC_SOURCE**） | `dev/SRS/` 或 `prd/PRD/` |
 | 6 | 前端原型 | `page-generator` | — | `src/` |
-| 7 | 测试用例 | `pm-test-cases` | — | `docs/*测试用例*.md` |
-| 8 | 操作手册 | `pm-operation-manual` | — | `docs/*操作手册*.md` |
-| 9 | 发版说明 | `pm-release-notes` | — | `docs/release-notes-*.md`（**流程代写**） |
-| 10 | 上线审计 | `pm-ai-ship-audit` | — | `reports/` |
+| 7 | 测试用例 | `pm-test-cases` | — | `prd/test/*测试用例*.md` |
+| 8 | 操作手册 | `pm-operation-manual` | — | `prd/release/*操作手册*.md` |
+| 9 | 发版说明 | `pm-release-notes` | — | `prd/release/release-notes-*.md`（**流程代写**） |
+| 10 | 上线审计 | `pm-ai-ship-audit` | — | `prd/reports/` |
 
 > **产出路径一律按 glob 匹配**：各阶段技能的实际命名带产品名／日期／版本号，写死精确文件名门禁永远过不了。
 > 阶段2 和阶段9 的技能**是纯对话输出不写文件**，流程必须代写到表中路径——细则见 `references/flow-engine.md`。
 
 > **阶段5 的技能选择有硬约束**：只有 `req-doc`、`prd-writer` 认识流程契约（登记 `SPEC_SOURCE` 供阶段6–9 读取）。
 > `pm-prd-spec` 认识落盘目录但**不登记 SPEC_SOURCE**，用它时流程必须在阶段5 收尾时代为登记。
-> **`pm-prd-writer` 不要在流程内当阶段5**——它不登记真源也不知道 `docs/SRS/`、`docs/PRD/` 约定，
+> **`pm-prd-writer` 不要在流程内当阶段5**——它不登记真源也不知道 `dev/SRS/`、`prd/PRD/` 约定，
 > 跑完阶段6 会拿不到规格。它是单点技能（模糊需求 → 可评审 PRD + 需求体检），走单点路由。
 
 **阶段 5 不可跳过**——后续全部依赖它登记的 `SPEC_SOURCE`。其余阶段的跳过判据见 `references/tailoring.md`。
@@ -149,22 +149,53 @@ description: |
 
 | 挂在哪 | 技能 | 干什么 | 产出 |
 |---|---|---|---|
-| 阶段 -2 之前 / 阶段 4 之前 | `brainstorming` | 动手前先探索意图与方案空间（任何创意工作前的必经一步） | `docs/规划/{日期}-{客户}{系统}-设计方案-v*.md` |
-| 阶段 -2、-1 之后 | `feasibility-report` | 可行性研究报告（立项报批用的正式文档） | `docs/规划/{日期}-{项目}-可行性研究报告-V*.md` + Word |
-| 阶段 5（真源）→ | `req-doc` | **SRS 需求规格说明书**——研发真源 | `docs/SRS/` |
-| 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `docs/规划/{日期}-{项目}-功能清单-V*.{md,xlsx}` |
-| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `docs/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
-| 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `docs/架构/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
-| `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `docs/架构/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
+| 阶段 -2 之前 / 阶段 4 之前 | `brainstorming` | 动手前先探索意图与方案空间（任何创意工作前的必经一步） | `prd/planning/{日期}-{客户}{系统}-设计方案-v*.md` |
+| 阶段 -2、-1 之后 | `feasibility-report` | 可行性研究报告（立项报批用的正式文档） | `prd/planning/{日期}-{项目}-可行性研究报告-V*.md` + Word |
+| 阶段 5（真源）→ | `req-doc` | **SRS 需求规格说明书**——研发真源 | `dev/SRS/` |
+| 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `dev/design/{日期}-{项目}-功能清单-V*.{md,xlsx}`（研发链产出） |
+| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `dev/plan/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
+| 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `dev/design/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
+| `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `dev/design/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
 | 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `src/` |
-| 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `docs/PRD/` |
+| 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `prd/PRD/` |
 | 阶段 6 之后 | `annotation` | 往 **`src/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
 | 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 | `Prototype/<项目slug>/` |
 
 
-**三套目录别搞混**：SRS/PRD → `docs/SRS/`、`docs/PRD/`；可研／功能清单／设计方案 → `docs/规划/`
-（**这三类有意留在那儿，不是遗留**）；概要／详细设计 → `docs/架构/`；流程阶段产出 → `docs/` 根。
-细则见 `references/flow-engine.md` 的目录规范。
+**两个根别搞混**：产品侧一切 → `prd/`（`strategy/ research/ planning/ PRD/ test/ release/ reports/`）；
+研发侧一切 → `dev/`（**SRS → `dev/SRS/`**、功能清单与概要／详细设计 → `dev/design/`、交付计划 → `dev/plan/`）。
+`docs/**` 是旧根，**只读兼容，不再往里写**。细则见下方「落盘目录」与 `references/flow-engine.md` 的目录规范。
+
+
+## 落盘目录：产品链产出一律进 `prd/`
+
+**产品侧唯一落盘根是 `prd/`，研发侧是 `dev/`**（`dev-master` 那条链的约定，两边对仗）。
+`docs/` 是**旧根，只读兼容**——存量项目的老文档留在那儿，新产出一律不往里写。
+
+```
+prd/
+├─ strategy/    阶段 -2 战略框架 · 阶段 -1 上市与 ICP
+├─ research/    阶段 0 市场调研 · 阶段 1 用户画像（访谈/问卷/竞品也放这儿）
+├─ planning/    阶段 2 优先级 · 阶段 3 路线图 · 阶段 4 需求澄清 · 可研报告 · 设计方案(brainstorming)
+├─ PRD/         阶段 5 产品需求文档
+├─ test/        阶段 7 测试用例
+├─ release/     阶段 8 操作手册 · 阶段 9 发版说明 · quick-start
+├─ reports/     阶段 10 上线审计
+└─ pm-master-{项目名}.md   （可选）流程进度存档——本流程默认用任务清单 + 扫盘续跑，要留档就落这儿
+```
+
+**唯一例外：SRS 落 `dev/SRS/`，不落 `prd/`。** 它是研发侧的规格真源，`dev-master` 全链门禁都指那儿；
+放 `prd/` 会让研发链两处找。阶段 5 出 PRD 落 `prd/PRD/`，出 SRS 落 `dev/SRS/`，`SPEC_SOURCE` 记真实路径。
+
+**接力给研发链技能的产出落 `dev/`**（`feature-list` → `dev/design/`、`hld-design`/`lld-design` → `dev/design/`、
+`delivery-plan` → `dev/plan/`）——那是 `dev-master` 的阶段产出，本流程只是指路，不要往 `prd/` 里塞。
+
+三条规则：
+
+1. **写一律新根，读三处**：`prd/` 优先 → `dev/`（SRS 与研发产物）→ `docs/**` 兜底（存量项目）。
+2. **图片放各文档同级 `images/`**，不要集中放——跨目录引用在 Word 导出时会丢图。
+3. **老项目的文档留在 `docs/`：原地续用，不主动搬家**，进度存档里记真实路径；用户明确要求才迁，
+   迁时 `images/` 一起搬并回改全部相对引用。
 
 ### 「设计稿」和「前端原型」是两条不同的路，别混
 
@@ -211,7 +242,7 @@ description: |
 ### 硬规则：这七个技能只认 SRS，不认 PRD
 
 **`page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`、
-`dev-fullstack-product` 不得以 PRD（`docs/PRD/*.md`）为规格真源。**
+`dev-fullstack-product` 不得以 PRD（`prd/PRD/*.md`）为规格真源。**
 （`dev-fullstack-product` 来自姊妹库 `dev-skills`，只装 `pm-skills` 时忽略它，其余六个不变）
 
 所以阶段 5 的文档类型选择（Step 0 问题5）直接决定下游能不能走：
@@ -246,7 +277,7 @@ description: |
 3. **阶段门禁**：上一阶段的产出文件写入成功，才能进下一阶段
 4. **步间交接**：每阶段输出「交接摘要」（≤10 行：本阶段结论 + 下阶段需要的输入），不让下一阶段重读全文
 5. **可中途退出**：每阶段完成即是独立可用的交付物
-6. **断点续跑**：再次启动时按 `flow-engine.md` 的判断逻辑扫 `docs/`，从未完成的阶段继续
+6. **断点续跑**：再次启动时按 `flow-engine.md` 的判断逻辑扫 `prd/` 与 `dev/`（存量项目再扫 `docs/`），从未完成的阶段继续
 7. **不强推流程**：用户只要一步就给一步
 8. **跑完阶段 5 要开发**：用户说「开始开发／把它做出来」时交给 `dev-master`，由它从阶段 1 的 SRS 门禁接手——
    两个总控不要同时起流程，重叠技能是同一份，谁在跑就由谁编排

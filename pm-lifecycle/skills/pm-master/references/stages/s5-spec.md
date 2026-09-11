@@ -5,10 +5,10 @@
 **本阶段完成后有两条并列下游**：阶段6 `page-generator`（→ `src/` 真实代码，认 SRS）／设计稿 `ui-ux-pro-max`（→ `Prototype/<项目slug>/` 可点 HTML，**PRD 为主真源且需 PRD+SRS 都有**）。判据表见 `../../SKILL.md`「设计稿和前端原型是两条不同的路」。
 
 **输入**：
-- `docs/requirements.md`（阶段4）
-- `docs/roadmap.md`（阶段3，V1.0 范围）——**快速交付／只要文档／迭代三个裁剪跳过了阶段3，此文件不存在**。
-  缺失时的替代：① 用 `docs/requirements.md` 里用户圈定的范围；② 问用户一句「本次做到哪个版本／哪些功能进 V1」；
-  ③ 存量产品迭代时读已有的 `docs/roadmap.md`（老文件也算）。**三条都拿不到就不要自己编版本范围**，标为待确认
+- `prd/planning/requirements.md`（阶段4）
+- `prd/planning/roadmap.md`（阶段3，V1.0 范围）——**快速交付／只要文档／迭代三个裁剪跳过了阶段3，此文件不存在**。
+  缺失时的替代：① 用 `prd/planning/requirements.md` 里用户圈定的范围；② 问用户一句「本次做到哪个版本／哪些功能进 V1」；
+  ③ 存量产品迭代时读已有的 `prd/planning/roadmap.md`（老文件也算）。**三条都拿不到就不要自己编版本范围**，标为待确认
 - Step 0 选的文档类型、交付模式
 
 **档位在本阶段的含义**：本阶段**不看 Step 0 问题3（档位）**，走的是**问题5 选的文档类型**——
@@ -16,7 +16,7 @@
 
 **技能选择的硬约束**：
 - `req-doc`、`prd-writer` 是流程原生技能，会登记 `SPEC_SOURCE`，阶段6–9 靠它读规格
-- `pm-prd-spec`（字段级 + 线框图 + Word）认识 `docs/PRD/`、`docs/SRS/` 落盘约定但**不登记 `SPEC_SOURCE`**：
+- `pm-prd-spec`（字段级 + 线框图 + Word）认识 `prd/PRD/`、`dev/SRS/` 落盘约定但**不登记 `SPEC_SOURCE`**：
   用户明确要字段级规格时可在 5B 用它，但**流程必须在本阶段收尾时代为登记 `SPEC_SOURCE=<它落的 PRD 路径>`**
 - **`pm-prd-writer` 不要在流程内使用**——不登记真源、不知道落盘目录，阶段6 会拿不到规格。它走单点路由
 
@@ -27,13 +27,13 @@
 
 | Step 0 选择 / 信号 | 调用技能 | 阶段5 真源路径 |
 | --- | --- | --- |
-| **SRS**（默认，且含阶段6） | **`req-doc`** | `docs/SRS/{日期}-{项目}-SRS需求规格说明书-V*.md` |
-| **PRD**（只要文档 / 不对接研发） | **`prd-writer`** | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（+ 可选 `-概念版-V*.md`） |
+| **SRS**（默认，且含阶段6） | **`req-doc`** | `dev/SRS/{日期}-{项目}-SRS需求规格说明书-V*.md` |
+| **PRD**（只要文档 / 不对接研发） | **`prd-writer`** | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（+ 可选 `-概念版-V*.md`） |
 | **先 PRD 后 SRS** | **`prd-writer`** → **`req-doc`** | 最终以 **SRS 路径** 为真源；PRD 路径写入 SRS 文首引用 |
 | **已有 Axure/HTML/URL** | **`prototype-to-prd`** → **`prd-writer`** | 默认 PRD；若含阶段6，盘点+PRD 完成后 **须转 SRS**（`req-doc` 或用户确认转写） |
 | 用户未选但 **含阶段6** | **`req-doc`** | 同 SRS 行（page-generator 依赖 SRS 章节结构） |
 
-**禁止**：含阶段6 时仅以 PRD（`docs/PRD/*.md`）为真源调用 page-generator（除非用户明确接受手动对齐且跳过 SRS 模板）。
+**禁止**：含阶段6 时仅以 PRD（`prd/PRD/*.md`）为真源调用 page-generator（除非用户明确接受手动对齐且跳过 SRS 模板）。
 
 **交付模式**：传入各技能（`req-doc` A6 抽检 / `prd-writer` 快路径等），三档定义见 `../flow-engine.md` 问题6。
 
@@ -45,7 +45,7 @@
 
 **关键规范**：
 - 只生成 V1.0 / P0 模块（对照 `roadmap.md`）
-- 读取 `docs/requirements.md` 作为 analyzer 输入摘要
+- 读取 `prd/planning/requirements.md` 作为 analyzer 输入摘要
 - 遵循 `req-doc` **标准模式**（A6 抽检、P0 自动修）；流水线内 **不重复**额外全文审查
 
 **输出**：SRS 文件（上表路径）
@@ -65,7 +65,7 @@
 - MVP 以 §4 🔴 为准，流水线内 **不另开** MVP 口头确认（除非 **严格** 模式）
 - 若后续含阶段6 且用户选「先 PRD 后 SRS」→ 本小节完成后执行 **5C**
 
-**输出**：`docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（及可选 `-概念版-V*.md`、`-原型盘点-V*.md`）
+**输出**：`prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（及可选 `-概念版-V*.md`、`-原型盘点-V*.md`）
 
 **完成标志**：PRD §4 功能树覆盖 V1.0 范围
 
@@ -102,7 +102,7 @@
 ```
 SPEC_SOURCE 已登记 ✅
 含阶段6 → SPEC_SOURCE 指向 SRS 文件 ✅
-仅文档 + PRD → SPEC_SOURCE 指向 `docs/PRD/*-产品需求文档-V*.md` ✅（概念版／评审／原型盘点都不算）
+仅文档 + PRD → SPEC_SOURCE 指向 `prd/PRD/*-产品需求文档-V*.md` ✅（概念版／评审／原型盘点都不算）
 ```
 
 ---

@@ -48,8 +48,8 @@
 #### 第二批（2 问，仅当裁剪包含阶段 5／6 时才问）
 
 **问题5｜阶段 5 需求文档类型？**（判据见 `../SKILL.md` 的「产品文档链 · 七个技能只认 SRS」一节；**含阶段 6 研发原型时默认 SRS**）
-- **SRS 需求规格说明书**（`req-doc` → `docs/SRS/`，供 page-generator / HLD）
-- **产品 PRD**（`prd-writer` → `docs/PRD/`，探索对齐；**不含阶段 6** 或阶段 6 前须转 SRS）
+- **SRS 需求规格说明书**（`req-doc` → `dev/SRS/`，供 page-generator / HLD）
+- **产品 PRD**（`prd-writer` → `prd/PRD/`，探索对齐；**不含阶段 6** 或阶段 6 前须转 SRS）
 - **先 PRD 后 SRS**（`prd-writer` → 用户确认后 `req-doc` 转 SRS，再进阶段 6）
 - 已有 Axure/HTML/URL 原型 → 阶段 5 走 **`prototype-to-prd`**
 
@@ -81,7 +81,7 @@
 | 5 需求文档 | `req-doc` / `prd-writer`（流程原生，登记 SPEC_SOURCE） | `pm-prd-spec`（须代登记 SPEC_SOURCE） | 五形态判定 + 字段级 + 线框图 + Word。**`pm-prd-writer` 不可在流程内用** |
 | 数据分析（挂载项） | `pm-product-metrics` | `pm-analytics` | 归因 + 决策建议 + HTML 报告 |
 
-**档位不改变阶段编号，也不改变产出路径。** 深度档产出更厚，但仍落到该阶段约定的 `docs/` 文件。
+**档位不改变阶段编号，也不改变产出路径。** 深度档产出更厚，但仍落到该阶段约定的 `prd/` 文件（SRS 落 `dev/SRS/`）。
 问题5 选了 SRS 时，阶段 5 走 `req-doc`，档位对阶段 5 不再生效（SRS 只有一条路径）。
 
 #### 收集完成后
@@ -135,7 +135,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 （`**/*需求*说明书*.md` 这类）自己找输入，找不到就自己向用户提问。
 
 **在流程内调用它们时，这套自主行为要降级**——否则会出现三个问题：用户被问两轮、
-捡到项目里无关的旧文档、以及扫描表里没有 `docs/strategy.md` / `docs/gtm.md` 这些新阶段产出所以够不到。
+捡到项目里无关的旧文档、以及扫描表里没有 `prd/strategy/strategy.md` / `prd/strategy/gtm.md` 这些新阶段产出所以够不到。
 
 调用时**显式传入**以下三样，并加一句约束：
 
@@ -153,24 +153,24 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 每个阶段完成后，必须确保输出文件已写入，才能进入下一阶段。
 
 **门禁一律用 glob 匹配，不要用精确文件名**——各阶段技能的实际命名带产品名／日期／版本号
-（如 `docs/market-research-[产品名]-[日期].md`、`docs/{日期}-{项目}-测试用例-V{版本}.md`），
-写死 `docs/market-research.md` 这种精确名会让门禁永远过不了。
+（如 `prd/research/market-research-[产品名]-[日期].md`、`prd/test/{日期}-{项目}-测试用例-V{版本}.md`），
+写死 `prd/research/market-research.md` 这种精确名会让门禁永远过不了。
 
 | 阶段完成 | 门禁（glob，任一命中即通过） | 然后进入 |
 |---|---|---|
-| -2 | `docs/strategy*.md` | -1（或直接 0，若跳过 -1） |
-| -1 | `docs/gtm*.md` | 0 |
-| 0 | `docs/market-research*.md` | 1 |
-| 1 | `docs/user-persona*.md` | 2 |
-| 2 | `docs/feature-priority*.md`（**技能不落盘，见下方代落盘规则**） | 3 |
-| 3 | `docs/roadmap*.md` | 4 |
-| 4 | `docs/requirements*.md` | 5 |
-| 5 | `SPEC_SOURCE` 已登记（指向 `docs/SRS/*.md` 或 `docs/PRD/*-产品需求文档-V*.md`） | 6／7／8 |
+| -2 | `prd/strategy/strategy*.md` | -1（或直接 0，若跳过 -1） |
+| -1 | `prd/strategy/gtm*.md` | 0 |
+| 0 | `prd/research/market-research*.md` | 1 |
+| 1 | `prd/research/user-persona*.md` | 2 |
+| 2 | `prd/planning/feature-priority*.md`（**技能不落盘，见下方代落盘规则**） | 3 |
+| 3 | `prd/planning/roadmap*.md` | 4 |
+| 4 | `prd/planning/requirements*.md` | 5 |
+| 5 | `SPEC_SOURCE` 已登记（指向 `dev/SRS/*.md` 或 `prd/PRD/*-产品需求文档-V*.md`） | 6／7／8 |
 | 6 | `src/` 有代码 | 8（手册可对齐原型） |
-| 7 | `docs/*测试用例*.md` 或 `docs/*test-case*.md` | — |
-| 8 | `docs/*操作手册*.md` 或 `docs/*operation-manual*.md` | 9 |
-| 9 | `docs/*release-note*.md` 或 `docs/*发版*.md`（**技能不落盘，见下方**） | 10（仅当代码由 AI 生成） |
-| 10 | `reports/` 下报告已写入且路径已告知用户 | — |
+| 7 | `prd/test/*测试用例*.md` 或 `prd/test/*test-case*.md` | — |
+| 8 | `prd/release/*操作手册*.md` 或 `prd/release/*operation-manual*.md` | 9 |
+| 9 | `prd/release/*release-note*.md` 或 `prd/release/*发版*.md`（**技能不落盘，见下方**） | 10（仅当代码由 AI 生成） |
+| 10 | `prd/reports/` 下报告已写入且路径已告知用户 | — |
 
 **glob 命中多个文件时**（多产品／多版本仓库常见）：取最新修改的那个，并在交接摘要里写明用的是哪个文件。
 
@@ -181,8 +181,8 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 | 阶段 | 代写到 | 内容 |
 |---|---|---|
-| 2 | `docs/feature-priority-{产品名}.md` | 排序结果表 + Now/Next/Later + 评分依据 |
-| 9 | `docs/release-notes-{产品名}-{版本}.md` | 本次发布内容 + 面向用户的说明 |
+| 2 | `prd/planning/feature-priority-{产品名}.md` | 排序结果表 + Now/Next/Later + 评分依据 |
+| 9 | `prd/release/release-notes-{产品名}-{版本}.md` | 本次发布内容 + 面向用户的说明 |
 
 不代写的后果：门禁过不了，或者断点续跑时判定这两个阶段没做过而重跑一遍。
 
@@ -196,13 +196,13 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 | 裁剪 | 缺什么 | 影响哪些阶段 |
 |---|---|---|
-| 快速交付（4→8） | `docs/roadmap.md`（阶段3 跳过） | 阶段5 |
-| 只要文档（4,5,7,8,9） | `docs/roadmap.md`、`src/` | 阶段5、8、9 |
-| 迭代（4,5,6,7,9） | `docs/roadmap.md` | 阶段5、9 |
+| 快速交付（4→8） | `prd/planning/roadmap.md`（阶段3 跳过） | 阶段5 |
+| 只要文档（4,5,7,8,9） | `prd/planning/roadmap.md`、`src/` | 阶段5、8、9 |
+| 迭代（4,5,6,7,9） | `prd/planning/roadmap.md` | 阶段5、9 |
 
 处理顺序（**逐条往下试，不要跳到最后一条**）：
 
-1. **找替代来源**——该阶段文件的输入块里写了替代方案，先按它做（例：阶段5 缺路线图时用 `docs/requirements.md` 的范围）
+1. **找替代来源**——该阶段文件的输入块里写了替代方案，先按它做（例：阶段5 缺路线图时用 `prd/planning/requirements.md` 的范围）
 2. **看老文件**——存量项目里可能已有上一轮留下的同名文件，可以直接用（读之前确认不是过期的）
 3. **问用户一句**——只问缺的那一项，别重开一轮澄清
 4. **标为待确认**——以上都不行时，把该项列进产出物的「待确认」段落，继续往下跑
@@ -257,43 +257,57 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 ```
 [项目目录]/
-├── docs/
-│   ├── strategy.md                      ← 阶段-2（新产品）
-│   ├── gtm.md                           ← 阶段-1（要对外卖）
-│   ├── market-research-{产品名}-{日期}.md   ← 阶段0（技能自带命名）
-│   ├── user-persona-{产品名}.md             ← 阶段1
-│   ├── feature-priority-{产品名}.md         ← 阶段2（**流程代写**）
-│   ├── roadmap-{产品名}-{年度}.md            ← 阶段3
-│   ├── requirements.md                      ← 阶段4
-│   ├── SRS/
-│   │   └── *-SRS需求规格说明书-V*.md       ← 阶段5A/5C（研发真源）
+├── prd/                                  ← 产品链唯一落盘根
+│   ├── strategy/
+│   │   ├── strategy.md                          ← 阶段-2（新产品）
+│   │   └── gtm.md                               ← 阶段-1（要对外卖）
+│   ├── research/
+│   │   ├── market-research-{产品名}-{日期}.md     ← 阶段0（技能自带命名）
+│   │   └── user-persona-{产品名}.md              ← 阶段1
+│   ├── planning/
+│   │   ├── feature-priority-{产品名}.md          ← 阶段2（**流程代写**）
+│   │   ├── roadmap-{产品名}-{年度}.md             ← 阶段3
+│   │   ├── requirements.md                       ← 阶段4
+│   │   ├── {日期}-{项目}-可行性研究报告-V*.md      ← feasibility-report
+│   │   └── {日期}-{客户}{系统}-设计方案-v*.md      ← brainstorming
 │   ├── PRD/
-│   │   ├── *-产品需求文档-V*.md            ← 阶段5B（可选）
-│   │   ├── *-产品需求文档-概念版-V*.md      ← 阶段5B（可选）
-│   │   └── *-原型盘点-V*.md                ← 阶段5D（可选）
-│   ├── {日期}-{项目}-测试用例-V{版本}.md      ← 阶段7（技能自带命名）
-│   ├── {日期}-{项目}-用户操作手册-V{版本}.md   ← 阶段8
-│   ├── quick-start.md
-│   └── release-notes-{产品名}-{版本}.md      ← 阶段9（**流程代写**）
-├── src/                                 ← 阶段6
-└── reports/                             ← 阶段10（审计报告，**与 docs/ 分开**）
+│   │   ├── *-产品需求文档-V*.md                   ← 阶段5B（可选）
+│   │   ├── *-产品需求文档-概念版-V*.md             ← 阶段5B（可选）
+│   │   └── *-原型盘点-V*.md                      ← 阶段5D（可选）
+│   ├── test/{日期}-{项目}-测试用例-V{版本}.md       ← 阶段7（技能自带命名）
+│   ├── release/
+│   │   ├── {日期}-{项目}-用户操作手册-V{版本}.md    ← 阶段8
+│   │   ├── quick-start.md
+│   │   └── release-notes-{产品名}-{版本}.md       ← 阶段9（**流程代写**）
+│   ├── reports/                                  ← 阶段10（审计报告）
+│   └── pm-master-{项目名}.md                      ← （可选）流程进度存档
+├── dev/                                  ← 研发链落盘根（`dev-master` 的地盘）
+│   ├── SRS/*-SRS需求规格说明书-V*.md       ← 阶段5A/5C（**研发真源，唯一例外**）
+│   ├── design/                            ← 功能清单 · 概要设计 · 详细设计
+│   └── plan/delivery-plan-{项目名称}.md    ← delivery-plan（活文档，不带版本号）
+├── src/                                  ← 阶段6
+└── docs/                                 ← 旧根，**只读兼容**，不再往里写
 ```
 
 > 旧路径 `docs/spec.md` **已废弃**；断点续跑时若仅有 `spec.md`，提示迁移为 SRS 或重新跑阶段5。
 
-**目录约定有三套，别搞混（这是设计，不是遗留）**：
+**两个落盘根，别搞混（`prd/` 产品侧、`dev/` 研发侧；`docs/` 只读）**：
 
 | 目录 | 谁往里写 | 状态 |
 |---|---|---|
-| `docs/SRS/`、`docs/PRD/` | `req-doc`（SRS）／`prd-writer`、`pm-prd-spec`、`prototype-to-prd`（PRD） | 现行 |
-| `docs/规划/` | `feasibility-report`（可研）、`feature-list`（功能清单）、`brainstorming`（设计方案） | **现行——这三类有意留在这里** |
-| `docs/架构/` | `hld-design`（概要设计）、`lld-design`（详细设计） | 现行 |
-| `docs/` 根 | 阶段 -2/-1/0–4 的流程产出、`delivery-plan-{项目名称}.md` | 现行 |
+| `prd/strategy/`、`prd/research/`、`prd/planning/` | 阶段 -2/-1/0–4 的流程产出 + `feasibility-report`（可研）、`brainstorming`（设计方案） | 现行 |
+| `prd/PRD/` | `prd-writer`、`pm-prd-spec`、`prototype-to-prd` | 现行 |
+| `prd/test/`、`prd/release/`、`prd/reports/` | 阶段 7/8/9/10 | 现行 |
+| **`dev/SRS/`** | `req-doc`（SRS，**研发真源，不落 `prd/`**） | 现行 |
+| `dev/design/`、`dev/plan/` | `feature-list`（功能清单）、`hld-design`、`lld-design`、`delivery-plan` —— 都是研发链产出 | 现行 |
+| `docs/**` | **没人往里写**，只做读取端兜底（存量项目的老文档） | 只读兼容 |
 
-> **`docs/01-需求与规划/` 是旧目录名，只做读取端 fallback，不再往里写任何东西。**
-> 三次迁移的结果：SRS/PRD 于 2026-09-09 迁到 `docs/SRS/`、`docs/PRD/`；概要／详细设计迁到 `docs/架构/`；
-> 可研报告、功能清单、设计方案于 2026-09-10 从 `docs/01-需求与规划/` 迁到 **`docs/规划/`**（去掉编号前缀，
-> 与 `docs/架构/` 对仗）。存量项目里这些文件可能还在 `01-需求与规划/`，**读的时候要兜底，写一律用新名**。
+> **`docs/**` 整棵树（含 `docs/SRS/`、`docs/PRD/`、`docs/规划/`、`docs/架构/`、旧目录名 `docs/01-需求与规划/`）
+> 现在一律只做读取端 fallback，不再往里写任何东西。**
+> 四次迁移的结果（2026-09-11 收敛成两个根）：`docs/01-需求与规划/` → `docs/规划/` → **`prd/planning/`**；
+> `docs/SRS/` → **`dev/SRS/`**；`docs/PRD/` → **`prd/PRD/`**；`docs/架构/` → **`dev/design/`**；
+> `docs/` 根上的阶段产出 → **`prd/{strategy,research,planning}/`**；`reports/` → **`prd/reports/`**。
+> 存量项目里这些文件可能还在任一旧路径，**读的时候一路兜底，写一律用新根**。
 
 ---
 
@@ -303,28 +317,29 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 如果中途中断，再次启动时：
 
-1. 检查 `docs/` 和 `reports/` 已有哪些文件，**并读任务清单里的「已跳过」标注**
+1. 检查 `prd/`、`dev/`（存量项目再看 `docs/`）已有哪些文件，**并读任务清单里的「已跳过」标注**
 2. 根据已有文件判断完成到哪个阶段
 3. 从未完成的阶段继续，无需重新开始
 4. **文件不存在 ≠ 阶段没做**——先看任务清单有没有「已跳过（理由）」；分不清就问用户一句，不要重跑一遍已经决定跳过的阶段
 
 判断逻辑：
 ```
-docs/strategy*.md                → 阶段-2已完成
-docs/gtm*.md                     → 阶段-1已完成
-docs/market-research*.md         → 阶段0已完成
-docs/user-persona*.md            → 阶段1已完成
-docs/feature-priority*.md        → 阶段2已完成
-docs/roadmap*.md                 → 阶段3已完成
-docs/requirements*.md            → 阶段4已完成
-docs/SRS/*.md 或
-docs/PRD/*-产品需求文档-V*.md    → 阶段5已完成（登记 SPEC_SOURCE）
+prd/strategy/strategy*.md                → 阶段-2已完成
+prd/strategy/gtm*.md                     → 阶段-1已完成
+prd/research/market-research*.md         → 阶段0已完成
+prd/research/user-persona*.md            → 阶段1已完成
+prd/planning/feature-priority*.md        → 阶段2已完成
+prd/planning/roadmap*.md                 → 阶段3已完成
+prd/planning/requirements*.md            → 阶段4已完成
+dev/SRS/*.md 或
+prd/PRD/*-产品需求文档-V*.md    → 阶段5已完成（登记 SPEC_SOURCE）
                                   ⚠️ 只有 -概念版- / -评审- / -原型盘点- 时**阶段5 未完成**
 src/ 有代码                       → 阶段6已完成或进行中
-docs/*测试用例*.md / *test-case*  → 阶段7已完成
-docs/*操作手册*.md / *operation-manual* → 阶段8已完成
-docs/*release-note*.md / *发版*   → 阶段9已完成
-reports/ 下有审计报告            → 阶段10已完成
+prd/test/*测试用例*.md / *test-case*  → 阶段7已完成
+prd/release/*操作手册*.md / *operation-manual* → 阶段8已完成
+prd/release/*release-note*.md / *发版*   → 阶段9已完成
+prd/reports/ 下有审计报告        → 阶段10已完成
+docs/** 下命中同名旧文档          → 该阶段按已完成算，路径照实记（不搬家）
 docs/spec.md 仅存在（遗留）      → 提示迁移 SRS 或重跑阶段5
 ```
 

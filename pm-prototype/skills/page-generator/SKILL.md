@@ -44,8 +44,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 
 Read `../common/prd-to-srs-gate.md`，执行检测：
 
-1. `Glob("docs/SRS/*.md")`、`Glob("docs/01-需求与规划/*SRS*.md")`（旧归档路径）或 `Glob("**/*需求*说明书*.md")` → 校验含**功能清单 / 页面清单 / 字段级功能详细设计**三部分（默认模板是 3.1 / 3.3 / 3.5；其他模板章节号不同，映射表见 `../common/prd-to-srs-gate.md` §2）
-2. 若 **无合格 SRS** 且存在 `docs/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`）：
+1. `Glob("dev/SRS/*.md")`、`Glob("docs/SRS/*.md")`（旧根）、`Glob("docs/01-需求与规划/*SRS*.md")`（更旧的归档路径）或 `Glob("**/*需求*说明书*.md")` → 校验含**功能清单 / 页面清单 / 字段级功能详细设计**三部分（默认模板是 3.1 / 3.3 / 3.5；其他模板章节号不同，映射表见 `../common/prd-to-srs-gate.md` §2）
+2. 若 **无合格 SRS** 且存在 `prd/PRD/*.md`（或旧路径 `docs/**/*-PRD.md`）：
    - 用户 **未** 触发降级豁免词（见门禁 §4）→ 输出 §3 标准话术，**中止**，路由 **`req-doc` Step F**
    - 用户已触发降级 → 读 PRD §4/§5，步骤 1 标注 `⚠ 降级模式`
 3. 有合格 SRS → 登记 `SPEC_SOURCE=<SRS路径>`，进入步骤 1
@@ -62,9 +62,9 @@ Read `../common/prd-to-srs-gate.md`，执行检测：
 
 **0. 判断触发模式**：
 
-> 下文的「交付计划」一律指 `docs/delivery-plan-*.md`（`delivery-plan` 技能产出，文件名带项目名）。
-> 用 `Glob("docs/delivery-plan-*.md")` 找；未命中再试旧命名 `docs/delivery-plan.md`。
-> 命中多个（一个 `docs/` 下并行多个项目）时**让用户选**，不要自己挑第一个。
+> 下文的「交付计划」一律指 `dev/plan/delivery-plan-*.md`（`delivery-plan` 技能产出，文件名带项目名）。
+> 用 `Glob("dev/plan/delivery-plan-*.md")` 找；未命中再试旧命名 `dev/plan/delivery-plan.md`。
+> 命中多个（一个 `dev/SRS/` 下并行多个项目）时**让用户选**，不要自己挑第一个。
 - 若用户说的是"按计划实现下一个功能"（批量模式自动触发）：
   - 读取交付计划，找到当前推荐功能（"当前推荐"章节）
   - 将该功能名作为目标功能，继续执行步骤 1
@@ -95,7 +95,7 @@ Read `../common/prd-to-srs-gate.md`，执行检测：
    - 若只有一个子项目或根目录本身就是项目，直接用根目录作为 PROJECT_PATH
    - **WORKSPACE_PATH**：若 `{PROJECT_PATH}/.agents/knowledge/` 存在则等于 PROJECT_PATH；否则若 `{PROJECT_PATH}/../.agents/knowledge/` 存在则取 PROJECT_PATH 的父目录；否则等于 PROJECT_PATH
 
-2. 读取 **SRS**（步骤 0 已登记 `SPEC_SOURCE` 时直接用该路径；否则 `docs/SRS/*.md`、`docs/01-需求与规划/*SRS*.md`（旧归档路径）或 `*需求*说明书*.md`）
+2. 读取 **SRS**（步骤 0 已登记 `SPEC_SOURCE` 时直接用该路径；否则 `dev/SRS/*.md`、`docs/01-需求与规划/*SRS*.md`（旧归档路径）或 `*需求*说明书*.md`）
    - **有合格 SRS** 时，按以下顺序读取对应章节（须为 req-doc 模板结构，**非 PRD**）：
 
    **第一步：读取菜单结构**（`3.1 总体功能架构` 的菜单结构文字说明）
@@ -383,7 +383,7 @@ WORKSPACE_PATH：{工作区根目录绝对路径，含 .agents/}
 
 执行动作：
 
-1. 检查交付计划是否存在（`Glob("docs/delivery-plan-*.md")`，旧命名 `docs/delivery-plan.md` 兜底）
+1. 检查交付计划是否存在（`Glob("dev/plan/delivery-plan-*.md")`，旧命名 `dev/plan/delivery-plan.md` 兜底）
    - **存在**：执行步骤 2-4
    - **不存在**：跳过本步骤，提示用户可用 `/delivery-plan` 生成交付计划
 

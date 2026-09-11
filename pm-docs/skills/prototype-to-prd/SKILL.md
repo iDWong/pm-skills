@@ -94,7 +94,7 @@ description: |
 
 按 `references/inventory-template.md` 写入：
 
-**路径**：`docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md`
+**路径**：`prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md`
 
 写完后用 3–5 句摘要告知用户，并说明：
 
@@ -114,7 +114,7 @@ description: |
 - **商业**：变现、为何做、与竞品差异
 - **开发**：后端能力、第三方、权限模型、真实数据源
 
-已有 PRD/调研在 `docs/` → 先 `Read`（同 `prd-writer/references/read-first.md`），不重复追问。
+已有 PRD/调研在 `prd/`（旧项目 `docs/`） → 先 `Read`（同 `prd-writer/references/read-first.md`），不重复追问。
 
 ---
 
@@ -124,8 +124,8 @@ description: |
 
 | 步骤 | 模板 | 路径 |
 | --- | --- | --- |
-| 概念版 | `prd-writer/references/concept-template.md` | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` |
-| 落地版 | `prd-writer/references/prd-template.md` | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` |
+| 概念版 | `prd-writer/references/concept-template.md` | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` |
+| 落地版 | `prd-writer/references/prd-template.md` | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` |
 
 **概念版「已有输入摘要」**：链回 `-原型盘点-V*.md`，并注明输入源（Axure 路径 / URL）。
 
@@ -144,9 +144,9 @@ description: |
 
 | 产物 | 路径 | 说明 |
 | --- | --- | --- |
-| 原型盘点 | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md` | 真源摘录 + 来源标注 |
-| 概念版 | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` | 方向对齐 |
-| 落地 PRD | `docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` | 文首链回概念版与盘点稿 |
+| 原型盘点 | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-原型盘点-V{版本号}.md` | 真源摘录 + 来源标注 |
+| 概念版 | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-概念版-V{版本号}.md` | 方向对齐 |
+| 落地 PRD | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md` | 文首链回概念版与盘点稿 |
 | Word 导出 | 与源 Markdown 同目录 `.docx` | **可选**；自检后用户要求时用 `formal` 等模板（见 §8） |
 
 命名片段（`{客户名称}` 可省、`{形态}` 五选一、`{版本号}` 首版 `V1.0`）见 `prd-writer` §4「命名片段规则」，三份产物共用同一前缀。
@@ -207,7 +207,7 @@ Markdown 落盘并通过 `prd-writer/references/self-check.md` 后，若用户�
 **示例**（文件名遵循 §5 落地版命名，`<主题>` 替换为实际项目名）：
 
 ```powershell
-../common/export-word.ps1 docs/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md formal
+../common/export-word.ps1 prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md formal
 ```
 
 ### 输出与依赖

@@ -115,7 +115,7 @@ Before delivering a strategy document:
 - **Cross-framework conclusions contradict each other**: surface the contradiction as a finding and state each one's preconditions. Do not force a reconciliation
 
 **Flow output path**: when run as `pm-master` stage -2, write the strategy document to
-`docs/strategy.md` (the flow's gate globs `docs/strategy*.md`). Standalone runs may write anywhere the user asks.
+`prd/strategy/strategy.md` (the flow's gate globs `prd/strategy/strategy*.md`). Standalone runs may write anywhere the user asks.
 
 ## Handoffs
 

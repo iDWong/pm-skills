@@ -4,8 +4,8 @@
 
 **输入**：
 - 用户口述的想法或需求（本阶段主要靠对话，不依赖文件）
-- `docs/roadmap.md`（阶段3，若有——用来圈定本次做哪些）
-- `docs/feature-priority.md`（阶段2，若有）
+- `prd/planning/roadmap.md`（阶段3，若有——用来圈定本次做哪些）
+- `prd/planning/feature-priority.md`（阶段2，若有）
 - 用户提供的会议纪要、聊天记录、竞品截图（有则先读，只问缺口）
 
 **执行方式**：通过对话逐步澄清，不一次性抛出所有问题
@@ -20,7 +20,7 @@
 5. 有没有特殊的业务规则或约束？
 ```
 
-**输出**：`docs/requirements.md`
+**输出**：`prd/planning/requirements.md`
 
 ```markdown
 # [产品名称] 需求概述
@@ -43,6 +43,6 @@
 [业务规则、约束条件]
 ```
 
-**完成标志**：用户确认需求描述准确，且已写入 `docs/requirements.md`
+**完成标志**：用户确认需求描述准确，且已写入 `prd/planning/requirements.md`
 
 ---

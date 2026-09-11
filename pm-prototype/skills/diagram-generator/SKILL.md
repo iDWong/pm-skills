@@ -96,19 +96,22 @@ Word 导出接口只认 `images/<纯ASCII名>.png`（与文档同级的 `images/
 
 | 目标文档 | 落在 | PNG 渲到 | 文档里引用 |
 |---|---|---|---|
-| SRS（`req-doc`） | `docs/SRS/` | `docs/SRS/images/` | `images/xxx.png` |
-| PRD（`prd-writer`／`pm-prd-spec`） | `docs/PRD/` | `docs/PRD/images/` | `images/xxx.png` |
-| 概要／详细设计（`hld-design`／`lld-design`） | `docs/架构/` | `docs/架构/images/` | `images/xxx.png` |
-| 可研／功能清单（`feasibility-report`／`feature-list`） | `docs/规划/` | `docs/规划/images/` | `images/xxx.png` |
-| 流程阶段产出 | `docs/` 根 | `docs/images/` | `images/xxx.png` |
+| SRS（`req-doc`） | `dev/SRS/` | `dev/SRS/images/` | `images/xxx.png` |
+| PRD（`prd-writer`／`pm-prd-spec`） | `prd/PRD/` | `prd/PRD/images/` | `images/xxx.png` |
+| 概要／详细设计／功能清单（`hld-design`／`lld-design`／`feature-list`） | `dev/design/` | `dev/design/images/` | `images/xxx.png` |
+| 可研／设计方案（`feasibility-report`／`brainstorming`） | `prd/planning/` | `prd/planning/images/` | `images/xxx.png` |
+| 产品链阶段产出 | `prd/{strategy,research,planning}/` | 各自的 `images/` | `images/xxx.png` |
+| 研发链测试／审计／发版 | `dev/{test,reports,release}/` | 各自的 `images/` | `images/xxx.png` |
 
-**渲到 `docs/images/` 是老写法，只有当文档本身在 `docs/` 根下时才对**——SRS/PRD/设计说明书都不在根下，
-渲到 `docs/images/` 会让它们的 `images/xxx.png` 引用指向不存在的文件（脚本报 `! missing image`，
+> 存量项目的文档可能还在旧根 `docs/**`，**图跟着文档走**：文档在哪个目录，PNG 就渲到那个目录的 `images/`。
+
+**渲到一个集中的 `images/`（例如老写法 `docs/images/`）是错的**——文档不在那一层时，
+它的 `images/xxx.png` 引用会指向不存在的文件（脚本报 `! missing image`，
 导出仍"成功"但 `word/media` 是 0）。2026-09-10 实测确认。
 
 XML 源文件同理放 `<文档目录>/images/src/`，与 PNG 同级便于对照。首次使用前确保这两个目录存在。
 
-下面示例用 `<DOC_DIR>` 代表目标文档所在目录（如 `docs/SRS`、`docs/PRD`、`docs/架构`、`docs`）。
+下面示例用 `<DOC_DIR>` 代表目标文档所在目录（如 `dev/SRS`、`prd/PRD`、`dev/design`、`prd/planning`）。
 
 **Windows（PowerShell，需 Python 3）：**
 

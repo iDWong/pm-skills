@@ -25,8 +25,8 @@
 ---
 title: "概要设计说明书"
 subtitle: "[项目名称]"
-author: "[客户单位名称]"
-date: "编制单位：[编制单位名称]\n\n[年月中文，如：二零二六年五月]"
+author: "Wong"
+date: "编制单位：Wong's Development Team\n\n[年月中文，如：二零二六年五月]"
 lang: zh-CN
 toc: true
 toc-depth: 3
@@ -86,7 +86,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 
 ### 3.3 系统总体架构图
 
-> **图片落盘目录**：PNG 必须渲到 **`docs/架构/images/`**（与本说明书同级），文档里引用写 `images/xxx.png`。渲到 `docs/images/` 会导致 Word 导出丢图（实测）。调 `diagram-generator` 时直接把输出路径指到 `docs/架构/images/`。
+> **图片落盘目录**：PNG 必须渲到 **`dev/design/images/`**（与本说明书同级），文档里引用写 `images/xxx.png`。渲到别处（如集中的 `images/`）会导致 Word 导出丢图（实测）。调 `diagram-generator` 时直接把输出路径指到 `dev/design/images/`。
 
 **必须调用 diagram-generator 技能生成**（DIAGRAM_TYPE: architecture），图片命名：`images/hld-system-architecture.png`
 

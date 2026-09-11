@@ -696,9 +696,9 @@ ls {PROJECT_PATH}/../req-doc/references/templates/*.md
 ### F0: 门禁与输入确认
 
 1. Read `../common/prd-to-srs-gate.md` 与 `references/prd-to-srs-handoff.md`
-2. 扫描 PRD **落地版**：`Glob("docs/PRD/*-产品需求文档-V*.md")`；未命中再 `Glob("docs/PRD/*-PRD.md")`、`Glob("docs/**/*-PRD.md")`（兼容旧命名与旧路径）；登记 `PRD_SOURCE`。
+2. 扫描 PRD **落地版**：`Glob("prd/PRD/*-产品需求文档-V*.md")`；未命中再 `Glob("prd/PRD/*-PRD.md")`、`Glob("docs/**/*-PRD.md")`（兼容旧命名与旧路径）；登记 `PRD_SOURCE`。
    **概念版／评审／原型盘点不能当转写源**——它们只在下一条作补充材料；只找到这三类时按「无落地版 PRD」中止并说明
-3. 可选补充：`Glob("docs/PRD/*-概念版-V*.md")`、`Glob("docs/PRD/*-原型盘点-V*.md")`（旧命名 `docs/PRD/*-概念版.md` / `docs/PRD/*-原型盘点.md`，旧路径 `docs/*-概念版.md` / `docs/*-原型盘点.md`）
+3. 可选补充：`Glob("prd/PRD/*-概念版-V*.md")`、`Glob("prd/PRD/*-原型盘点-V*.md")`（旧命名 `prd/PRD/*-概念版.md` / `prd/PRD/*-原型盘点.md`，旧路径 `docs/*-概念版.md` / `docs/*-原型盘点.md`）
 4. 执行 `references/prd-to-srs-handoff.md` **转写前检查**；不通过则中止并说明
 5. 扫描是否已有 SRS：若已有且用户未要求覆盖 → 转 **Step C** 增量同步，或询问覆盖/新建版本
 
@@ -712,7 +712,7 @@ PRD → SRS 转写计划
 来源 PRD：{路径}
 本期转写模块（{N} 个）：[模块1, 模块2, ...]
 暂不展开（🟡⚪）：[...]
-输出路径：docs/SRS/{日期}-{项目}-SRS需求规格说明书-V1.0.md
+输出路径：dev/SRS/{日期}-{项目}-SRS需求规格说明书-V1.0.md
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -766,7 +766,7 @@ SRS 只补 PRD 未写明的规格细节；研发交付真源仍是 SRS）、落 
 SRS 落盘（Step A / C / F 任一出口）后**停下来问一次**，拿到明确答复再动：
 
 ```
-SRS 已落盘：docs/SRS/20260411-PM能源科技智慧厂区巡检平台-SRS需求规格说明书-V1.0.md
+SRS 已落盘：dev/SRS/20260411-PM能源科技智慧厂区巡检平台-SRS需求规格说明书-V1.0.md
 需要导出 Word 评审稿（.docx）吗？
   1) 导出
   2) 不导出（后续要的话说一声，随时可补）
@@ -812,17 +812,17 @@ unzip -l "<导出的.docx>" | grep -c "word/media/"
 
 **丢图的原因不止文件名**——2026-09-10 实测：只有 `images/<纯ASCII名>.png`（**与文档同级的 `images/` 子目录**）
 能嵌入；`img/`、`images/sub/`、`assets/img/`、`../images/`、与文档同目录、中文文件名**全部丢图**。
-图片在别处就**先拷进「与本文档同级的 `images/`」**再引用——SRS 落在 `docs/SRS/`，所以是 `docs/SRS/images/`，
-**不是 `docs/images/`**（那是文档在 `docs/` 根下时才对）。调 `diagram-generator` 渲图时直接指定 `docs/SRS/images/`。
+图片在别处就**先拷进「与本文档同级的 `images/`」**再引用——SRS 落在 `dev/SRS/`，所以是 `dev/SRS/images/`，
+**不是某个集中的 `images/`**——图片必须与文档同级。调 `diagram-generator` 渲图时直接指定 `dev/SRS/images/`。
 完整实测边界表见 `../common/README.md`。
 
 ## 文档命名规范
 
-`docs/SRS/{日期}-{客户名称}{项目名称}-SRS需求规格说明书-V{版本号}.md`
+`dev/SRS/{日期}-{客户名称}{项目名称}-SRS需求规格说明书-V{版本号}.md`
 
-**SRS 一律落 `docs/SRS/`**（目录不存在先 `mkdir -p docs/SRS`）；PRD 落 `docs/PRD/`，两者分目录归档，不要混放。
+**SRS 一律落 `dev/SRS/`**（目录不存在先 `mkdir -p dev/SRS`）；PRD 落 `prd/PRD/`，两者分目录归档，不要混放。
 
-示例：`docs/SRS/20260411-PM能源科技智慧厂区巡检平台-SRS需求规格说明书-V1.0.md`
+示例：`dev/SRS/20260411-PM能源科技智慧厂区巡检平台-SRS需求规格说明书-V1.0.md`
 
 **修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
