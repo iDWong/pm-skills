@@ -218,6 +218,23 @@ Prototype/<slug>/ ← 设计稿（可点 HTML + 预览墙）
 
 ---
 
+## 姊妹库：`dev-skills`
+
+需求文档产出之后的研发链——SRS 真源 → 概要/详细设计 → 交付规划 → 编码实现 → 测试 → 上线审计 → 发版——
+在 **[iDWong/dev-skills](https://github.com/iDWong/dev-skills)**，由编排器 `dev-master` 管 13 个阶段。
+
+| | `pm-skills`（本库） | `dev-skills` |
+| --- | --- | --- |
+| 管什么 | 产品侧：战略 → 调研 → 画像 → 优先级 → 路线图 → PRD | 研发侧：SRS → 设计 → 实现 → 测试 → 上线 |
+| 入口 | `pm-master` | `dev-master` |
+| 交接 | 阶段 5 产出需求文档 | 从它的**阶段 1** 接手，把 PRD 转写成 SRS 真源 |
+
+两库有 **14 个重叠技能**（`req-doc`、`page-generator`、`ui-ux-pro-max`、`pm-test-cases` 等）——
+**是同一份技能的两处分发，逐字一致**，不是两个版本。两库都装时同名技能只保留一份，装哪个在先都一样。
+本库单装完整，不读 `dev-skills` 的任何文件。
+
+---
+
 ## 致谢
 
 - 战略/GTM/增长/上线审计四组共 25 个能力的方法论来自 [phuryn/pm-skills](https://github.com/phuryn/pm-skills)（MIT），
