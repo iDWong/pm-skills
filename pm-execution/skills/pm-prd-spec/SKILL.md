@@ -456,7 +456,7 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 
 用户接着说"进开发 / 实现 / 生成页面 / 出交付计划 / 做概要设计"时：
 
-- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan` 这六个技能**不得**以 PRD（`docs/PRD/*.md`）为规格真源。
+- `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`、`dev-fullstack-product` 这七个技能**不得**以 PRD（`docs/PRD/*.md`）为规格真源（`dev-fullstack-product` 来自姊妹库 `dev-skills`，只装 `pm-skills` 时忽略它，其余六个不变）。
 - 正确路径：先跑 `req-doc` **Step F**（PRD → SRS 转写），落 `docs/SRS/{日期}-{客户}{项目}-SRS需求规格说明书-V*.md`，再进下游。
 - 交付时主动提示这一步，**不要问"是否转写"**——直接说明下一步是 Step F。SRS 落盘后要不要导 Word，仍按 Step 7 的规则**问一次**。
 - 唯一豁免：用户**原话**说"跳过 SRS"或"按 PRD 手动对齐"，且仅限单次。
@@ -467,7 +467,7 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
   - **前置**：PRD 与 SRS **都已落盘**才启动（只有 PRD 时先走上面的 `req-doc` Step F）。
   - **谁执行**：执行技能是 `ui-ux-pro-max`，动手前先完整读 `$(resolve_skill ui-ux-pro-max)/references/prototype-delivery.md`——**那份是权威契约**，Step 8 只给路由与验收口径，两边不一致时以契约为准。
   - **产物**：落 `Prototype/<项目slug>/`，**共三张预览墙**：移动墙（APP / H5 / 小程序 **共用一张**，393×852，卡片按形态分组）、官网墙（1280×900）、后台墙（1440×900）。点预览卡即进全屏；墙内不注入工具条，出稿帧切换与需求标注开关只在全屏页右下角。
-  - **真源**：**设计稿内容以 PRD 为主**（页面清单、文案、交互照抄 PRD，SRS 只补 PRD 未写明的规格细节）。这条**只限设计稿交付**，上面那六个研发技能的规格真源仍然是 SRS，两者不冲突。
+  - **真源**：**设计稿内容以 PRD 为主**（页面清单、文案、交互照抄 PRD，SRS 只补 PRD 未写明的规格细节）。这条**只限设计稿交付**，上面那七个研发技能的规格真源仍然是 SRS，两者不冲突。
 - 想在**现有工程里出可运行页面** → 先读 `design-system/<slug>/MASTER.md`，再走 `page-generator`（须先有 SRS，见上）
 - 想出测试用例 → `pm-test-cases`
 - 想补埋点方案 → `pm-tracking-spec-writer`

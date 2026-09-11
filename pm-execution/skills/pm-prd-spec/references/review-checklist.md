@@ -153,5 +153,5 @@ Step 6 逐项过。**P0 必须当场修完再交付**；P1/P2 汇总成清单随
 - [ ] 若本轮还转写了 SRS：SRS 的 Word 导出**又单独问了一次**（PRD 说过要导不代表 SRS 也导）
 - [ ] 用户确认导出后才执行：`bash "$(resolve_skill common)/export-word.sh" <md路径> req-doc`；用户说不导则跳过，并在交付说明里写明"Word 未导出"
 - [ ] 交给用户：PRD + .docx（仅在已确认导出时）+ 待确认项清单 + 下游路由说明
-- [ ] **下游路由说明必须包含**：PRD 不是研发交付真源；`page-generator` / `hld-design` / `lld-design` / `feature-list` / `annotation` / `delivery-plan` 需先走 `req-doc` **Step F**（PRD → SRS 转写）。直接说明下一步，不要问"是否转写"
+- [ ] **下游路由说明必须包含**：PRD 不是研发交付真源；`page-generator` / `hld-design` / `lld-design` / `feature-list` / `annotation` / `delivery-plan` / `dev-fullstack-product` 需先走 `req-doc` **Step F**（PRD → SRS 转写）。直接说明下一步，不要问"是否转写"
 - [ ] 下游路由说明里**还提了一行设计稿**：PRD + SRS 齐备后可出设计稿（可点 HTML，`ui-ux-pro-max`，见 SKILL.md Step 8）——只提示，不主动开工

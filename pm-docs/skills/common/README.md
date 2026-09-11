@@ -118,6 +118,25 @@ unzip -l <生成的.docx> | grep -c "word/media/"
 
 ---
 
+## ⚠️ 文档署名统一写 `Wong`
+
+**「编制人 / 作者 / 修订人 / 修改人 / 起草人」四类署名字段，一律填 `Wong`。**
+不要填「产品部」「架构组」「测试组」这类部门名，也不要留 `-`、`xxx`、`[编制人]`、`[作者]` 这类占位。
+
+| 字段 | 值 |
+| --- | --- |
+| 文档信息表「编制人」/「起草人」 | `Wong` |
+| 历史版本 / 修订历史表的「作者」「修订人」列 | `Wong`（每一行都写，含历史行） |
+| 审核人 / 批准人 / 复审人 | 维持 `-`（不是署名，是评审角色） |
+| 客户单位 / 编制单位 / YAML `author:`（封面单位名） | **不动**，那是单位不是人 |
+
+模板里已经把这些位置写死成 `Wong`，照抄即可；就地修订加版本历史行时也写 `Wong`。
+适用于所有产出正式文档的技能：`req-doc`、`prd-writer`、`pm-prd-spec`、`prototype-to-prd`、
+`feasibility-report`、`feature-list`、`hld-design`、`lld-design`、`pm-test-cases`、
+`pm-operation-manual`、`pm-market-research`、`pm-tracking-spec-writer`。
+
+---
+
 ## ⚠️ 就地修订也必须改文件名
 
 **文件名里的版本号、文首「文档版本」、版本历史表末行，三者必须一致。** 文档落盘后再动内容，就是一个新版本。
