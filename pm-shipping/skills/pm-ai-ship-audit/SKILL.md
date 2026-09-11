@@ -13,6 +13,7 @@ description: |
   不适用：常规代码评审 → /code-review（Claude Code 内置，Codex/Cursor 无此技能）；架构与详细设计文档 → hld-design / lld-design；
   测试用例设计 → pm-test-cases；系统性排障 → systematic-debugging。
   参考文档为英文原文，产出语言跟随用户提问语言。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 # AI Shipping Audit

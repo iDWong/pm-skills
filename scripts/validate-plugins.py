@@ -67,7 +67,11 @@ def main() -> int:
     # 跨技能引用可解析（排除子 Agent 名、风格名、参数值等已知假阳性）
     fp = {"req-analyzer", "req-writer", "page-reviewer", "page-spec-loader", "design-analyzer",
           "design-reviewer", "design-writer", "diagram-drawer", "ui-wireframe", "required-indicators",
-          "srs-writer", "feature-dev", "pm-skills", "pm-advisory-suite"}
+          "srs-writer", "feature-dev", "pm-skills", "pm-advisory-suite",
+          # 假阳性：文件名模板片段与 bundle 目录名，不是技能名
+          "delivery-plan-", "feature-priority-", "pm-execution", "pm-prototype",
+          "pm-lifecycle", "pm-docs", "pm-shipping", "pm-research", "pm-analytics",
+          "pm-strategy", "pm-advisory", "dev-skills"}
     pat = re.compile(r"`((?:pm|ui|req|prd|page|feature|feasibility|delivery|annotation|"
                      r"brainstorming|hld|lld|prototype|diagram)-[a-z0-9-]+)`")
     for sk_name, plug in skills.items():

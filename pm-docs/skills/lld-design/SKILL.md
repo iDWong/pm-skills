@@ -11,6 +11,7 @@ description: >
   (7) "导出详细设计" "详细设计导出Word",
   (8) 用户已有 SRS 或概要设计，需要产出表结构/接口/模块实现级设计文档时触发。
   支持完整生成、局部完善、审查修复、反向同步、导出 Word。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

@@ -8,6 +8,7 @@ description: >
   (4) 生成系统管理员操作手册，
   (5) 生成终端用户手册或快速入门指南。
   基于需求文档和现有前端页面生成操作手册。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段8 操作手册**，也可单点直接调用。

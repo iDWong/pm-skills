@@ -1,6 +1,7 @@
 ---
 name: pm-release-notes
 description: "产品发版说明撰写技能。适用场景：(1) App Store/应用市场更新说明，(2) 对外公告发版说明，(3) 面向用户的功能更新介绍，(4) 内部发版变更记录，(5) 用户说「写发版说明」「更新日志」「版本更新」「changelog」「上线公告」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段9 发版说明**，也可单点直接调用。

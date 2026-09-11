@@ -1,6 +1,7 @@
 ---
 name: ui-ux-pro-max
 description: "面向 Web、移动端和桌面端的 UI/UX 设计决策与评审技能。需要检索设计系统、风格、配色、字体、无障碍、交互、响应式、动画、图表或技术栈 UI 指南时使用；负责提供经本地数据库验证的设计建议，不负责替代页面开发和前端编码技能。项目已有 PRD 与 SRS 且用户要设计稿、高保真原型、可点原型、交互原型或预览墙时，本技能同时负责设计稿交付链路（读 PRD+SRS 全文，内容以 PRD 为主 → 落 Prototype/<项目slug>/ → 三张 iframe 预览墙（移动 393×852 / 官网 1280×900 / 后台 1440×900）→ 全屏页出稿帧与需求标注），细则见 references/prototype-delivery.md。"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 # UI/UX Pro Max——设计智能

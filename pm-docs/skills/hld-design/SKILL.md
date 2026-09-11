@@ -10,6 +10,7 @@ description: >
   (6) "导出概要设计" "概要设计导出Word",
   (7) 用户已有 SRS 需求说明书，需要产出系统架构级设计文档时触发。
   支持完整生成、局部完善、审查修复、反向同步、导出 Word。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

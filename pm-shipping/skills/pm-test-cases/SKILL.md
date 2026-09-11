@@ -8,6 +8,7 @@ description: >
   (4) 从需求生成功能/边界/异常/权限测试用例，
   (5) 生成 API 测试用例或测试报告模板。
   基于需求文档或功能描述自动生成完整测试用例集。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段7 测试用例**，也可单点直接调用。

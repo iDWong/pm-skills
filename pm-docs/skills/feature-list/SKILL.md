@@ -6,6 +6,7 @@ description: >
   (2) "整理功能清单" "汇总功能" "功能汇总表",
   (3) 用户需要将 SRS 或可研报告中的功能整理成独立的功能清单文档时触发。
   支持从已有文档自动提取，也支持用户手动补充后导出。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 # 功能清单生成器

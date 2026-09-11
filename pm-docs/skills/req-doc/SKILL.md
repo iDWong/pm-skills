@@ -8,6 +8,7 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
   (9) 用户需要将现有前端代码/页面同步回需求文档时， (10) "PRD转SRS" "PRD 转 SRS" "进开发" "转写需求" "按 PRD 写 SRS"
   "PRD 转需求说明书" 或仅有 PRD 却要 page-generator / 交付计划 / 概要设计时。 支持完整生成、局部完善、审查修复、从代码反向同步、从
   Word 生成模板、**PRD→SRS 转写（Step F）**。'
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
