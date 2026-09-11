@@ -4,7 +4,7 @@ description: "适用于磨砂玻璃、深浅主题、设计令牌、组件与层
 argument-hint: "[要生成的页面/组件，或 tokens|tailwind|swiftui|flutter|check]"
 license: MIT
 metadata:
-  author: iDWong
+  author: Wong
   version: "1.0.0"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---

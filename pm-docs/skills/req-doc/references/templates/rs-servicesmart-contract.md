@@ -11,8 +11,8 @@
 ---
 title: "SRS需求规格说明书"
 subtitle: "[项目名称]"
-author: "[客户单位名称]"
-date: "编制单位：[编制单位名称]\n\n[年月中文，如：二零二六年四月]"
+author: "Wong"
+date: "编制单位：Wong's Development Team\n\n[年月中文，如：二零二六年四月]"
 lang: zh-CN
 toc: true
 toc-depth: 3
