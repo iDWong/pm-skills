@@ -7,9 +7,14 @@ description: "将界面截图、设计稿或线框图复刻为可运行的 HTML 
 
 You turn UI screenshots into faithful, production-quality single-file HTML prototypes and iteratively refine them based on user feedback. Every interaction is logged, so you get better at understanding this user's style over time.
 
+> **运行态存放位置（别写回技能目录）**：本技能的配置、设计系统与学习日志一律落
+> `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/`（首次使用先 `mkdir -p ~/.pm-image2proto`）。
+> **不要写进技能自己的 `references/`** —— 技能库有多处副本，同步时是 `rm -rf` + `rsync`，
+> 写在技能目录里的配置下一次同步就没了。技能目录里只放 `references/*.example.json` 模板。
+
 ## First launch: onboarding
 
-When this skill is used for the first time (i.e., `references/learning_log.jsonl` is empty or doesn't exist, AND `references/design_system.json` has no user-customized content), run through this onboarding flow before producing any prototypes.
+When this skill is used for the first time (i.e., `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/learning_log.jsonl` is empty or doesn't exist, AND `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/design_system.json` has no user-customized content), run through this onboarding flow before producing any prototypes.
 
 ### 1. Collect reference images
 
@@ -17,7 +22,7 @@ Ask the user to provide as many reference screenshots as possible from their exi
 
 > "为了让原型输出更贴合你的产品风格，请先提供几张你们现有系统的截图（列表页、弹窗、表单等）。我会从中提取配色、间距、组件风格等设计规则，之后所有原型都会自动套用。"
 
-From the provided screenshots, extract and write to `references/design_system.json`:
+From the provided screenshots, extract and write to `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/design_system.json`:
 - Color palette (primary, success, danger, warning, text colors, border colors, backgrounds)
 - Component dimensions (modal border-radius, form label width, button height, input height)
 - Icon style (SVG stroke-based? filled? emoji?)
@@ -33,7 +38,7 @@ Ask the user how they prefer to describe their requirements. Offer a default:
 > • 或者截图 + 字段列表（如'标题改成XX，列表字段改成：A、B、C'）
 > 如果你有自己的需求文档模板也可以发给我。"
 
-Save the chosen format to `references/config.json` under `requirements_format`.
+Save the chosen format to `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/config.json` under `requirements_format`.
 
 ### 3. Set file save location
 
@@ -41,11 +46,11 @@ Ask the user to choose a root directory for saving prototypes:
 
 > "原型文件保存到哪个目录？请选择一个根目录，之后所有文件会按 `根目录/MMDD-设计名称.html` 的规则保存。"
 
-Save the path to `references/config.json` under `output_root`. If the user doesn't specify, default to the current workspace folder.
+Save the path to `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/config.json` under `output_root`. If the user doesn't specify, default to the current workspace folder.
 
 ### 4. Write initial config
 
-After onboarding, create `references/config.json`:
+After onboarding, create `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/config.json`:
 
 ```json
 {
@@ -66,9 +71,9 @@ Once onboarding is done, proceed directly to the normal workflow in future sessi
 
 Before doing anything, read these files (if they exist):
 
-1. `references/config.json` — output directory, naming rules, format preferences
-2. `references/design_system.json` — the user's design system (colors, components, spacing)
-3. `references/learning_log.jsonl` — last 20 entries of accumulated interaction history
+1. `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/config.json` — output directory, naming rules, format preferences
+2. `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/design_system.json` — the user's design system (colors, components, spacing)
+3. `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/learning_log.jsonl` — last 20 entries of accumulated interaction history
 
 If `config.json` doesn't exist or `onboarding_completed` is not `true`, run the onboarding flow above first.
 
@@ -126,7 +131,7 @@ When modifying an existing file, use the Edit tool for targeted changes rather t
 
 ### Step 5: Update the learning log
 
-After completing each prototype or modification, append a log entry to `references/learning_log.jsonl`. Each entry is a single JSON line:
+After completing each prototype or modification, append a log entry to `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/learning_log.jsonl`. Each entry is a single JSON line:
 
 ```json
 {"timestamp": "2026-03-27T14:30:00Z", "action": "create|modify", "file": "0327-模型类型配置.html", "screenshot_description": "Brief description of the UI shown in the screenshot", "changes": "What you created or modified", "user_instruction_style": "How the user communicated (terse, detailed, Chinese, English)", "design_patterns_used": ["pattern-a", "pattern-b"], "color_palette": {"primary": "#409eff"}, "user_preferences_learned": ["preference discovered in this interaction"], "component_library": ["reusable component identified"]}
@@ -150,7 +155,7 @@ This log is append-only — never overwrite it. Over time it becomes a rich reco
 
 ## Design system reference
 
-As you build prototypes, maintain a living reference of the user's design system in `references/design_system.json`. Update it whenever you discover new patterns. Structure:
+As you build prototypes, maintain a living reference of the user's design system in `${PM_IMAGE2PROTO_HOME:-$HOME/.pm-image2proto}/design_system.json`. Update it whenever you discover new patterns. Structure:
 
 ```json
 {
