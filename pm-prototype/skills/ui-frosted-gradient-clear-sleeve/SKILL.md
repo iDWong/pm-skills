@@ -6,6 +6,7 @@ license: MIT
 metadata:
   author: iDWong
   version: "1.0.0"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 # 透明套层磨砂玻璃
