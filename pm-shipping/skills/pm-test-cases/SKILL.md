@@ -11,9 +11,10 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
-> **流程位置**：`pm-master` 13 阶段流程的**阶段7 测试用例**，也可单点直接调用。
+> **流程位置**：`pm-master` 阶段7 测试用例 ／ `dev-master` **阶段9 测试**；也可单点直接调用。
+> （两条流程的阶段号不同，按当前在跑的那条读。）
 > 流程内落盘路径 `docs/{日期}-{项目}-测试用例-V{版本}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
-> 上游读 `SPEC_SOURCE`（SRS/PRD），与阶段10 的 `derive-tests` 覆盖地图对齐。
+> 上游读 `SPEC_SOURCE`（SRS/PRD），与 `pm-ai-ship-audit` 的 `derive-tests` 覆盖地图对齐（pm-master 阶段10 ／ dev-master 阶段11）。
 
 # 测试用例生成器
 

@@ -11,7 +11,8 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
-> **流程位置**：`pm-master` 13 阶段流程的**阶段8 操作手册**，也可单点直接调用。
+> **流程位置**：`pm-master` 阶段8 操作手册 ／ `dev-master` **阶段12 文档与发版**；也可单点直接调用。
+> （两条流程的阶段号不同，按当前在跑的那条读。）
 > 流程内落盘路径 `docs/{日期}-{项目}-用户操作手册-V{版本}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
 > 上游读 `SPEC_SOURCE` + 阶段6 的 `src/`（若有）。
 
