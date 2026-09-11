@@ -7,6 +7,11 @@ description: |
   触发词：「Mom Test」「妈妈测试」「怎么问不诱导」「怎么问用户」「需求验证」
   及"用户说想要但不确定真假"类场景。
   不适用：要**做一场访谈**（提纲、招募、记录、结论）走 `pm-user-interview`——本技能只提供**提问方法论**。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（《The Mom Test》方法论）。

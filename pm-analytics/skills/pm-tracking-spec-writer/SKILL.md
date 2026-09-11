@@ -6,6 +6,11 @@ description: |
   也适用于：用户提供产品PRD/需求文档要求产出埋点方案；用户提供核心用户链路要求拆解事件；用户要求规范化事件命名或字段定义；用户要求设计数据验收方案。
   典型输入：事件命名规范 + 字段字典 + 核心链路描述/流程图。
   不适用于：纯数据分析（用 pm-analytics）、纯BI看板搭建、纯SQL查询编写。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Tracking Spec Writer：埋点与指标设计

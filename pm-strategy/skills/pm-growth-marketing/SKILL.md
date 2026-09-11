@@ -12,6 +12,11 @@ description: |
   不适用：战略与价值主张本身 → pm-strategy-frameworks；渠道打法与增长循环 → pm-gtm；
   品牌视觉与 Logo → brand / design；指标埋点落地 → pm-tracking-spec-writer；
   数据归因分析 → pm-analytics。参考文档为英文原文，产出语言跟随用户提问语言。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Growth & Marketing

@@ -7,6 +7,10 @@ description: '> 用户要求在文档中生成、创建、绘制或插入任何�
   "用例图" "状态图", (7) 组织结构图: "组织架构图" "组织结构" "人员架构", (8) 思维导图: "生成思维导图" "画思维导图" "脑图" "心智图"
   "知识梳理", (9) BPMN: "生成BPMN" "业务流程建模", (10) 任何需要将业务流程、系统架构、数据流或其他内容可视化为图表的请求。'
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

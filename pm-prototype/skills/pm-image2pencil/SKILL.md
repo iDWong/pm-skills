@@ -4,6 +4,11 @@ description: |
   将截图/设计稿复刻为 Pencil .pen 设计，并在同一画布旁输出结构化设计文档。用户提到“按图复刻”“照着截图画页面”“image to pencil”“做一个一模一样的页面”“根据这张图做设计稿”“输出设计图和文档”时使用本 Skill。
   也适用于：用户要求修改已有 .pen 页面、追加右侧设计文档、做像素级对齐、根据多张截图整合一套页面。
   本 Skill 必须调用 pencil MCP 工具完成读取、绘制和截图校验；若信息不全，先向用户索取缺失信息再开始绘制。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # image2pencil

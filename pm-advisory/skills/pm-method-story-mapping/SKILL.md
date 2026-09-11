@@ -6,6 +6,11 @@ description: |
   每条规则标注原书章节，可追溯。
   触发词：「User Story Mapping」「用户故事地图」「故事地图」「需求拆解」「MVP 切片」
   「backbone」「walking skeleton」「怎么写用户故事」及"需求太碎/PRD 说不清全貌"类场景。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（《User Story Mapping》方法论）。

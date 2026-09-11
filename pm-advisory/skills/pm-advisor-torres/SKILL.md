@@ -7,6 +7,11 @@ description: |
   触发词：「Teresa Torres」「Torres」「用 Torres 的视角」「持续发现」「机会解决方案树」
   「opportunity solution tree」「assumption test」「每周用户触点」「outcome」。
   用户问"怎么做用户发现"「需求怎么拆成机会」「怎么验证假设」时也可触发。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（Teresa Torres 视角）。

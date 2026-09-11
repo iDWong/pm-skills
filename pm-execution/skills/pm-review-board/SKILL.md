@@ -4,6 +4,11 @@ description: |
   模拟多角色 PRD/原型评审会，从产品、研发、测试、设计、运营、法务六大视角给出评审结论。当用户说"帮我评审一下这个 PRD"、"看看这个需求有没有问题"、"模拟评审会"、"review 一下这个文档"、"这个需求能不能过评审"、"帮我查漏补缺"时触发。
   也适用于：用户上传了 PRD、需求文档、原型截图、功能说明并要求检查；用户提到"评审"、"review"、"过会"、"需求评审"、"方案评审"等关键词；用户要求从研发或测试视角看需求是否可行。
   不适用于：写 PRD（用 pm-prd-writer）、纯代码审查（用 code-review）、纯设计走查（用 design-critique）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-review-board：多角色模拟评审

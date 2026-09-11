@@ -1,6 +1,11 @@
 ---
 name: pm-user-interview
 description: "产品经理用户访谈技能。适用场景：(1) 设计用户访谈提纲，(2) 分析访谈录音/文字记录提炼洞察，(3) 整理用户需求和痛点，(4) 生成用户访谈报告，(5) 用户说「用户访谈」「访谈提纲」「用户调研」「需求挖掘」「分析访谈」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 用户访谈

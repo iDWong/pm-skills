@@ -10,6 +10,11 @@ description: |
   上游接力：需求还很模糊、连「该不该做」都没定 → 先用 `pm-prd-writer` 做需求体检与澄清，澄清完成后回本技能补形态判定、字段级规格、原型图与 UX 规范。
   下游接力：PRD 与 SRS 都已落盘、用户要设计稿/高保真原型/可点原型/交互原型/预览墙 → 走 Step 8 出 **UI/UX设计稿**（可点可交互的独立 HTML），调 `ui-ux-pro-max` 落 `Prototype/<项目slug>/`（设计稿内容以 PRD 为主真源、共三张 iframe 预览墙：移动 393×852 / 官网 1280×900 / 后台 1440×900、点卡进全屏、全屏页右下角出稿帧与需求标注）。
   流程位置：`pm-master` 13 阶段流程的**阶段5 深度档**（默认档是 `req-doc`／`prd-writer`）——本技能**不登记 `SPEC_SOURCE`**，流程内使用时须由流程在阶段5 收尾代为登记；也可单点直接调用。不适用于：SRS 需求规格说明书（用 req-doc）、纯前端页面实现（用 page-generator）、纯设计评审（用 ui-ux-pro-max）、纯技术方案（用 hld-design / lld-design）。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # PM-PRD-Spec：产品需求文档生成器

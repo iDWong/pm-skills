@@ -1,6 +1,10 @@
 ---
 name: pm-url2proto
 description: "将线上网页克隆为本地 Next.js 与 Tailwind CSS 原型项目。用于用户提供 URL 或截图并要求复刻、重新设计或迭代页面，也适用于扩展此前由本技能创建的原型项目；即使用户只是提供参考链接或图片并要求构建相似页面，也应使用本技能。"
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Web Prototype Skill

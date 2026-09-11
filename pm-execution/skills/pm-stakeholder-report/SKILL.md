@@ -1,6 +1,11 @@
 ---
 name: pm-stakeholder-report
 description: "产品经理汇报材料生成技能。适用场景：(1) 月度/季度产品汇报，(2) 向管理层/投资人汇报产品进展，(3) 跨部门产品Review，(4) 产品立项/需求评审材料，(5) 用户说「做汇报」「写汇报材料」「产品复盘」「产品Review」「向老板汇报」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 汇报材料生成

@@ -1,6 +1,11 @@
 ---
 name: pm-product-metrics
 description: "产品数据分析与指标体系设计技能。适用场景：(1) 设计产品数据埋点方案，(2) 分析产品数据找出问题，(3) 漏斗分析/留存分析/同期群分析，(4) 产品数据周报/月报，(5) 用户说「数据分析」「埋点设计」「指标体系」「数据看板」「漏斗分析」「留存分析」时触发 流程位置：`pm-master` 13 阶段流程的**数据分析默认档**，深度档是 pm-analytics：归因 + 决策建议 + HTML 报告；本项不是 13 阶段中的固定阶段，按需挂载；也可单点直接调用。"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 产品数据分析与指标体系

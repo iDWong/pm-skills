@@ -12,6 +12,11 @@ description: |
   不适用：战略方向与定价 → pm-strategy-frameworks；定位语/命名/北极星指标 → pm-growth-marketing；
   竞品四维深度拆解 → pm-competitor-deconstructor（战报卡是销售用的对抗物料，不是分析报告）；
   发版说明 → pm-release-notes。参考文档为英文原文，产出语言跟随用户提问语言。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Go-to-Market

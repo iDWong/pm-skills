@@ -9,6 +9,10 @@ description: >
   (5) 生成终端用户手册或快速入门指南。
   基于需求文档和现有前端页面生成操作手册。
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **流程位置**：`pm-master` 阶段8 操作手册 ／ `dev-master` **阶段12 文档与发版**；也可单点直接调用。

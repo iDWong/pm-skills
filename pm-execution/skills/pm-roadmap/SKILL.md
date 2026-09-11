@@ -1,6 +1,11 @@
 ---
 name: pm-roadmap
 description: "产品路线图规划技能。适用场景：(1) 制定季度/年度产品路线图，(2) 版本规划和里程碑设计，(3) 多团队功能交付协调，(4) 向管理层或投资人展示产品规划，(5) 用户说「做路线图」「产品规划」「版本计划」「roadmap」时触发 流程位置：`pm-master` 13 阶段流程的**阶段3 默认档**，深度档是 pm-roadmap-planner：四步法 + 甘特图 HTML；也可单点直接调用。"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 产品路线图规划

@@ -1,6 +1,11 @@
 ---
 name: pm-image2proto
 description: "将界面截图、设计稿或线框图复刻为可运行的 HTML 原型，并支持迭代优化和经验记忆。用于用户提供任何 UI 图片并要求复刻、修改既有原型、输出 HTML 或实现页面时；若对话中有界面截图且要求增加字段或照图修改，也应使用本技能。"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Image-to-Prototype Skill

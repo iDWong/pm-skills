@@ -7,6 +7,11 @@ description: |
   触发词：「Cagan」「卡根」「用 Cagan 的视角」「Cagan 会怎么看」「四大风险」「product model」
   「赋能团队」「discovery」「feature team vs product team」。
   用户问"这需求该不该做"「团队该怎么组」「怎么做产品发现」时也可触发。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（Marty Cagan 视角）。

@@ -1,6 +1,11 @@
 ---
 name: pm-okr-designer
 description: "产品 OKR/KPI 体系设计技能。适用场景：(1) 制定产品季度/年度 OKR，(2) 设计产品核心 KPI 指标体系，(3) 拆解战略目标为可执行指标，(4) OKR 复盘与评分，(5) 用户说「制定OKR」「设计KPI」「指标拆解」「目标管理」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # OKR / KPI 体系设计

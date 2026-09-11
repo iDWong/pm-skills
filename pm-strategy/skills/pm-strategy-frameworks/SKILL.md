@@ -10,6 +10,11 @@ description: |
   不适用：需求级判断（该不该做、需求真伪）→ pm-advisory-board；写需求文档 → pm-prd-writer / pm-prd-spec；
   竞品逐项拆解 → pm-competitor-deconstructor；TAM/SAM/SOM 测算 → pm-market-research；上市与增长执行 → pm-gtm / pm-growth-marketing。
   参考文档为英文原文，产出语言跟随用户提问语言。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # Product Strategy Frameworks

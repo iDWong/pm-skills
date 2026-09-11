@@ -7,6 +7,11 @@ description: |
   本技能管的是**需求体检与澄清**：从模糊想法到一份能评审的 PRD。
   不适用于：泛指的「需求文档」默认是**研发真源 SRS，走 `req-doc`**；「功能说明书」「字段级可开发」的规格版 PRD 走 `pm-prd-spec`；
   纯技术方案设计（用 hld-design / lld-design）、纯 UI 稿标注（用 annotation）、项目管理类文档（用 pm-stakeholder-report）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-prd-writer：从模糊需求到可评审 PRD

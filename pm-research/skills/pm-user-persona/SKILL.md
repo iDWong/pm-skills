@@ -1,6 +1,11 @@
 ---
 name: pm-user-persona
 description: "产品经理用户画像设计技能。适用场景：(1) 创建产品用户画像（Persona），(2) 定义目标用户群体，(3) 用户分层与细分，(4) 用户旅程地图绘制，(5) 用户说「做用户画像」「定义目标用户」「用户分析」「用户分层」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段1 用户画像**，也可单点直接调用。

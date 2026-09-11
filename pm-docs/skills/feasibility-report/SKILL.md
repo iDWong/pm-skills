@@ -8,6 +8,11 @@ description: >
   (4) "导出可研报告" "可研报告导出Word" "可研报告转Word",
   (5) 用户提供项目背景、建设目标、功能需求，需要输出正式的可研报告文档时触发。
   支持生成完整可研报告、分章节生成、导出 Word 格式。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 应用系统类项目可行性研究报告生成器

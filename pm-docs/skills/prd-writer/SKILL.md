@@ -4,6 +4,11 @@ description: |
   帮助用户从零写出高质量 PRD，或评估/改进/增量更新已有需求文档。
   触发词（任一命中即用本 skill）：需求文档、PRD、产品需求、功能文档、写需求、整理需求、补充需求、审查需求、改进需求文档、需求评审、评估 PRD、从零写 PRD、我想做个产品/功能/App/工具、帮我整理需求、AI 写的需求有没有问题、导出 PRD、PRD 导出 Word、需求文档转 Word、PRD 转 Word。
   即使描述很简短也必须触发，不得跳过技能直接写文档。
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # PRD Writer Skill

@@ -7,6 +7,10 @@ description: >
   (3) "按需求规划开发顺序" "规划页面实现顺序",
   (4) "实现全部功能" "按计划实现所有功能" "自动实现" "一直实现" "连续实现"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 交付链路规划器

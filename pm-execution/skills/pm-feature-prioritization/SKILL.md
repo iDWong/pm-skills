@@ -1,6 +1,11 @@
 ---
 name: pm-feature-prioritization
 description: "产品功能优先级排序技能。支持 RICE、MoSCoW、ICE、Kano 模型等多种优先级框架。适用场景：(1) 需求池排序，(2) 版本规划功能筛选，(3) 资源有限时决策哪些功能先做，(4) 用户说「功能排优先级」「需求排期」「哪些功能先做」「功能评估」时触发 流程位置：`pm-master` 13 阶段流程的**阶段2 默认档**，深度档是 pm-prioritization-engine：多模型交叉 + 敏感性分析；也可单点直接调用。"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 功能优先级排序

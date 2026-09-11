@@ -7,6 +7,11 @@ description: |
   用户提到"诱导题"、"双重问题"、"问卷偏差"等专业术语。
   不适用于：「市场调研」走 `pm-market-research`、「用户调研/用户访谈」走 `pm-user-interview`（本技能只管**问卷这一种载体**）；
   纯数据分析（用 pm-analytics）、纯用户访谈记录整理（直接整理即可）、纯产品需求文档（用 pm-prd-writer）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-survey-designer：从调研目标到高质量问卷

@@ -4,6 +4,10 @@ description: '> 原型标注工具。在页面上标注需求说明（字段说�
   class 定位。 触发场景：(1) "标注页面" "生成标注" "添加标注" "原型标注", (2) "给xx页面加标注" "标注xx功能", (3) "注入标注组件"
   "初始化标注"'
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

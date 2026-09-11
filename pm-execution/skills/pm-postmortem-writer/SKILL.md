@@ -5,6 +5,11 @@ description: |
   或者用户提供了上线数据/过程记录/问题清单并要求结构化总结时，使用这个 Skill。
   也适用于：事故复盘（P0/P1 事故后的 RCA 报告）、OKR 复盘、季度复盘、A/B 实验复盘。
   不适用于：纯需求撰写（用 pm-prd-writer）、纯优先级排序（用 pm-prioritization-engine）、周报日报（用 status-report）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-postmortem-writer：从上线数据到可执行的复盘报告

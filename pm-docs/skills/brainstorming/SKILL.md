@@ -1,6 +1,11 @@
 ---
 name: brainstorming
 description: "在任何创意工作（创建功能、构建组件、添加功能或修改行为）之前必须使用本技能。在实现前先探索用户意图、需求和设计方案。触发场景：用户描述想构建什么、分享功能想法或提供简要需求清单时。"
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # 头脑风暴：从想法到设计方案

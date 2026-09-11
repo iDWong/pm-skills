@@ -9,6 +9,10 @@ description: >
   (5) 生成 API 测试用例或测试报告模板。
   基于需求文档或功能描述自动生成完整测试用例集。
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **流程位置**：`pm-master` 阶段7 测试用例 ／ `dev-master` **阶段9 测试**；也可单点直接调用。

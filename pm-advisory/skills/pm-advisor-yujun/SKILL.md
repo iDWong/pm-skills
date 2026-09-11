@@ -6,6 +6,11 @@ description: |
   触发词：「俞军」「用俞军的视角」「俞军会怎么看」「用户价值公式」「交易模型」
   「替换成本」「决策效用」「产品经理是决策者」。
   用户问"这功能对用户价值多大"「用户为什么不迁移过来」「这个取舍怎么定」时也可触发。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（俞军视角）。

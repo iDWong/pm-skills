@@ -6,6 +6,11 @@ description: |
   也适用于：用户提供了实验目标/可改动点/数据量级/周期限制要求产出实验方案；用户要求评估现有实验设计是否合理；用户要求制定实验判定标准和决策规则。
   典型输入：实验目标 + 可改动点 + 当前数据量级 + 可接受实验周期。
   不适用于：纯数据分析（用 pm-analytics）、纯埋点设计（用 tracking-spec-writer）、纯PRD写作（用 pm-prd-writer）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-experiment-designer：A/B 实验设计

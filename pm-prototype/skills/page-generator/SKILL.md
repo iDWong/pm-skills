@@ -11,6 +11,10 @@ description: >
   （它的自动执行模式是这条链的方向盘，再由它按计划逐个调用本技能）。
   仅做视觉方向、设计系统检索或 UX/无障碍评审时不使用；这类任务交给 ui-ux-pro-max。
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

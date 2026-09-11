@@ -14,6 +14,10 @@ description: |
   测试用例设计 → pm-test-cases；系统性排障 → systematic-debugging。
   参考文档为英文原文，产出语言跟随用户提问语言。
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # AI Shipping Audit

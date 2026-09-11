@@ -5,6 +5,11 @@ description: |
   或者用户给出了一份竞品名单并要求系统化分析时，使用这个 Skill。
   也适用于：用户上传了竞品截图/链接/体验报告并要求结构化拆解；用户要求对比自己产品与竞品的差距；用户想找差异化切入点。
   不适用于：纯需求文档撰写（用 pm-prd-writer）、纯优先级排序（用 pm-prioritization-engine）、纯用户调研设计（用 pm-survey-designer）。
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-competitor-deconstructor：从竞品名单到差异化策略

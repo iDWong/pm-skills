@@ -5,7 +5,8 @@ argument-hint: "[要生成的页面/组件，或 tokens|tailwind|swiftui|flutter
 license: MIT
 metadata:
   author: Wong
-  version: "1.0.0"
+  version: "1.1"
+  reviewed: "2026-09-12"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 

@@ -6,6 +6,11 @@ description: |
   也适用于：用户想比较多个优先级模型的结果；用户对当前路线图有疑问想重新评估；资源有限需要砍需求；用户提到"RICE"、"ICE"、"Kano"、"优先级矩阵"等专业术语。
   不适用于：「版本规划」「路线图」走 `pm-roadmap-planner`（本技能只出**排序结果与评分依据**，不排版本）；
   纯项目管理（排期甘特图）、纯需求文档撰写（用 pm-prd-writer）、纯用户调研设计（用 pm-survey-designer）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-prioritization-engine：多模型需求优先级引擎

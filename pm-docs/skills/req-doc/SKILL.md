@@ -9,6 +9,10 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
   "PRD 转需求说明书" 或仅有 PRD 却要 page-generator / 交付计划 / 概要设计时。 支持完整生成、局部完善、审查修复、从代码反向同步、从
   Word 生成模板、**PRD→SRS 转写（Step F）**。'
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。

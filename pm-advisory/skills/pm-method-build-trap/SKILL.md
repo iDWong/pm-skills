@@ -6,6 +6,11 @@ description: |
   每条规则标注原书章节，可追溯。
   触发词：「Escaping the Build Trap」「跳出功能陷阱」「功能工厂」「build trap」「outcome over output」
   「product kata」「产品运营模型」「战略部署」及"忙着做功能但不知道有没有用"类场景。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **在顾问团里的位置**：本技能是 `pm-advisory-board`（顾问团总控）的成员之一（《Escaping the Build Trap》方法论）。

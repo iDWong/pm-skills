@@ -1,6 +1,11 @@
 ---
 name: pm-market-research
 description: "产品经理市场调研与竞品分析技能。适用场景：(1) 需要做市场规模分析（TAM/SAM/SOM），(2) 进行竞品对比分析，(3) 分析行业趋势和机会，(4) 输出市场调研报告，(5) 用户说「做竞品分析」「分析市场」「市场调研」「竞争对手分析」时触发"
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段0 市场调研**，也可单点直接调用。

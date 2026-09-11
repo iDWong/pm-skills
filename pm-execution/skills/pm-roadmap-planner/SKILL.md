@@ -9,6 +9,11 @@ description: |
   编排器入口会问你选哪档；单点调用时，只要甘特图与依赖风险就用本技能，要一版轻量路线图用 `pm-roadmap`。
   不适用于：单个迭代/Sprint 的规划与复盘走 `pm-sprint-planning`（本技能管**跨版本的路线图**）；
   每日站会（直接沟通）、单个需求设计（用 pm-prd-writer）、数据分析（用 pm-analytics）。
+allowed-tools: Read, Write, Edit, Glob, Grep
+metadata:
+  author: Wong
+  version: "1.1"
+  reviewed: "2026-09-12"
 ---
 
 # pm-roadmap-planner：版本规划与路线图
