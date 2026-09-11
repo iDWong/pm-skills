@@ -369,3 +369,15 @@ curl.exe -X POST "{diagramApiUrl}/api/export" \
 5. **禁止使用中文文件名** — 文件名用英文，节点内容可以用中文
 6. **禁止不验证就声称完成** — 渲染成功才算完成
 7. **禁止覆盖 `examples/*.png`** — 模板预览图为手工维护，仅同步 XML 模板
+
+## 外部依赖与降级：渲染端点
+
+渲图走 `config.json` 的 `diagramApiUrl`。
+
+| 情况 | 表现 | 怎么办 |
+|---|---|---|
+| 没配 `diagramApiUrl` | `render-diagram.*` **明确报错退出**（不静默失败） | 从 `config.example.json` 复制后填你自己的 draw.io 渲染服务地址 |
+| 端点连不上 | curl 超时 | 自检 `curl -s -o /dev/null -w '%{http_code}' <diagramApiUrl>/api/export` |
+| 暂时修不好 | —— | **降级用 mermaid 代码块内嵌 md**（Claude Code 与 GitHub 都能渲染），并在文档里标「图为 mermaid 源码，未出 PNG」；drawio XML 仍可用 `validate-diagram.*` 本地校验 |
+
+**降级不等于可以手绘 ASCII 框线图**——mermaid 源码仍是结构化的，手画的不是。

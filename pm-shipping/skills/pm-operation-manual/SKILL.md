@@ -120,3 +120,16 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 
 - 操作手册模板：`references/templates/operation-manual.md`
 - 截图操作指南：`references/screenshot-guide.md`
+
+## 外部依赖与降级：Word/xlsx 导出
+
+导出链走**技能库根的 `config.json`** 里的 `apiBaseUrl`（本机是 docsvc `http://127.0.0.1:8899`）。
+
+| 情况 | 表现 | 怎么办 |
+|---|---|---|
+| 没配 `config.json` | 脚本报「无法从 config.json 读取 apiBaseUrl」 | 从同级 `config.example.json` 复制后填地址 |
+| 服务没起 | `curl` 连不上 / 超时 | 先自检：`curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8899/`，起服务后重试 |
+| 两者都缺 | —— | **降级交 md**，并在交付清单里写明「Word 未导出（端点未配）」 |
+
+**三条不许**：不许把「导出失败」写成完成；不许跳过导出直接说交付完成；
+不许在导出后不验图——`unzip -l x.docx | grep -c 'word/media/'` 要等于文档里的图片张数（文件名含中文会静默丢图）。
