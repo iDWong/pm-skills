@@ -56,7 +56,7 @@ description: |
 | 3 | 产品路线图 | `pm-roadmap` | `pm-roadmap-planner` | `prd/planning/roadmap-*.md` |
 | 4 | 需求澄清 | （本技能直接做） | — | `prd/planning/requirements.md` |
 | 5 | 需求文档 | `req-doc`（SRS）／`prd-writer`（PRD） | `pm-prd-spec`（字段级+线框图，**流程须代为登记 SPEC_SOURCE**） | `dev/SRS/` 或 `prd/PRD/` |
-| 6 | 前端原型 | `page-generator` | — | `src/` |
+| 6 | 前端原型 | `page-generator` | — | `dev/code/` |
 | 7 | 测试用例 | `pm-test-cases` | — | `prd/test/*测试用例*.md` |
 | 8 | 操作手册 | `pm-operation-manual` | — | `prd/release/*操作手册*.md` |
 | 9 | 发版说明 | `pm-release-notes` | — | `prd/release/release-notes-*.md`（**流程代写**） |
@@ -156,9 +156,9 @@ description: |
 | 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `dev/plan/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
 | 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `dev/design/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
 | `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `dev/design/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
-| 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `src/` |
+| 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `dev/code/`（研发链产出） |
 | 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `prd/PRD/` |
-| 阶段 6 之后 | `annotation` | 往 **`src/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
+| 阶段 6 之后 | `annotation` | 往 **`dev/code/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
 | 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 | `Prototype/<项目slug>/` |
 
 
@@ -188,7 +188,7 @@ prd/
 放 `prd/` 会让研发链两处找。阶段 5 出 PRD 落 `prd/PRD/`，出 SRS 落 `dev/SRS/`，`SPEC_SOURCE` 记真实路径。
 
 **接力给研发链技能的产出落 `dev/`**（`feature-list` → `dev/design/`、`hld-design`/`lld-design` → `dev/design/`、
-`delivery-plan` → `dev/plan/`）——那是 `dev-master` 的阶段产出，本流程只是指路，不要往 `prd/` 里塞。
+`delivery-plan` → `dev/plan/`、阶段 6 的**代码** → `dev/code/`）——那是 `dev-master` 的阶段产出，本流程只是指路，不要往 `prd/` 里塞。
 
 三条规则：
 
@@ -205,7 +205,7 @@ prd/
 |---|---|---|
 | 技能 | `page-generator` | `ui-ux-pro-max`（细则读 `ui-ux-pro-max/references/prototype-delivery.md`） |
 | 产出 | 项目里的**真实页面代码** | **零依赖的独立 HTML** + 三张 iframe 预览墙 |
-| 落盘 | `src/` | `Prototype/<项目slug>/` |
+| 落盘 | `dev/code/` | `Prototype/<项目slug>/` |
 | 真源 | **SRS**（不认 PRD，见下方硬规则） | **PRD 为主真源**，SRS 补规格细节 |
 | 用途 | 进开发、要能跑起来 | 给人看、点得动、评审与对齐用 |
 | 前置 | 合格 SRS | **PRD 与 SRS 都要有** |
@@ -231,13 +231,13 @@ prd/
 
 | | `annotation` 技能 | 设计稿自带的标注面板 |
 |---|---|---|
-| 标在哪 | **`src/` 项目真实页面代码** | `Prototype/<项目slug>/` 的独立 HTML |
+| 标在哪 | **`dev/code/` 项目真实页面代码** | `Prototype/<项目slug>/` 的独立 HTML |
 | 怎么实现 | 注入专属 class + 生成标注 JSON + 装依赖 + 注册 Vite 插件 | 页面内建，全屏页右下角开关 |
 | 前置 | 阶段6 已出代码 + **合格 SRS**（在只认 SRS 的六技能名单里） | 设计稿已出（`ui-ux-pro-max`） |
 | 谁做 | `annotation` | `ui-ux-pro-max`，**不需要另调 `annotation`** |
 
 **走设计稿这条路的用户不需要 `annotation` 技能**——预览墙的全屏页已经内建标注面板，
-且每条规则要标 `PRD x.y.z` / `SRS 3.5.x` 出处。反过来，只要 `src/` 里的代码被标注，才用 `annotation`。
+且每条规则要标 `PRD x.y.z` / `SRS 3.5.x` 出处。反过来，只要 `dev/code/` 里的代码被标注，才用 `annotation`。
 
 ### 硬规则：这七个技能只认 SRS，不认 PRD
 

@@ -166,7 +166,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 3 | `prd/planning/roadmap*.md` | 4 |
 | 4 | `prd/planning/requirements*.md` | 5 |
 | 5 | `SPEC_SOURCE` 已登记（指向 `dev/SRS/*.md` 或 `prd/PRD/*-产品需求文档-V*.md`） | 6／7／8 |
-| 6 | `src/` 有代码 | 8（手册可对齐原型） |
+| 6 | `dev/code/` 有代码（存量项目在仓库根 `src/` 也算） | 8（手册可对齐原型） |
 | 7 | `prd/test/*测试用例*.md` 或 `prd/test/*test-case*.md` | — |
 | 8 | `prd/release/*操作手册*.md` 或 `prd/release/*operation-manual*.md` | 9 |
 | 9 | `prd/release/*release-note*.md` 或 `prd/release/*发版*.md`（**技能不落盘，见下方**） | 10（仅当代码由 AI 生成） |
@@ -197,7 +197,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 裁剪 | 缺什么 | 影响哪些阶段 |
 |---|---|---|
 | 快速交付（4→8） | `prd/planning/roadmap.md`（阶段3 跳过） | 阶段5 |
-| 只要文档（4,5,7,8,9） | `prd/planning/roadmap.md`、`src/` | 阶段5、8、9 |
+| 只要文档（4,5,7,8,9） | `prd/planning/roadmap.md`、`dev/code/` | 阶段5、8、9 |
 | 迭代（4,5,6,7,9） | `prd/planning/roadmap.md` | 阶段5、9 |
 
 处理顺序（**逐条往下试，不要跳到最后一条**）：
@@ -209,7 +209,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 **禁止两件事**：因为缺一个可选输入就中止流程；以及自己编一个（尤其版本范围、里程碑日期这类）。
 
-标了「若有」的输入（如 `src/`）本来就是软依赖，缺了直接跳过对应内容，不用走上面四步。
+标了「若有」的输入（如 `dev/code/`）本来就是软依赖，缺了直接跳过对应内容，不用走上面四步。
 
 ### 可以并行的阶段
 
@@ -285,7 +285,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 │   ├── SRS/*-SRS需求规格说明书-V*.md       ← 阶段5A/5C（**研发真源，唯一例外**）
 │   ├── design/                            ← 功能清单 · 概要设计 · 详细设计
 │   └── plan/delivery-plan-{项目名称}.md    ← delivery-plan（活文档，不带版本号）
-├── src/                                  ← 阶段6
+├── dev/code/                             ← 阶段6（各端子项目在其下；仓库级基建仍在仓库根）
 └── docs/                                 ← 旧根，**只读兼容**，不再往里写
 ```
 
@@ -299,7 +299,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | `prd/PRD/` | `prd-writer`、`pm-prd-spec`、`prototype-to-prd` | 现行 |
 | `prd/test/`、`prd/release/`、`prd/reports/` | 阶段 7/8/9/10 | 现行 |
 | **`dev/SRS/`** | `req-doc`（SRS，**研发真源，不落 `prd/`**） | 现行 |
-| `dev/design/`、`dev/plan/` | `feature-list`（功能清单）、`hld-design`、`lld-design`、`delivery-plan` —— 都是研发链产出 | 现行 |
+| `dev/design/`、`dev/plan/`、`dev/code/` | `feature-list`、`hld-design`、`lld-design`、`delivery-plan`、`page-generator`（代码）—— 都是研发链产出 | 现行 |
 | `docs/**` | **没人往里写**，只做读取端兜底（存量项目的老文档） | 只读兼容 |
 
 > **`docs/**` 整棵树（含 `docs/SRS/`、`docs/PRD/`、`docs/规划/`、`docs/架构/`、旧目录名 `docs/01-需求与规划/`）
@@ -334,7 +334,7 @@ prd/planning/requirements*.md            → 阶段4已完成
 dev/SRS/*.md 或
 prd/PRD/*-产品需求文档-V*.md    → 阶段5已完成（登记 SPEC_SOURCE）
                                   ⚠️ 只有 -概念版- / -评审- / -原型盘点- 时**阶段5 未完成**
-src/ 有代码                       → 阶段6已完成或进行中
+dev/code/ 有代码                  → 阶段6已完成或进行中
 prd/test/*测试用例*.md / *test-case*  → 阶段7已完成
 prd/release/*操作手册*.md / *operation-manual* → 阶段8已完成
 prd/release/*release-note*.md / *发版*   → 阶段9已完成

@@ -25,7 +25,7 @@
 
 **交付模式**：继承 Step 0 所选 `DELIVERY_MODE`（**流水线默认标准**）。阶段 6 调用 `page-generator` 时传入同一模式；未选快速则步骤 6 **全量双审查**。
 
-**输出**：业务项目 `src/`（或子项目 `admin/`、`mobile/` 等）
+**输出**：`dev/code/`（多端时是 `dev/code/admin/`、`dev/code/mobile/` 等子项目；存量项目代码在仓库根的原地续用）
 
 **完成标志**：V1.0 页面可访问；`npm run dev` 可启动（verification 按 AGENTS 交付模式）
 

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### 代码落盘：`dev/code/`
+
+- 阶段 6 `page-generator` 的产出由 `src/` 改为 **`dev/code/`**（研发链产出，与 `dev-master` 那条链对齐）：
+  门禁、目录树、断点续跑判据、`annotation` 的标注目标一并改。
+- 仓库级基建（compose / CI / hooks / scripts / 部署文档）留仓库根，不进 `dev/`；
+  存量项目代码在仓库根的原地续用不搬家。
+
 ### 落盘根收敛：产品链 `prd/`、研发链 `dev/`
 
 - 产品链 13 阶段产出统一落 **`prd/`**：`strategy/`（战略 · GTM/ICP）、`research/`（调研 · 画像）、

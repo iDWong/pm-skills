@@ -30,7 +30,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 > 并辅以 `{WORKSPACE_PATH}/.agents/knowledge/` 中的通用规范。
 > 若 README-DEV.md 不存在，则通过读取项目文件自行推断。
 
-> **多子项目说明**：若工作目录下存在多个子项目（如 `admin/`、`shadcn/`、`mobile/`），
+> **多子项目说明**：子项目一律在 **`dev/code/`** 下（如 `dev/code/admin/`、`dev/code/shadcn/`、`dev/code/mobile/`；
+> 存量项目可能仍在仓库根，那就按实际位置来）。若存在多个子项目，
 > 步骤 1 必须先确定目标子项目，后续所有路径均以**子项目根目录**为 **PROJECT_PATH**；
 > **WORKSPACE_PATH** 为含 `.agents/` 的仓库根目录（通常为 PROJECT_PATH 的父目录）。
 >
@@ -89,7 +90,9 @@ Read `../common/prd-to-srs-gate.md`，执行检测：
 3. **必须调用 page-reviewer 做步骤 6 验收**（不能跳过）
 4. **每次只实现一个功能**（不能把多个功能合并处理）
 
-1. **探测子项目结构**：检查当前工作目录下是否存在多个含 `package.json` 的子目录（如 `admin/`、`shadcn/`、`mobile/`、`web/` 等）
+1. **探测子项目结构**：先看 `dev/code/` 下有哪些含 `package.json`（或 `go.mod`/`pyproject.toml`）的子目录
+   （`dev/code/admin/`、`dev/code/shadcn/`、`dev/code/mobile/`、`dev/code/web/` 等）；`dev/code/` 不存在时
+   再看仓库根（存量项目的旧布局）
    - 若存在多个子项目，根据功能名和需求文档判断目标子项目（PC Vue 后台→admin，PC React/shadcn 后台→shadcn，移动端→mobile）
    - 确定后，将该子项目目录作为后续所有步骤的 **PROJECT_PATH**
    - 若只有一个子项目或根目录本身就是项目，直接用根目录作为 PROJECT_PATH

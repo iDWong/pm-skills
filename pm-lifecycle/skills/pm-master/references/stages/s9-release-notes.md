@@ -6,7 +6,7 @@
 - `SPEC_SOURCE`
 - `prd/planning/roadmap.md`（**迭代／只要文档裁剪下不存在**；缺失时改用 `SPEC_SOURCE` 的功能清单 +
   git log／已完成任务清单来确定本次发了什么，不要因为没有路线图就停下）
-- `src/`（若有）
+- `dev/code/`（若有）
 
 **执行方式**：调用 `pm-release-notes` skill
 

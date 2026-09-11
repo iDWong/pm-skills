@@ -2,7 +2,7 @@
 
 **目标**：将阶段4概述扩展为可交付的需求文档，并登记 **阶段5 真源路径**（供阶段6–9 读取）。
 
-**本阶段完成后有两条并列下游**：阶段6 `page-generator`（→ `src/` 真实代码，认 SRS）／设计稿 `ui-ux-pro-max`（→ `Prototype/<项目slug>/` 可点 HTML，**PRD 为主真源且需 PRD+SRS 都有**）。判据表见 `../../SKILL.md`「设计稿和前端原型是两条不同的路」。
+**本阶段完成后有两条并列下游**：阶段6 `page-generator`（→ `dev/code/` 真实代码，认 SRS）／设计稿 `ui-ux-pro-max`（→ `Prototype/<项目slug>/` 可点 HTML，**PRD 为主真源且需 PRD+SRS 都有**）。判据表见 `../../SKILL.md`「设计稿和前端原型是两条不同的路」。
 
 **输入**：
 - `prd/planning/requirements.md`（阶段4）

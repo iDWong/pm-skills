@@ -3,7 +3,7 @@
 **技能**：`pm-ai-ship-audit`　**输出**：`prd/reports/`（审计报告与产品文档分开放；研发链跑同一技能时落 `dev/reports/`）
 
 **输入**：
-- `src/`（阶段6 或任何来源的代码——本阶段唯一的硬输入）
+- `dev/code/`（阶段6 或任何来源的代码——本阶段唯一的硬输入；存量项目在仓库根也算）
 - `documentation/*.md`（意图基线；**不存在时先跑 `document-app` 反向补齐**，意图审计需要意图在册）
 - `SPEC_SOURCE`（阶段5 的 SRS／PRD，作为「文档写了什么」的对照）
 - `prd/test/test-cases.md`（阶段7，与 `derive-tests` 的覆盖地图对齐）

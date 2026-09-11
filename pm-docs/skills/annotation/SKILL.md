@@ -82,7 +82,7 @@ annotation skill（主流程）
 ### 步骤 0：确定 PROJECT_PATH
 
 检查当前工作目录下是否存在多个含 `package.json` 的子目录：
-- 若存在多个子项目（`admin/`、`mobile/`、`web/` 等），根据用户描述判断目标子项目
+- 若存在多个子项目（`dev/code/admin/`、`dev/code/mobile/`、`dev/code/web/` 等；存量项目可能在仓库根），根据用户描述判断目标子项目
 - 无法判断时询问用户
 - 确定后作为后续所有步骤的 **PROJECT_PATH**
 
