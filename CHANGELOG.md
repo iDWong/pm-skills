@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased
+
+### 落盘根收敛：产品链 `prd/`、研发链 `dev/`
+
+- 产品链 13 阶段产出统一落 **`prd/`**：`strategy/`（战略 · GTM/ICP）、`research/`（调研 · 画像）、
+  `planning/`（优先级 · 路线图 · 需求澄清 · 可研 · 设计方案）、`PRD/`、`test/`（测试用例）、
+  `release/`（操作手册 · 发版说明）、`reports/`（上线审计）。
+- **唯一例外：SRS 落 `dev/SRS/`** —— 它是研发侧规格真源，姊妹库 [`dev-skills`](https://github.com/iDWong/dev-skills)
+  的全链门禁与「只认 SRS」的七个技能都指向它。功能清单、概要/详细设计、交付计划同理属研发链产出，
+  即使由 `pm-master` 接力触发也落 `dev/`。
+- **`docs/**` 整棵树（含 `docs/SRS/`、`docs/PRD/`、`docs/规划/`、`docs/架构/`、`docs/01-需求与规划/`）
+  降级为只读兼容**，不再往里写。读取端保留旧根兼容行，存量项目的老文档**原地续用不搬家**。
+- `common/prd-to-srs-gate.md` 的 SRS 检测顺序改为 `dev/SRS/` → `docs/SRS/` → 旧归档路径。
+
+### 文档署名
+
+- 文档模板的编制人/作者/客户单位统一为 `Wong`，编制单位 `Wong's Development Team`；
+  技能 frontmatter 的 `author` 由 `iDWong` 改为 `Wong`（上游 claudekit 的第三方署名不动）。
+
 ## v1.0.0 — 2026-09-10
 
 首个发布版本。52 个技能 / 9 个 plugin / 13 阶段单一流程。
