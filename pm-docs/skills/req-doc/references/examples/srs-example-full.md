@@ -2,7 +2,7 @@
 title: "SRS需求规格说明书"
 subtitle: "一次物流信息化管理模块"
 author: "Wong"
-date: "编制单位：Wong's Development Team\n\n二零二六年五月"
+date: "编制单位：Chaos Dev Studio\n\n二零二六年五月"
 lang: zh-CN
 toc: true
 toc-depth: 3
@@ -20,7 +20,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 | 审核人 | - |
 | 批准人 | - |
 | 客户单位 | PM能源集团内蒙古分公司 |
-| 编制单位 | Wong's Development Team |
+| 编制单位 | Chaos Dev Studio |
 | 适用范围 | 内蒙古分公司下属 8 座油库的一次物流（炼厂到油库）全流程信息化管理 |
 | 核心目标 | 实现电子运单、发运、在途监控、公路收油全流程数字化，替代纸质单据，提升运营透明度 |
 | 文档状态 | 草稿 |

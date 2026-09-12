@@ -2,7 +2,7 @@
 title: "测试用例"
 subtitle: "[项目名称]"
 author: "Wong"
-date: "编制单位：Wong's Development Team\n\n[年月中文]"
+date: "编制单位：Chaos Dev Studio\n\n[年月中文]"
 lang: zh-CN
 toc: true
 toc-depth: 3
@@ -31,7 +31,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 | 审核人 | - |
 | 批准人 | - |
 | 客户单位 | [客户单位名称] |
-| 编制单位 | Wong's Development Team |
+| 编制单位 | Chaos Dev Studio |
 | 适用范围 | [系统名称] 功能测试 |
 | 文档状态 | 草稿 |
 

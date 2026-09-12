@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### 编制单位改名
+
+- 文档模板与示例里的编制单位由 `Wong's Development Team` 改为 **`Chaos Dev Studio`**
+  （编制人/作者/修订人仍是 `Wong`，客户单位不动）。规则真源 `common/README.md` 同步更新。
+
 ### 代码落盘：`dev/code/`
 
 - 阶段 6 `page-generator` 的产出由 `src/` 改为 **`dev/code/`**（研发链产出，与 `dev-master` 那条链对齐）：

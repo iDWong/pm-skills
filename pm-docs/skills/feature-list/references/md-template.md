@@ -2,7 +2,7 @@
 title: "功能清单"
 subtitle: "{项目名称}"
 author: "Wong"
-date: "编制单位：Wong's Development Team\n\n{年月中文}"
+date: "编制单位：Chaos Dev Studio\n\n{年月中文}"
 lang: zh-CN
 geometry: "left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm"
 ---

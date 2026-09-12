@@ -1,7 +1,7 @@
 ---
 title: "操作手册"
 subtitle: "[项目名称]\n\n[客户名称]"
-author: "编制单位：Wong's Development Team"
+author: "编制单位：Chaos Dev Studio"
 date: "[年月]"
 lang: zh-CN
 toc: true
@@ -31,7 +31,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 | 审核人 | - |
 | 批准人 | - |
 | 客户单位 | [客户单位名称] |
-| 编制单位 | Wong's Development Team |
+| 编制单位 | Chaos Dev Studio |
 | 适用范围 | [适用角色描述] |
 | 适用版本 | [系统版本号] |
 | 文档状态 | 草稿 |

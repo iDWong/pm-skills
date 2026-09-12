@@ -129,11 +129,11 @@ unzip -l <生成的.docx> | grep -c "word/media/"
 | 文档信息表「编制人」/「起草人」 | `Wong` |
 | 历史版本 / 修订历史表的「作者」「修订人」列 | `Wong`（每一行都写，含历史行） |
 | 审核人 / 批准人 / 复审人 | 维持 `-`（不是署名，是评审角色） |
-| 文档信息表「编制单位」+ 封面 YAML 里的 `编制单位：` | `Wong's Development Team` |
+| 文档信息表「编制单位」+ 封面 YAML 里的 `编制单位：` | `Chaos Dev Studio` |
 | 封面 YAML 的 `author:`（不带「编制单位：」前缀的那种） | `Wong` |
 | 文档信息表「客户单位」行 | **不动**，保留甲方原值（内部产品写 `-`） |
 
-模板里已经把这些位置写死（署名 `Wong`、单位 `Wong's Development Team`），照抄即可；就地修订加版本历史行时也写 `Wong`。
+模板里已经把这些位置写死（署名 `Wong`、单位 `Chaos Dev Studio`），照抄即可；就地修订加版本历史行时也写 `Wong`。
 适用于所有产出正式文档的技能：`req-doc`、`prd-writer`、`pm-prd-spec`、`prototype-to-prd`、
 `feasibility-report`、`feature-list`、`hld-design`、`lld-design`、`pm-test-cases`、
 `pm-operation-manual`、`pm-market-research`、`pm-tracking-spec-writer`。

@@ -26,7 +26,7 @@
 title: "概要设计说明书"
 subtitle: "[项目名称]"
 author: "Wong"
-date: "编制单位：Wong's Development Team\n\n[年月中文，如：二零二六年五月]"
+date: "编制单位：Chaos Dev Studio\n\n[年月中文，如：二零二六年五月]"
 lang: zh-CN
 toc: true
 toc-depth: 3

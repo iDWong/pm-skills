@@ -24,7 +24,7 @@
 title: "可行性研究报告"
 subtitle: "[项目名称]"
 author: "Wong"
-date: "编制单位：Wong's Development Team\n\n[年月中文，如：二零二六年五月]"
+date: "编制单位：Chaos Dev Studio\n\n[年月中文，如：二零二六年五月]"
 lang: zh-CN
 toc: true
 toc-depth: 3
@@ -44,7 +44,7 @@ geometry: "left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm"
 | 编制人 | Wong |
 | 审核人 | - |
 | 批准人 | - |
-| 编制单位 | Wong's Development Team |
+| 编制单位 | Chaos Dev Studio |
 | 项目类型 | [自主研发类 / 提升推广类 / 引进实施类] |
 | 文档状态 | 草稿 |
 
