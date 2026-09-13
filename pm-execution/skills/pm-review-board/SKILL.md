@@ -7,8 +7,8 @@ description: |
 allowed-tools: Read, Write, Edit, Glob, Grep
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
 
 # pm-review-board：多角色模拟评审
@@ -76,6 +76,15 @@ metadata:
 ```
 
 ---
+
+## 材料范围：有设计稿就一起评
+
+被评材料是 PRD / 需求文档时，若项目已有 `design-system/<项目slug>/`，**把设计稿一并纳入**：
+`FLOWS.md`（流程是否闭环、失败分支有没有）、`HANDOFF.md`（字段 / 状态矩阵 / 文案是否与 PRD 对得上）、
+`CONSISTENCY.md`（多端差异是否有平台依据）。
+
+**分工别越界**：设计稿自身的四阶段闭环检查走 `pm-master/references/prototype-review.md`（那是出稿方的准出门禁），
+本技能只从六个角色的视角看**需求与设计是否一致、有没有做不出来的东西**。
 
 ## 步骤一：材料通读
 

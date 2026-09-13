@@ -11,8 +11,8 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
 
 > **流程位置**：`pm-master` 阶段7 测试用例 ／ `dev-master` **阶段9 测试**；也可单点直接调用。
@@ -108,6 +108,20 @@ metadata:
 
 - 测试用例模板：`references/templates/test-cases.md`
 - 表格规范和覆盖场景：`references/test-cases-guide.md`
+
+## 输入来源：设计稿也是合法输入
+
+主真源仍是 SRS / PRD。但项目若已有**过了闭环检查**的设计稿（`design-system/<项目slug>/`），**必须一并读**——
+它能补出文档里没有的两类用例，漏读等于少一半覆盖：
+
+| 读什么 | 能多出什么用例 |
+| --- | --- |
+| `FLOWS.md` | 每条流程的**失败与取消分支**（文档常只写好天气那条）、中间态（loading / 遮罩 / Toast）|
+| `HANDOFF.md` 第 4 节状态矩阵 | 七态逐页覆盖：空 / 加载 / 错误 / 无权限 / 部分字段缺失 / 超长超多数据 |
+| `HANDOFF.md` 第 5 节 | 表单校验的**正则、触发时机、错误文案**——边界用例照它写，不要自己编 |
+| `CONSISTENCY.md` | 多端项目的差异点，按端各出一组用例 |
+
+**设计稿与 SRS 冲突时取 SRS**，并在用例的「备注」列记一行差异，别闷着按设计稿写。
 
 ## 外部依赖与降级：Word/xlsx 导出
 

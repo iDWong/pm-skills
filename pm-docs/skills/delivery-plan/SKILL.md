@@ -9,11 +9,23 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
 
 # 交付链路规划器
+
+## 上游产物：设计稿出过就要排进计划
+
+排顺序的依据是 SRS 的模块依赖。但项目若有 `design-system/<项目slug>/`，**计划里要体现两件事**：
+
+1. **`FLOWS.md` 的流程条目是天然的交付切片**——一条流程（含失败分支）做完才算一个可验收单元，
+   比「按页面排」更接近用户可感知的完成度；
+2. **令牌与组件先行**：`tokens.json` 与 `HANDOFF.md` 第 3 节的组件清单要排在业务页面之前，
+   否则每个页面各写一套样式，后面返工。
+
+调 `page-generator` 时把 `design-system/<项目slug>/` 一并传下去（它的**步骤 2.1** 会读）。
+设计稿不存在时本节跳过，按 SRS 模块依赖排。
 
 ## 工作模式
 

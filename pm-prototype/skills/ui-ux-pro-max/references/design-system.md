@@ -55,6 +55,14 @@
 | HarmonyOS | `tokens.ets`（ArkTS 常量）| 同 iOS 的驼峰规则 |
 | 小程序 | `tokens.wxss` / `tokens.acss` | 同 Web，变量名不变 |
 
+**与 `brand` / `design-system` / `slides` 那套项目根 `assets/design-tokens.{json,css}` 的关系**（别让一个项目出现两份令牌）：
+
+| 项目情况 | 令牌唯一源 |
+| --- | --- |
+| 走了设计稿链路（有 `design-system/<项目slug>/`） | **`design-system/<项目slug>/tokens.json`**；项目根那两份若需要，由它生成，不手维护 |
+| 没走设计稿链路（纯品牌 / 幻灯片 / 单页场景） | 沿用项目根 `assets/design-tokens.{json,css}`，与本链路无关 |
+| 两份都已存在 | **以 `design-system/<项目slug>/tokens.json` 为准**，另一份标注「由 tokens.json 生成」后重新生成一次 |
+
 三条硬规则：
 
 1. **改令牌只改 `MASTER.md` 与 `tokens.json`**，各端产物一律重跑脚本生成——手改任一端即刻产生漂移。

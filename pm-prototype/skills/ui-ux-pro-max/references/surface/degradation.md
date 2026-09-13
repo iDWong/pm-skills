@@ -105,7 +105,7 @@ function glassTier(){
 iOS Safari 读不到，会落到 `hardwareConcurrency` 那条。
 上真机前应在目标机型上实测一次判定档位。
 
-完整实现见 `assets/glass-tier.js`（含 `setGlass('on'|'off'|'auto')`）。
+完整实现见 `assets/surface/glass-tier.js`（含 `setGlass('on'|'off'|'auto')`）。
 
 ## 降级后应该长什么样
 

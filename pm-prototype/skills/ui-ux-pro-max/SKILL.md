@@ -4,7 +4,7 @@ description: "面向 Web、移动端和桌面端的 UI/UX 设计决策与评审�
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.4"
+  version: "1.5"
   reviewed: "2026-09-14"
 ---
 
