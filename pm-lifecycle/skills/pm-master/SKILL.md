@@ -12,7 +12,7 @@ description: |
   不适用：研发侧的 SRS／概要设计／详细设计／编码／测试／上线（那条链走 `dev-master`，从它的阶段 1 接手）。
 metadata:
   author: Wong
-  version: "1.4"
+  version: "1.5"
   reviewed: "2026-09-14"
 ---
 

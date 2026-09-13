@@ -13,8 +13,8 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
@@ -194,6 +194,26 @@ WORKSPACE_PATH：{工作区根目录绝对路径，含 .agents/}
 [page-spec-loader agent 返回的规范摘要，原样展示]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+### 2.1 设计令牌对齐（项目有设计稿时**必读**，没有就跳过）
+
+设计稿把令牌定死在 `design-system/<项目slug>/`（旧根 `Prototype/` 只读兼容）。**目录存在就必须读，不要另起一套样式**：
+
+| 读什么 | 拿来干什么 |
+| --- | --- |
+| `tokens.json` | 色彩 / 字阶 / 间距 / 圆角 / 阴影 / 图标 / 动效 / 断点**八组的唯一源**；项目 CSS 变量与它一一对应（`color.brand.500` → `--color-brand-500`）|
+| `MASTER.md` | 令牌的用法约束与偏离记录 |
+| `HANDOFF.md` | 组件八态、页面与状态矩阵、交互细节（正则 / 触发时机 / 动效参数）、文案清单 |
+| `FLOWS.md` | 每条流程的起点 / 步骤 / 分支 / 终态——**异常分支照它实现，别只做好天气那一条** |
+
+三条硬规则：
+
+1. **令牌不手抄**：引用或生成自 `tokens.json`，代码里禁止出现魔数色值与 `transition: .25s` 这类裸数字。
+2. **文案照 `HANDOFF.md` 第 6 节逐字抄**（含标点），别自己润色。
+3. **`HANDOFF.md` 与 SRS 冲突时取 SRS**——本技能的规格真源仍是 SRS（设计稿以 PRD 为主真源，两条链口径不同）；
+   取了 SRS 就在交付说明里记一行差异，别闷着改。
+
+设计稿不存在时跳过本步，按步骤 2 加载的项目规范执行。
 
 ---
 

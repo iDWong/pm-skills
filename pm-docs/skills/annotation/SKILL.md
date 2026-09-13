@@ -6,9 +6,14 @@ description: '> 原型标注工具。在页面上标注需求说明（字段说�
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
+
+> **⚠️ 不要用本技能去标设计稿。** `design-system/<项目slug>/` 下那批零依赖独立 HTML **自带标注面板**
+> （`ui-ux-pro-max` 出稿时内建，全屏页右下角开关，每条规则带 `PRD x.y.z` / `SRS 3.5.x` 出处），
+> 不需要注入 class、不需要装依赖、更不能往里注册 Vite 插件（那是零依赖产物，一注册就废）。
+> **本技能只标 `dev/code/` 里的项目真实页面代码。**
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
 > 下文凡引用 `.agents/knowledge/`、`.agents/agents/`、`.agents/agent-memory/` 的地方**读不到文件**，

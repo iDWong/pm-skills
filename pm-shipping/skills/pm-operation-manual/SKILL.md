@@ -11,8 +11,8 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-14"
 ---
 
 > **流程位置**：`pm-master` 阶段8 操作手册 ／ `dev-master` **阶段12 文档与发版**；也可单点直接调用。
@@ -124,6 +124,12 @@ metadata:
 
 - 操作手册模板：`references/templates/operation-manual.md`
 - 截图操作指南：`references/screenshot-guide.md`
+
+## 输入来源：代码页面之外，设计稿也算
+
+项目还没出代码、但 `design-system/<项目slug>/` 已有设计稿时，**可以拿设计稿当截图与步骤来源**
+（三张预览墙 + 全屏页都是真实可交互页面，`FLOWS.md` 里就是一条条可照抄的操作路径）。
+两条注意：① 必须是**过了闭环检查**的设计稿，未签字的不算数；② 手册里注明「界面以设计稿为准，上线后以实际页面复核」。
 
 ## 外部依赖与降级：Word/xlsx 导出
 
