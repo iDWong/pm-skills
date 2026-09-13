@@ -1,7 +1,7 @@
 ---
 name: pm-master
 description: |
-  **pm-skills 的唯一入口——拿不准用哪个 Skill 时先调它。** 产品全生命周期单一流程（13 阶段）。管理 37 个 PM Skill + 11 个同链路的非 pm- 技能（SRS/设计/交付/标注链）。
+  产品全生命周期单一流程（13 阶段）。管理 37 个 PM Skill + 11 个同链路的非 pm- 技能（SRS/设计/交付/标注链）。
   流程链：战略框架 → 上市与ICP → 市场调研 → 用户画像 → 功能优先级 → 产品路线图 → 需求澄清
   → 需求文档（SRS/PRD）→ 前端原型 → 测试用例 → 操作手册 → 发版说明 → 上线审计。
   能力：(1) 单点需求直接路由到最合适的 Skill (2) 多步需求按同一条流程裁剪出阶段区间并编排
@@ -12,8 +12,8 @@ description: |
   不适用：研发侧的 SRS／概要设计／详细设计／编码／测试／上线（那条链走 `dev-master`，从它的阶段 1 接手）。
 metadata:
   author: Wong
-  version: "1.2"
-  reviewed: "2026-09-13"
+  version: "1.4"
+  reviewed: "2026-09-14"
 ---
 
 # pm-master：产品全生命周期总控
@@ -166,17 +166,18 @@ metadata:
 | 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `dev/code/`（研发链产出） |
 | 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `prd/PRD/` |
 | 阶段 6 之后 | `annotation` | 往 **`dev/code/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
-| 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 | `Prototype/<项目slug>/` |
+| 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 + `FLOWS.md` + `HANDOFF.md` | `design-system/<项目slug>/` |
 
 
-**两个根别搞混**：产品侧一切 → `prd/`（`strategy/ research/ planning/ PRD/ test/ release/ reports/`）；
-研发侧一切 → `dev/`（**SRS → `dev/SRS/`**、功能清单与概要／详细设计 → `dev/design/`、交付计划 → `dev/plan/`）。
+**三个根别搞混**：产品侧一切 → `prd/`（`strategy/ research/ planning/ PRD/ test/ release/ reports/`）；
+研发侧一切 → `dev/`（**SRS → `dev/SRS/`**、功能清单与概要／详细设计 → `dev/design/`、交付计划 → `dev/plan/`）；
+**设计侧一切 → `design-system/<项目slug>/`**（设计稿三张墙 + `MASTER.md` + `tokens.json` + `FLOWS.md` + `HANDOFF.md` + `CONSISTENCY.md`）。
 `docs/**` 是旧根，**只读兼容，不再往里写**。细则见下方「落盘目录」与 `references/flow-engine.md` 的目录规范。
 
 
 ## 落盘目录：产品链产出一律进 `prd/`
 
-**产品侧唯一落盘根是 `prd/`，研发侧是 `dev/`**（`dev-master` 那条链的约定，两边对仗）。
+**产品侧唯一落盘根是 `prd/`，研发侧是 `dev/`，设计侧是 `design-system/`**（后两者是 `dev-master` 与设计链的约定）。
 `docs/` 是**旧根，只读兼容**——存量项目的老文档留在那儿，新产出一律不往里写。
 
 ```
@@ -199,7 +200,8 @@ prd/
 
 三条规则：
 
-1. **写一律新根，读三处**：`prd/` 优先 → `dev/`（SRS 与研发产物）→ `docs/**` 兜底（存量项目）。
+1. **写一律新根，读四处**：`prd/` 优先 → `dev/`（SRS 与研发产物）→ `design-system/`（设计稿与设计令牌）→ `docs/**` 兜底（存量项目）。
+   **`design-system/` 不在 `prd/` 也不在 `dev/` 下**，它在项目根；断点续跑判断「设计稿出没出」只能扫它（旧根 `Prototype/` 只读兼容）。
 2. **图片放各文档同级 `images/`**，不要集中放——跨目录引用在 Word 导出时会丢图。
 3. **老项目的文档留在 `docs/`：原地续用，不主动搬家**，进度存档里记真实路径；用户明确要求才迁，
    迁时 `images/` 一起搬并回改全部相对引用。
@@ -211,8 +213,8 @@ prd/
 | | 阶段6 前端原型 | 设计稿（阶段5 之后的另一条路） |
 |---|---|---|
 | 技能 | `page-generator` | `ui-ux-pro-max`（细则读 `ui-ux-pro-max/references/prototype-delivery.md`） |
-| 产出 | 项目里的**真实页面代码** | **零依赖的独立 HTML** + 三张 iframe 预览墙 |
-| 落盘 | `dev/code/` | `Prototype/<项目slug>/` |
+| 产出 | 项目里的**真实页面代码** | **零依赖的独立 HTML** + 三张 iframe 预览墙 + 流程清单 `FLOWS.md` + 工程师对接清单 `HANDOFF.md` |
+| 落盘 | `dev/code/` | `design-system/<项目slug>/` |
 | 真源 | **SRS**（不认 PRD，见下方硬规则） | **PRD 为主真源**，SRS 补规格细节 |
 | 用途 | 进开发、要能跑起来 | 给人看、点得动、评审与对齐用 |
 | 前置 | 合格 SRS | **PRD 与 SRS 都要有** |
@@ -244,7 +246,7 @@ prd/
 
 | | `annotation` 技能 | 设计稿自带的标注面板 |
 |---|---|---|
-| 标在哪 | **`dev/code/` 项目真实页面代码** | `Prototype/<项目slug>/` 的独立 HTML |
+| 标在哪 | **`dev/code/` 项目真实页面代码** | `design-system/<项目slug>/` 的独立 HTML |
 | 怎么实现 | 注入专属 class + 生成标注 JSON + 装依赖 + 注册 Vite 插件 | 页面内建，全屏页右下角开关 |
 | 前置 | 阶段6 已出代码 + **合格 SRS**（在只认 SRS 的六技能名单里） | 设计稿已出（`ui-ux-pro-max`） |
 | 谁做 | `annotation` | `ui-ux-pro-max`，**不需要另调 `annotation`** |
@@ -288,11 +290,12 @@ prd/
    第一批必问：**手头已有什么 / 裁剪范围 / 档位 / 产品类型**；第二批仅当裁剪含阶段 5 或 6 时问：**阶段5 文档类型 / 交付模式**。
    收完回显一行确认（裁剪｜档位｜阶段5｜模式），再用 TaskCreate 建清单
 3. **阶段门禁**：上一阶段的产出文件写入成功，才能进下一阶段。
-   **出了设计稿的，门禁多一条**：必须跑完 `references/prototype-review.md` 的四阶段检查并四方签字，
+   **出了设计稿的，门禁多三条**：① `design-system/<项目slug>/` 下 `FLOWS.md` 与 `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；
+   ② 契约的三组机检输出 OK（含 `data-setframe` 为 0——出稿帧已废除）；③ 跑完 `references/prototype-review.md` 的四阶段检查并四方签字。
    未签字的设计稿**不得**作为下游（研发、测试用例、操作手册）的输入
 4. **步间交接**：每阶段输出「交接摘要」（≤10 行：本阶段结论 + 下阶段需要的输入），不让下一阶段重读全文
 5. **可中途退出**：每阶段完成即是独立可用的交付物
-6. **断点续跑**：再次启动时按 `flow-engine.md` 的判断逻辑扫 `prd/` 与 `dev/`（存量项目再扫 `docs/`），从未完成的阶段继续
+6. **断点续跑**：再次启动时按 `flow-engine.md` 的判断逻辑扫 `prd/`、`dev/` 与 `design-system/`（存量项目再扫 `docs/` 与旧根 `Prototype/`），从未完成的阶段继续
 7. **不强推流程**：用户只要一步就给一步
 8. **跑完阶段 5 要开发**：用户说「开始开发／把它做出来」时交给 `dev-master`，由它从阶段 1 的 SRS 门禁接手——
    两个总控不要同时起流程，重叠技能是同一份，谁在跑就由谁编排

@@ -1,11 +1,11 @@
 ---
 name: ui-ux-pro-max
-description: "面向 Web、移动端和桌面端的 UI/UX 设计决策与评审技能。需要检索设计系统、风格、配色、字体、无障碍、交互、响应式、动画、图表或技术栈 UI 指南时使用；负责提供经本地数据库验证的设计建议，不负责替代页面开发和前端编码技能。项目已有 PRD 与 SRS 且用户要设计稿、高保真原型、可点原型、交互原型或预览墙时，本技能同时负责设计稿交付链路（读 PRD+SRS 全文，内容以 PRD 为主 → 落 Prototype/<项目slug>/ → 三张 iframe 预览墙（移动 393×852 / 官网 1280×900 / 后台 1440×900）→ 全屏页出稿帧与需求标注），细则见 references/prototype-delivery.md。"
+description: "面向 Web、移动端和桌面端的 UI/UX 设计决策与评审技能。需要检索设计系统、风格、配色、字体、无障碍、交互、响应式、动画、图表或技术栈 UI 指南时使用；负责提供经本地数据库验证的设计建议，不负责替代页面开发和前端编码技能。项目已有 PRD 与 SRS 且用户要设计稿、高保真原型、可点原型、交互原型或预览墙时，本技能同时负责设计稿交付链路（读 PRD+SRS 全文，内容以 PRD 为主 → 落 design-system/<项目slug>/ → 三张 iframe 预览墙（移动 393×852 / 官网 1280×900 / 后台 1440×900）→ 全屏页需求标注；不做出稿帧，状态与分支一律在完整流程里走到，另交付 FLOWS.md 流程清单与 HANDOFF.md 工程师对接清单），细则见 references/prototype-delivery.md。材质与层级已并入本技能（原材质皮肤技能撤销），故也负责：磨砂、玻璃、毛玻璃、透明套层、glassmorphism、backdrop-filter、深浅双主题、设计令牌、层级契约与降级。"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.4"
+  reviewed: "2026-09-14"
 ---
 
 # UI/UX Pro Max——设计智能
@@ -22,6 +22,10 @@ metadata:
 
 按下列顺序处理问题。**规则集按平台取，别读错**：Web / 桌面端读 `references/quick-reference.md`（全 10 类完整规则，也是评审与审计用的那一份）；
 iOS / Android / RN / Flutter 读 `references/pro-rules.md`（**移动端专用**：触控 44×44pt、安全区避让、单区域单手势、按压反馈、最大系统字号）**再加** `quick-reference.md` 的通用部分。
+
+要**按端出稿或做跨端一致性审查**时，另读 `references/platform-rules.md`（iOS HIG / Android MD3 / HarmonyOS ArkUI / 微信 WeUI / 支付宝 Ant Design Mini / H5 / 官网 / 后台，八端各自的「必须做到 + 判据」）；
+要**定设计系统本身**（品牌九节、组件 30 件、令牌怎么同步到各端、**表面与材质层**）读 `references/design-system.md`；
+材质的可内联实现在 `assets/surface/`，细则在 `references/surface/`（令牌数值 / 层级 / 降级 / 特异性与对比度审计）。
 
 | 优先级 | 类别 | Domain | 核心检查 |
 |---|---|---|---|
@@ -148,7 +152,7 @@ python3 "$UIUX/scripts/search.py" "<keyword>" --stack <stack>
 
 交付 UI 前走一遍交付前检查：**移动端**读 `references/pro-rules.md` 的检查表（图标与视觉元素、交互反馈、明暗对比度、安全区、无障碍）；**Web / 桌面端**读 `references/quick-reference.md` 对应类别——安全区与手势这类移动端专属项不适用于 Web，别硬套。
 
-## UI/UX设计稿交付（PRD/SRS → `Prototype/`）
+## UI/UX设计稿交付（PRD/SRS → `design-system/`）
 
 用户要 **设计稿 / 高保真原型 / 可点原型 / 交互原型 / 预览墙**（任意一个），且项目里 **PRD 与 SRS 都已落盘**（`prd/PRD/*.md` + `dev/SRS/*.md`；缺一份按契约「何时启动」的缺件表处理）时，
 **先完整读取 `references/prototype-delivery.md` 再动手**——那份是跨宿主唯一权威契约，本节只是索引。
@@ -158,11 +162,16 @@ python3 "$UIUX/scripts/search.py" "<keyword>" --stack <stack>
 | 项 | 要求 |
 | --- | --- |
 | 输入 | **必须先读 PRD 与 SRS 全文**；页面清单、字段、枚举、文案、校验、状态机照抄文档。**设计稿链路以 PRD 为主真源**，SRS 只补 PRD 未写明的规格细节，冲突取 PRD 并在标注面板写明 |
-| 落盘 | `Prototype/<项目slug>/`；生成器落其 `_src/`；每页**零依赖独立 HTML**，每一页双击都能直接打开并可交互 |
+| 多端与一致性 | 平台差异**走独立页面与独立卡片，不切帧**（只允许六类：导航 / 返回 / 权限弹窗 / 通知 / 深色 / 折叠屏平板）；覆盖 ≥2 端必交 `CONSISTENCY.md`（一致性矩阵 + 差异合理性 + 改进三件）。**说不出平台规范条款或能力限制的差异一律按冲突处理**。八端硬规则见 `references/platform-rules.md` |
+| 设计系统 | `MASTER.md` 品牌层九节（色阶与派生态 / 语义色四值 / 字阶五要素 / 4-8pt 间距 / 圆角阴影双档 / 图标风格 / 插画与动效原则）+ 组件层 30 件五类（含业务五件：登录·支付·上传·搜索·筛选）；令牌单一源 `tokens.json`，各端**生成不手抄**。见 `references/design-system.md` |
+| 清单反查九条 | 设计稿**自己要做到**的前提（不是写进文档就算）：组件八态真到得了 / 官网四断点真重排 / 动效走 `motion` 令牌且带 reduced-motion / `tokens.json` 与页面 CSS 变量一一对应 / 文案集中在 `_src/copy.py` / 输入框必带 `data-rule`（正则+时机+文案+出处）/ 列表必有极限样本 / 图标与位图导出到 `assets/` / HANDOFF 第 2–4 节由 `_src/handoff.py` 生成。契约里附了机检脚本 |
+| 工程师对接 | 必交 `HANDOFF.md` 八节（信息头 / 设计令牌 / 组件清单 / 页面与状态矩阵 / 交互细节 / 文案 / 资源 / 协作验收）+ 机器可读 `tokens.json`；原则是**能给数值不给描述**，末尾十条高频漏项自查全绿才算交付 |
+| 落盘 | `design-system/<项目slug>/`（与 `MASTER.md` 同树，旧根 `Prototype/` 已废除、读时兼容）；生成器落其 `_src/`；每页**零依赖独立 HTML**，每一页双击都能直接打开并可交互 |
 | 索引页 | **共三张墙**（移动：APP/H5/小程序 共用一张 393×852，卡片分组；官网 1280×900；后台 1440×900），墙内 **iframe 实时渲染真实页面**并等比缩放；懒挂载 + 骨架屏；**点预览卡即进全屏**，全屏页可真实交互（官网 FAQ 折叠/Tab/登录方式切换；后台侧栏/筛选/二次确认，**外加后台专项三条**：顶栏铃铛+账号+全局搜索可点开、抽屉 Esc/遮罩可关且同时只一层、敏感数据脱敏出稿并留「申请解密」入口） |
-| 工具条 | 墙内不注入；**全屏页右下角**才有「出稿帧切换 + 需求标注开关」 |
+| 工具条 | 墙内不注入；**全屏页右下角**才有「需求标注开关 + 重置演示进度」，**没有切帧按钮** |
+| 完整流程 | **取消出稿帧**（铁律 8）：每页声明 `flows=[...]`，build 汇总出 `FLOWS.md`。流程态 / 页签态 / 数据态 / 自动触发层**都得由真实操作在流程里走到**，成功与失败两条分支都走得通、且由演示数据定死（禁 `Math.random()`）；自动弹的层写 `data-auto`，产物里出现 `data-setframe` 即不合格 |
 | 标注面板 | 逐条列该页规则，每条标明 `PRD x.y.z` / `SRS 3.5.x-Rnn` 出处 |
-| 配合 | 本技能出设计系统（`--design-system`，参数按形态）与 UX/无障碍规则；材质与层级交给 `ui-frosted-gradient-clear-sleeve` |
+| 材质与层级 | **本技能自带**，不外挂皮肤技能：三种表面（`.t-app` / `.t-web` / `.t-admin`）、材质六条、z 轴契约、双主题与密度、降级三级见 `references/design-system.md` 第四节；默认参考实现在 `assets/surface/`（`frosted.css` / `tokens.json` / `glass-tier.js` / `spec-sheet.html`），**内联**进外壳，路径用 `resolve_skill ui-ux-pro-max` 解析 |
 
 只有原型图需求（不是可点设计稿）→ 转 `pm-prd-spec`；PRD/SRS 都没有 → 先转 `pm-prd-spec` / `req-doc`，不要凭空造页面。
 上游 `pm-prd-spec` **Step 8** 会在 PRD + SRS 齐备后路由到本节，两边口径同源。

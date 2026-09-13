@@ -11,8 +11,8 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.3"
+  reviewed: "2026-09-14"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
@@ -755,11 +755,11 @@ SPEC_SOURCE 已更新
 
 会话登记：**`SPEC_SOURCE={SRS路径}`**（覆盖 PRD 登记）。
 
-**要设计稿（可点 HTML，不是工程页面）时**：转 `ui-ux-pro-max` + `ui-frosted-gradient-clear-sleeve`，
+**要设计稿（可点 HTML，不是工程页面）时**：转 `ui-ux-pro-max`（设计侧只此一个技能，材质与层级已并入），
 按 `ui-ux-pro-max/references/prototype-delivery.md` 执行——读 PRD+SRS 全文（**设计稿内容以 PRD 为主真源**，
-SRS 只补 PRD 未写明的规格细节；研发交付真源仍是 SRS）、落 `Prototype/<项目slug>/`、
+SRS 只补 PRD 未写明的规格细节；研发交付真源仍是 SRS）、落 `design-system/<项目slug>/`、
 **共三张 iframe 预览墙**（移动墙：APP / H5 / 小程序 共用一张 393×852，卡片按形态分组；官网墙 1280×900；后台墙 1440×900）、
-点预览卡即进全屏、墙内不注入工具条、全屏页右下角出稿帧切换与需求标注开关。
+点预览卡即进全屏、墙内不注入工具条、全屏页右下角需求标注开关与「重置演示进度」；**不做出稿帧**，交付的是完整流程的动态交互设计稿（所有状态与分支靠真实操作走到）+ `FLOWS.md` 流程清单 + `HANDOFF.md` 工程师对接清单。
 
 ---
 

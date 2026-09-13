@@ -171,8 +171,12 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 8 | `prd/release/*操作手册*.md` 或 `prd/release/*operation-manual*.md` | 9 |
 | 9 | `prd/release/*release-note*.md` 或 `prd/release/*发版*.md`（**技能不落盘，见下方**） | 10（仅当代码由 AI 生成） |
 | 10 | `prd/reports/` 下报告已写入且路径已告知用户 | — |
+| 设计稿分支（阶段5 之后，与阶段6 并列，无编号） | `design-system/<项目slug>/index.html` 等三张墙之一 **且** 同目录 `FLOWS.md` + `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；旧根 `Prototype/` 只读兼容 | 7／8（设计稿可作测试用例与手册的输入，**但须先过闭环检查**） |
 
 **glob 命中多个文件时**（多产品／多版本仓库常见）：取最新修改的那个，并在交接摘要里写明用的是哪个文件。
+
+**设计稿那一行还有两道额外门禁**（文件在不等于能用）：契约的三组机检输出 OK（其中 `grep -l 'data-setframe' design-system/*/*.html` 必须为空——出稿帧已废除），
+以及 `prototype-review.md` 四阶段检查四方签字。**未签字的设计稿不得作为下游输入。**
 
 ### 两个阶段的技能不落盘，流程必须代写
 
@@ -255,8 +259,15 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 流程结束后，项目目录结构如下：
 
+**三个落盘根**：`prd/`（产品链）、`dev/`（研发链）、`design-system/`（设计链，与前两者平级，在项目根）。
+
 ```
 [项目目录]/
+├── design-system/<项目slug>/             ← 设计链落盘根（设计稿 + 设计令牌同树）
+│   ├── MASTER.md / tokens.json                  ← 设计系统母版与令牌（单一源）
+│   ├── index.html / web-index.html / admin-index.html  ← 三张预览墙
+│   ├── FLOWS.md / HANDOFF.md / CONSISTENCY.md   ← 流程清单 / 工程师对接 / 跨端一致性（后者 ≥2 端时必交）
+│   └── images/ · assets/ · _src/
 ├── prd/                                  ← 产品链唯一落盘根
 │   ├── strategy/
 │   │   ├── strategy.md                          ← 阶段-2（新产品）
@@ -317,7 +328,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 如果中途中断，再次启动时：
 
-1. 检查 `prd/`、`dev/`（存量项目再看 `docs/`）已有哪些文件，**并读任务清单里的「已跳过」标注**
+1. 检查 `prd/`、`dev/`、`design-system/`（存量项目再看 `docs/` 与旧根 `Prototype/`）已有哪些文件，**并读任务清单里的「已跳过」标注**
 2. 根据已有文件判断完成到哪个阶段
 3. 从未完成的阶段继续，无需重新开始
 4. **文件不存在 ≠ 阶段没做**——先看任务清单有没有「已跳过（理由）」；分不清就问用户一句，不要重跑一遍已经决定跳过的阶段
@@ -339,6 +350,9 @@ prd/test/*测试用例*.md / *test-case*  → 阶段7已完成
 prd/release/*操作手册*.md / *operation-manual* → 阶段8已完成
 prd/release/*release-note*.md / *发版*   → 阶段9已完成
 prd/reports/ 下有审计报告        → 阶段10已完成
+design-system/<项目slug>/index.html（或 web-/admin-）
+  且同目录 FLOWS.md + HANDOFF.md    → 设计稿分支已完成（**再确认闭环检查是否签字**，未签字按未完成算）
+Prototype/<项目slug>/ 有稿          → 旧根设计稿，按已完成算，路径照实记（不主动搬家）
 docs/** 下命中同名旧文档          → 该阶段按已完成算，路径照实记（不搬家）
 docs/spec.md 仅存在（遗留）      → 提示迁移 SRS 或重跑阶段5
 ```
