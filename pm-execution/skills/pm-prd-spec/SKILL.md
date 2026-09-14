@@ -13,7 +13,7 @@ description: |
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.5"
+  version: "1.6"
   reviewed: "2026-09-14"
 ---
 
@@ -36,7 +36,7 @@ metadata:
 | 指标口径、图表规格、数据时效 | 数据仓库建模、SQL、埋点上报实现（只写口径与埋点需求） |
 | 每个页面的界面与交互规范（来自 ui-ux-pro-max 检索） | 实际写页面代码（转 `page-generator`） |
 | 每个页面的原型图；**设计稿**的路由与验收口径（Step 8） | 高保真视觉稿与设计稿页面代码本身（执行交给 `ui-ux-pro-max`） |
-| 导出 Word 评审稿（**须用户确认后才执行**，见 Step 7） | — |
+| 导出 Word 评审稿（**默认不导；仅当用户明确开口要时才执行**，见 Step 7） | — |
 
 ---
 
@@ -139,7 +139,7 @@ def resolve_skill(name):
 
 ## 工作流
 
-**Step 0–7 不跳步**，Step 8 可选（用户要 UI/UX设计稿时才启动）。**三个对齐点**：Step 2（骨架确认）、Step 4（每写完一个功能域给用户看）、Step 7（是否导出 Word）——都必须停下来等答复。
+**Step 0–7 不跳步**，Step 8 可选（用户要 UI/UX设计稿时才启动）。**两个对齐点**：Step 2（骨架确认）、Step 4（每写完一个功能域给用户看）——都必须停下来等答复。**Step 7 不再问「要不要导 Word」**：默认只交 md，不生成 docx。
 
 ```
 用户输入（功能描述 / 竞品截图 / 旧文档 / 原型）
@@ -160,7 +160,7 @@ Step 5  全局章节              → 通用 + profile 的形态特有章节
 Step 6  自查                  → references/review-checklist.md 逐项过
                               （出了设计稿的另加 references/prototype-review.md 四阶段）
     ▼
-Step 7  交付                  → md 落盘 + 脚本落 tools/ → ★ 问是否导出 Word（PRD/SRS 各问一次，确认后才导+验图）+ 待确认项 + 下游路由
+Step 7  交付                  → md 落盘 + 脚本落 tools/ → 待确认项 + 下游路由（默认只交 md，不导 Word 也不问）
     ▼
 Step 8  UI/UX设计稿（可选）    → PRD+SRS 齐备后调 /ui-ux-pro-max，落 design-system/<项目slug>/（iframe 预览墙 + 全屏标注 + FLOWS.md + HANDOFF.md，不做出稿帧）
 ```
@@ -292,7 +292,7 @@ python3 "$UIUX/scripts/search.py" "<product_type> <industry> <keywords>" \
 
 | 谁写 | 文件名 | 内容 |
 | --- | --- | --- |
-| 本技能（PRD 链路） | 项目根 `README-PRD.md` | PRD 清单（按形态一份一行：文档名 / 形态 / 覆盖的功能域与页面数 / 原型图张数）、目录结构、原型图与脚本位置、Word 导出状态、下游路由（下一步是 `req-doc` Step F） |
+| 本技能（PRD 链路） | 项目根 `README-PRD.md` | PRD 清单（按形态一份一行：文档名 / 形态 / 覆盖的功能域与页面数 / 原型图张数）、目录结构、原型图与脚本位置、Word 导出状态（默认「未导出」）、下游路由（下一步是 `req-doc` Step F） |
 | `req-doc`（SRS 链路） | 项目根 `README-SRS.md` | SRS 清单、章节与真源说明、图表来源、与 PRD 的对应关系 |
 
 多份 PRD（跨形态拆分）**合写一份 `README-PRD.md`**，用表格分行，不要每个形态再拆一个 README。已存在 `README-PRD.md` 时**增量更新**对应行，不要整篇重写覆盖别人写的行。
@@ -318,39 +318,27 @@ python3 tools/gen_wireframes.py      # 脚本内每张图 assert not g.collision
 bash "$(resolve_skill pm-prd-spec)/scripts/render.sh" tools/svg prd/PRD/images 2400
 ```
 
-**Word 导出：必须先问用户，不得默认导出（对齐点 ★）**
+**Word 导出：默认不导，也不要主动问（用户明确开口才导）**
 
-md 落盘后**停下来问一次**，拿到明确答复再动：
+**本技能的默认交付物只有 md + 原型图，不生成 docx。** md 落盘后直接进交付说明，
+**不要停下来问**"要不要导 Word"——交付说明里一句话带过就够：
 
 ```
 PRD 已落盘：prd/PRD/20260908-会员中心APP-产品需求文档-V1.0.md
-需要导出 Word 评审稿（.docx）吗？
-  1) 导出
-  2) 不导出（后续要的话说一声，随时可补）
+（本次交付为 md；需要 Word 评审稿说一声，随时可补导。）
 ```
 
-| 用户答复 | 动作 |
-| --- | --- |
-| 明确要导（"导出" / "要 Word" / "出 docx" / "1"） | 执行下面的导出命令，并**验图** |
-| 明确不导 / 只要 md | 跳过导出，交付说明里写明"Word 未导出，需要时随时可补" |
-| 没答 / 答得不清楚 | **不导**，也不要反复追问；按"未导出"交付并说明 |
+**唯一开导情形**：用户在对话里**原话开口**要 Word / 要 docx / 要评审稿文件
+（"导出 Word"、"出 docx"、"要评审稿"，或直接以「PRD 导出Word」这类说法触发本技能）。
+除此之外一律不导——"看起来要评审""顺手导一份更稳妥"这类自行判断**不算**用户要求。
 
-**唯一免问情形**：用户在本轮对话里已经原话说过要 Word / 要 docx / 要评审稿文件——视为已确认，直接导，不再重复问。
+**禁止**：把导出当默认收尾动作；用"顺手导了一份"代替用户的明确要求；
+反过来追着问"要不要导 Word"（这一问已从对齐点里去掉，问了就是打扰）。
 
-**禁止**：把导出当默认收尾动作；先导完再问；用"顺手导了一份"代替确认。
+**SRS 同理。** 本技能在下游衔接里触发 `req-doc` **Step F** 转写出 SRS 后，SRS 落盘同样只交 md、
+不导 docx、也不问。`req-doc` 的「Word 导出」小节已同步改成同一条规则，两边口径一致。
 
-**SRS 同样先问再导。** 本技能在下游衔接里触发 `req-doc` **Step F** 转写出 SRS 后，SRS 落盘也停下来问一次，答复处理与上表完全一致：
-
-```
-SRS 已落盘：dev/SRS/20260908-会员中心-SRS需求规格说明书-V1.0.md
-需要导出 Word 评审稿（.docx）吗？
-  1) 导出
-  2) 不导出（后续要的话说一声，随时可补）
-```
-
-PRD 与 SRS 是**两次独立确认**——用户在 PRD 那步说过"导出"，不代表 SRS 也要导，反之亦然。`req-doc` 的「Word 导出」小节已同步写入同一条先问再导规则，两边口径一致。
-
-确认导出后才执行：
+导出能力本身保留，**用户明确要求后**才执行：
 
 ```bash
 bash "$(resolve_skill common)/export-word.sh" "<md路径>" req-doc
@@ -368,7 +356,7 @@ unzip -l "<docx路径>" | grep -c "word/media/"
 
 数字必须等于原型图张数。为 0 就是丢了，把 PNG 改成 ASCII 文件名后重导。
 
-**交付物四件**：PRD 正文（`.docx` 仅在用户确认导出时附上，并注明是否已导）、`README-PRD.md`（清单与目录结构，见上）、待确认项清单（问题/影响章节/缺答案的后果/建议默认值）、下游路由说明（下一步是 `req-doc` Step F；PRD+SRS 齐备后可出设计稿，见 Step 8）。
+**交付物四件**：PRD 正文（md；`.docx` 仅在用户明确要求导出时才附上）、`README-PRD.md`（清单与目录结构，见上）、待确认项清单（问题/影响章节/缺答案的后果/建议默认值）、下游路由说明（下一步是 `req-doc` Step F；PRD+SRS 齐备后可出设计稿，见 Step 8）。
 
 ---
 
@@ -500,7 +488,7 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 
 - `page-generator`、`hld-design`、`lld-design`、`feature-list`、`annotation`、`delivery-plan`、`dev-fullstack-product` 这七个技能**不得**以 PRD（`prd/PRD/*.md`）为规格真源（`dev-fullstack-product` 来自姊妹库 `dev-skills`，只装 `pm-skills` 时忽略它，其余六个不变）。
 - 正确路径：先跑 `req-doc` **Step F**（PRD → SRS 转写），落 `dev/SRS/{日期}-{客户}{项目}-SRS需求规格说明书-V*.md`，再进下游。
-- 交付时主动提示这一步，**不要问"是否转写"**——直接说明下一步是 Step F。SRS 落盘后要不要导 Word，仍按 Step 7 的规则**问一次**。
+- 交付时主动提示这一步，**不要问"是否转写"**——直接说明下一步是 Step F。SRS 落盘后同样默认不导 Word，按 Step 7 的规则处理（不导、不问）。
 - 唯一豁免：用户**原话**说"跳过 SRS"或"按 PRD 手动对齐"，且仅限单次。
 
 其他常见衔接：
@@ -535,11 +523,13 @@ PRD 与 SRS 都落盘后，**这条链路的下一站是设计稿**（可点、�
 
 导出链走**技能库根的 `config.json`** 里的 `apiBaseUrl`（**端点不随仓库分发**，取值见该文件）。
 
+**默认流程走不到这一节**——只有用户明确要求导 Word 时才需要这条链。
+
 | 情况 | 表现 | 怎么办 |
 |---|---|---|
 | 没配 `config.json` | 脚本报「无法从 config.json 读取 apiBaseUrl」 | 从同级 `config.example.json` 复制后填地址 |
 | 服务没起 | `curl` 连不上 / 超时 | 先自检（在技能自己的目录下跑）：`curl -s -o /dev/null -w '%{http_code}' "$(python3 -c 'import json;print(json.load(open("../config.json"))["apiBaseUrl"])')/"`，**连得上就行**（`/` 不是路由，返回 404 也算通；连不上才是服务没起），起服务后重试 |
 | 两者都缺 | —— | **降级交 md**，并在交付清单里写明「Word 未导出（端点未配）」 |
 
-**三条不许**：不许把「导出失败」写成完成；不许跳过导出直接说交付完成；
+**三条不许**（仅在用户明确要求导出时适用）：不许把「导出失败」写成完成；不许拿「默认不导」当借口跳过用户已经明确要求的导出；
 不许在导出后不验图——`unzip -l x.docx | grep -c 'word/media/'` 要等于文档里的图片张数（文件名含中文会静默丢图）。

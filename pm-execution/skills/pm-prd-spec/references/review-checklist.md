@@ -22,7 +22,7 @@ Step 6 逐项过。**P0 必须当场修完再交付**；P1/P2 汇总成清单随
 - [ ] 每个页面都有原型图，弹窗单独一张，图号与章节号对齐
 - [ ] 原型图 PNG 文件名是**纯 ASCII**（中文只出现在 alt 文本与图注里）
 - [ ] 新增原型图 PNG 用 `pt-` 前缀；项目里存量 `wf-` 图**保持原样**，没有为统一而批量改名
-- [ ] （仅当用户确认导出 Word 时）`unzip -l <docx> | grep -c "word/media/"` 的结果**等于**原型图张数（Word 导出对中文文件名静默丢图）
+- [ ] （仅当用户明确要求导出 Word 时）`unzip -l <docx> | grep -c "word/media/"` 的结果**等于**原型图张数（Word 导出对中文文件名静默丢图）
 - [ ] 原型图裁后比例等于 SVG 内容比例（比例不对说明裁边失败，不能将就）
 - [ ] 原型图**无文字重叠**：生成脚本每张图都跑过 `assert not g.collisions()`，且肉眼过一遍成品 PNG——按钮文字没溢出边框、筛选值没压住下拉箭头、表格单元格没串到隔壁列、标注块的字没捅出虚线框、指标卡标题没压住右上角标
 
@@ -149,9 +149,9 @@ Step 6 逐项过。**P0 必须当场修完再交付**；P1/P2 汇总成清单随
 - [ ] 原型图 PNG 落在与 md 同级的 `images/` 下（`prd/PRD/images/`），文件名纯 ASCII，Markdown 里引用相对路径 `images/xxx.png`
 - [ ] 交付包 README 落项目根 `README-PRD.md`（**不是裸 `README.md`**；SRS 侧是 `README-SRS.md`）；多形态合写一份、按形态分行；已存在则增量更新对应行
 - [ ] 生成脚本落在项目根 `tools/`（`tools/gen_wireframes.py` 等），SVG 中间产物落 `tools/svg/`，都没散在项目根、`docs/` 或系统临时目录
-- [ ] **先问用户「是否导出 Word」并拿到明确答复**（见 SKILL.md Step 7；用户本轮已明确要 docx 才免问）
-- [ ] 若本轮还转写了 SRS：SRS 的 Word 导出**又单独问了一次**（PRD 说过要导不代表 SRS 也导）
-- [ ] 用户确认导出后才执行：`bash "$(resolve_skill common)/export-word.sh" <md路径> req-doc`；用户说不导则跳过，并在交付说明里写明"Word 未导出"
-- [ ] 交给用户：PRD + .docx（仅在已确认导出时）+ 待确认项清单 + 下游路由说明
+- [ ] **默认没有生成 docx，也没有问过「要不要导 Word」**（见 SKILL.md Step 7：默认只交 md）
+- [ ] 若本轮还转写了 SRS：SRS 同样只交 md，没有默认导出、没有追问
+- [ ] 仅当用户**原话开口**要 Word / docx / 评审稿时才执行 `bash "$(resolve_skill common)/export-word.sh" <md路径> req-doc`，并在导出后验图
+- [ ] 交给用户：PRD（md）+ 待确认项清单 + 下游路由说明（`.docx` 仅在用户明确要求时附上）
 - [ ] **下游路由说明必须包含**：PRD 不是研发交付真源；`page-generator` / `hld-design` / `lld-design` / `feature-list` / `annotation` / `delivery-plan` / `dev-fullstack-product` 需先走 `req-doc` **Step F**（PRD → SRS 转写）。直接说明下一步，不要问"是否转写"
 - [ ] 下游路由说明里**还提了一行设计稿**：PRD + SRS 齐备后可出设计稿（可点 HTML，`ui-ux-pro-max`，见 SKILL.md Step 8）——只提示，不主动开工
