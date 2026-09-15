@@ -4,8 +4,8 @@ description: "面向 Web、移动端和桌面端的 UI/UX 设计决策与评审�
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.5"
-  reviewed: "2026-09-14"
+  version: "1.6"
+  reviewed: "2026-09-15"
 ---
 
 # UI/UX Pro Max——设计智能
