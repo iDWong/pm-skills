@@ -8,7 +8,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
   version: "1.1"
-  reviewed: "2026-09-12"
+  reviewed: "2026-09-15"
 ---
 
 # pm-analytics：从数据现象到产品决策

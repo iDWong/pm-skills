@@ -12,13 +12,13 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
   version: "1.2"
-  reviewed: "2026-09-14"
+  reviewed: "2026-09-15"
 ---
 
 > **流程位置**：`pm-master` 阶段8 操作手册 ／ `dev-master` **阶段12 文档与发版**；也可单点直接调用。
 > （两条流程的阶段号不同，按当前在跑的那条读。）
 > 流程内落盘路径 `prd/release/{日期}-{项目}-用户操作手册-V{版本}.md`（流程门禁按 glob 匹配，命名带产品名/日期是正常的）。
-> 上游读 `SPEC_SOURCE` + 阶段6 的 `src/`（若有）。
+> 上游读 `SPEC_SOURCE` + `dev/code/` 的代码（若有；由 `dev-master` 产出，`pm-master` 链路不出代码）。
 
 # 操作手册生成器
 

@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 metadata:
   author: Wong
   version: "1.1"
-  reviewed: "2026-09-12"
+  reviewed: "2026-09-15"
 ---
 
 > **流程位置**：`pm-master` 13 阶段流程的**阶段0 市场调研**，也可单点直接调用。

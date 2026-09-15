@@ -8,7 +8,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
   version: "1.1"
-  reviewed: "2026-09-12"
+  reviewed: "2026-09-15"
 ---
 
 # PRD Writer Skill
@@ -206,7 +206,7 @@ metadata:
 
 ## 10. 进研发门禁（PRD → SRS）
 
-PRD 落盘并完成自检后，若用户要 **开发 / 实现 / 生成页面 / 交付计划 / 概要设计 / 走流水线阶段6**：
+PRD 落盘并完成自检后，若用户要 **开发 / 实现 / 生成页面 / 交付计划 / 概要设计 / 移交 `dev-master`**：
 
 1. **不得**直接调用 `page-generator` 或暗示「可以按 PRD 开写代码」
 2. 输出简短交接并路由 **`req-doc` Step F**（规则：`../common/prd-to-srs-gate.md`）

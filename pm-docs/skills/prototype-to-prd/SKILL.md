@@ -8,7 +8,7 @@ description: |
 metadata:
   author: Wong
   version: "1.1"
-  reviewed: "2026-09-12"
+  reviewed: "2026-09-15"
 ---
 
 # Prototype to PRD · 原型/站点逆向写 PRD

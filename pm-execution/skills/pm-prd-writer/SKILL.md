@@ -321,7 +321,7 @@ PRD 输出前，逐项自查：
 
 ## 上下游衔接
 
-本 Skill **只走单点路由，不在 13 阶段流程内当阶段5**——它不登记 `SPEC_SOURCE`、不知道 `dev/SRS/`／`prd/PRD/` 落盘约定，在流程里用会让阶段6 拿不到规格。流程内的阶段5 用 `req-doc`（SRS）或 `prd-writer`（PRD）。需求还模糊、要先做需求体检时本技能最合适；澄清完要字段级规格转 `pm-prd-spec`。由 `pm-master` 总控统一路由。
+本 Skill **只走单点路由，不在 13 阶段流程内当阶段5**——它不登记 `SPEC_SOURCE`、不知道 `dev/SRS/`／`prd/PRD/` 落盘约定，在流程里用会让下游阶段与 `dev-master` 拿不到规格。流程内的阶段5 用 `req-doc`（SRS）或 `prd-writer`（PRD）。需求还模糊、要先做需求体检时本技能最合适；澄清完要字段级规格转 `pm-prd-spec`。由 `pm-master` 总控统一路由。
 
 - **上游**：`pm-advisory-board`（需求真伪与价值判断）、`pm-competitor-deconstructor`（差异化结论）、`pm-survey-designer`/`pm-analytics`（调研与数据洞察）
 - **下游**：`pm-review-board`（拿 PRD 去过模拟评审）、`pm-tracking-spec-writer`（PRD 的统计需求章节可直接作为其输入）、`pm-experiment-designer`（需灰度验证的功能）

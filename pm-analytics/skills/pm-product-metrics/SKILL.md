@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep
 metadata:
   author: Wong
   version: "1.1"
-  reviewed: "2026-09-12"
+  reviewed: "2026-09-15"
 ---
 
 # 产品数据分析与指标体系
