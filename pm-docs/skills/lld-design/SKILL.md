@@ -14,8 +14,8 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.1"
-  reviewed: "2026-09-12"
+  version: "1.2"
+  reviewed: "2026-09-15"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
@@ -212,7 +212,7 @@ bash ../common/export-word.sh <markdown文件路径> formal
 
 示例：`dev/design/20260530-PM能源科技智慧厂区巡检平台-详细设计说明书-V1.0.md`
 
-**修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本历史表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
+**修订：就地改也要改文件名。** 大文档（几千行 / MB 级）**就地 `Edit` 改**，别整份重写；但改完必须三样一起动——文首「文档版本」、版本记录表、**`mv` 把文件名的版本号也改掉**（局部修订 `+0.1`，结构性重写进大版本；日期取改动当天）。**绝不允许内容已是 V1.1、文件名还写 V1.0。**改名后 `grep` 一遍旧名，把 README 清单、下游「来源」行、`tools/` 脚本里的引用一并改掉。完整规则见 `../common/README.md`。
 
 ## 参考资源
 
