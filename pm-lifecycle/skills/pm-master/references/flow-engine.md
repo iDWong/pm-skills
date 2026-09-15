@@ -348,6 +348,8 @@ prd/test/*测试用例*.md / *test-case*  → 阶段7已完成
 prd/release/*操作手册*.md / *operation-manual* → 阶段8已完成
 prd/release/*release-note*.md / *发版*   → 阶段9已完成
 prd/reports/ 下有审计报告        → 阶段10已完成
+dev/reports/ 下有审计报告        → 阶段10按已完成算（同一件事，引用它即可，别重跑；
+                                  见 stages/s10-ship-audit.md）
 design-system/<项目slug>/index.html（或 web-/admin-）
   且同目录 FLOWS.md + HANDOFF.md    → 阶段6已完成（**再确认闭环检查是否签字**，未签字按未完成算）
 Prototype/<项目slug>/ 有稿          → 旧根设计稿，按已完成算，路径照实记（不主动搬家）

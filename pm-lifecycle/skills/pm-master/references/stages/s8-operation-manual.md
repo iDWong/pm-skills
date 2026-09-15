@@ -7,6 +7,9 @@
 - `design-system/<项目slug>/`（若有，**阶段6**：截图与操作步骤可直接照着写，须已签字）
 - `dev/code/`（若有；`dev-master` 产出，本流程只读）
 
+> **与 `dev-master` 阶段12 不是同一份**：本阶段照需求文档与设计稿写、面向最终用户，
+> 代码没出来也能写；那边照真实实现写、另含发布与回滚预案。分工表见 `../../SKILL.md`「重叠产物」。
+
 **输出**：`prd/release/{日期}-{项目名称}-{手册类型}-V{版本号}.md`（**技能自带命名**，见 `pm-operation-manual` 的「文档命名规范」；`{手册类型}` 按管理员手册／终端用户手册拆分）+ `prd/release/quick-start.md`（可选快速入门）
 
 **执行方式**：调用 `pm-operation-manual` skill
