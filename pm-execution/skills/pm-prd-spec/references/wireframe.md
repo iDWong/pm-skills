@@ -45,14 +45,23 @@
 脚本**落项目根的 `tools/`**（如 `tools/gen_wireframes.py`，先 `mkdir -p tools/svg`），SVG 输出到 `tools/svg/`。不要把脚本写在项目根或系统临时目录——改一版原型图要靠它重跑，SVG 中间产物同理留着不删。
 
 ```python
-import sys, os
-# 三库自解析：Claude / Codex / Cursor 任一
-for _r in (os.path.expanduser("~/.claude/skills"),
+import sys, os, glob
+# 自解析（SKILL.md「技能库根目录自解析」那份的 sys.path 变体，改根目录顺序时两处一起改）：
+# plugin 模式（本 bundle + 同级 bundle）优先，再找 Claude / Codex / Cursor 平铺
+_roots = []
+_plug = os.environ.get("CLAUDE_PLUGIN_ROOT")
+if _plug:
+    _roots.append(os.path.join(_plug, "skills"))
+    _roots += sorted(glob.glob(os.path.join(_plug, "..", "*", "skills")))
+_roots += [os.path.expanduser("~/.claude/skills"),
            os.path.join(os.environ.get("CODEX_HOME", os.path.expanduser("~/.codex")), "skills"),
-           os.path.expanduser("~/.cursor/skills")):
+           os.path.expanduser("~/.cursor/skills")]
+for _r in _roots:
     _p = os.path.join(_r, "pm-prd-spec", "scripts")
     if os.path.isdir(_p):
-        sys.path.insert(0, _p); break
+        sys.path.insert(0, os.path.normpath(_p)); break
+else:
+    raise FileNotFoundError("pm-prd-spec/scripts 未找到（plugin 模式请确认 pm-execution bundle 已安装）")
 from wireframe import *                      # SVG, sidebar, header, field, seg, kpi, table, chartbox, btn, 及颜色常量
 
 g = SVG(1280, 620)                           # 传内容尺寸；画布会自动补成正方形

@@ -1,8 +1,9 @@
 ## 阶段5：需求文档（SRS / PRD 分支）
 
-**目标**：将阶段4概述扩展为可交付的需求文档，并登记 **阶段5 真源路径**（供阶段6–9 读取）。
+**目标**：将阶段4概述扩展为可交付的需求文档，并登记 **阶段5 真源路径**（供阶段6–9 与 `dev-master` 读取）。
 
-**本阶段完成后有两条并列下游**：阶段6 `page-generator`（→ `dev/code/` 真实代码，认 SRS）／设计稿 `ui-ux-pro-max`（→ `design-system/<项目slug>/` 可点 HTML，**PRD 为主真源且需 PRD+SRS 都有**）。判据表见 `../../SKILL.md`「设计稿和前端原型是两条不同的路」。
+**下一站是阶段6 界面设计稿**：`ui-ux-pro-max`（→ `design-system/<项目slug>/` 可点 HTML，**PRD 为主真源且需 PRD+SRS 都有**）。
+**把它做成代码不在本流程**——用户说「开始开发」时交给 `dev-master`，由它从阶段 1 的 SRS 门禁接手。判据表见 `../../SKILL.md` 的「阶段6 设计稿 vs 页面代码，别混」一节。
 
 **输入**：
 - `prd/planning/requirements.md`（阶段4）
@@ -15,10 +16,10 @@
 下方 5.0 表就是本阶段唯一的分支选择器（不要另立一套）。
 
 **技能选择的硬约束**：
-- `req-doc`、`prd-writer` 是流程原生技能，会登记 `SPEC_SOURCE`，阶段6–9 靠它读规格
+- `req-doc`、`prd-writer` 是流程原生技能，会登记 `SPEC_SOURCE`，阶段6–9 与 `dev-master` 靠它读规格
 - `pm-prd-spec`（字段级 + 线框图 + Word）认识 `prd/PRD/`、`dev/SRS/` 落盘约定但**不登记 `SPEC_SOURCE`**：
   用户明确要字段级规格时可在 5B 用它，但**流程必须在本阶段收尾时代为登记 `SPEC_SOURCE=<它落的 PRD 路径>`**
-- **`pm-prd-writer` 不要在流程内使用**——不登记真源、不知道落盘目录，阶段6 会拿不到规格。它走单点路由
+- **`pm-prd-writer` 不要在流程内使用**——不登记真源、不知道落盘目录，下游会拿不到规格。它走单点路由
 
 用户在 Step 0 选了「深度档」时，本阶段的唯一体现是：5B 分支下可改用 `pm-prd-spec`（并代登记真源）；
 **选了 SRS 就只有 5A 一条路**，深度档不改变它。
@@ -27,13 +28,13 @@
 
 | Step 0 选择 / 信号 | 调用技能 | 阶段5 真源路径 |
 | --- | --- | --- |
-| **SRS**（默认，且含阶段6） | **`req-doc`** | `dev/SRS/{日期}-{项目}-SRS需求规格说明书-V*.md` |
+| **SRS**（默认，且后续要接研发） | **`req-doc`** | `dev/SRS/{日期}-{项目}-SRS需求规格说明书-V*.md` |
 | **PRD**（只要文档 / 不对接研发） | **`prd-writer`** | `prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（+ 可选 `-概念版-V*.md`） |
 | **先 PRD 后 SRS** | **`prd-writer`** → **`req-doc`** | 最终以 **SRS 路径** 为真源；PRD 路径写入 SRS 文首引用 |
-| **已有 Axure/HTML/URL** | **`prototype-to-prd`** → **`prd-writer`** | 默认 PRD；若含阶段6，盘点+PRD 完成后 **须转 SRS**（`req-doc` 或用户确认转写） |
-| 用户未选但 **含阶段6** | **`req-doc`** | 同 SRS 行（page-generator 依赖 SRS 章节结构） |
+| **已有 Axure/HTML/URL** | **`prototype-to-prd`** → **`prd-writer`** | 默认 PRD；若后续要接研发，盘点+PRD 完成后 **须转 SRS**（`req-doc` 或用户确认转写） |
+| 用户未选但 **打算接 `dev-master`** | **`req-doc`** | 同 SRS 行（研发链依赖 SRS 章节结构） |
 
-**禁止**：含阶段6 时仅以 PRD（`prd/PRD/*.md`）为真源调用 page-generator（除非用户明确接受手动对齐且跳过 SRS 模板）。
+**禁止**：把只有 PRD（`prd/PRD/*.md`）的项目直接移交 `dev-master` / `page-generator`（除非用户明确接受手动对齐且跳过 SRS 模板）。
 
 **交付模式**：传入各技能（`req-doc` A6 抽检 / `prd-writer` 快路径等），三档定义见 `../flow-engine.md` 问题6。
 
@@ -63,7 +64,7 @@
 **关键规范**：
 - **标准/快速**：可说「跳过概念版」走快路径（见 `prd-writer` §0）
 - MVP 以 §4 🔴 为准，流水线内 **不另开** MVP 口头确认（除非 **严格** 模式）
-- 若后续含阶段6 且用户选「先 PRD 后 SRS」→ 本小节完成后执行 **5C**
+- 若后续要接研发 且用户选「先 PRD 后 SRS」→ 本小节完成后执行 **5C**
 
 **输出**：`prd/PRD/{YYYYMMDD}-{客户名称}{项目名称}{形态}-产品需求文档-V{版本号}.md`（及可选 `-概念版-V*.md`、`-原型盘点-V*.md`）
 
@@ -73,11 +74,11 @@
 
 ---
 
-### 5C. PRD → SRS 转写（门禁 · 含阶段6 时强制）
+### 5C. PRD → SRS 转写（门禁 · 要接研发时强制）
 
-**规则**：Read `common/prd-to-srs-gate.md`（库内权威副本；原 `.agents/rules/` 资源包已不存在）。**含阶段6 时不可跳过。**
+**规则**：Read `common/prd-to-srs-gate.md`（库内权威副本；原 `.agents/rules/` 资源包已不存在）。**要交给 `dev-master` 时不可跳过。**
 
-**触发**：阶段6 开始前 `SPEC_SOURCE` 仍指向 PRD；或用户说「进开发」且仅有 PRD。
+**触发**：移交 `dev-master` 前 `SPEC_SOURCE` 仍指向 PRD；或用户说「进开发」且仅有 PRD。
 
 **执行方式**：调用 **`req-doc` Step F**（非 Step A 泛化生成）；输入 PRD + 可选 `requirements.md`；对照 `req-doc/references/prd-to-srs-handoff.md`。
 
@@ -91,9 +92,9 @@
 
 **执行方式**：按 `prototype-to-prd/SKILL.md` 完成盘点 → `prd-writer`；**标准模式**下盘点 **默认继续**。
 
-**含阶段6**：盘点+PRD 完成后执行 **5C**，再进入阶段6。
+**要接研发**：盘点+PRD 完成后执行 **5C**，再移交 `dev-master`。
 
-**登记**：`SPEC_SOURCE` 最终指向 SRS（含阶段6）或 PRD（仅文档）
+**登记**：`SPEC_SOURCE` 最终指向 SRS（要接研发）或 PRD（仅文档）
 
 ---
 
@@ -101,7 +102,7 @@
 
 ```
 SPEC_SOURCE 已登记 ✅
-含阶段6 → SPEC_SOURCE 指向 SRS 文件 ✅
+要接研发 → SPEC_SOURCE 指向 SRS 文件 ✅
 仅文档 + PRD → SPEC_SOURCE 指向 `prd/PRD/*-产品需求文档-V*.md` ✅（概念版／评审／原型盘点都不算）
 ```
 

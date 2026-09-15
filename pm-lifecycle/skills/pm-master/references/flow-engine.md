@@ -17,7 +17,7 @@
 - 已有战略／商业模式结论（从阶段 -1 或 0 开始）
 - 已有市场调研报告（从阶段 1 开始）
 - 已有明确需求（从阶段 4 开始）
-- 已有 SRS 或 PRD（从阶段 6／7 开始）
+- 已有 SRS 或 PRD（从阶段 6 开始；要把它做出来 → 转 `dev-master`）
 - 已有 Axure／站点原型（阶段 5 走 `prototype-to-prd`）
 - 代码已经写好了（只跑阶段 10 上线审计）
 
@@ -25,8 +25,8 @@
 - 全量（-2→10，全新产品，方向都没定）
 - 立项（-2,-1,0,1,2,3，只要论证方向和规划）
 - 标准交付（0→9，方向已定的新项目）
-- 快速交付（4→8，已有明确需求，直奔文档与原型）
-- 只要文档（4,5,7,8,9，不生成前端代码）
+- 快速交付（4,5,6,7,8，已有明确需求，直奔文档、设计稿与用例手册）
+- 只要文档（4,5,7,8,9，跳过设计稿，只交文字交付物）
 - 迭代（4,5,6,7,9，存量产品加功能）
 - 上线体检（只跑 10）
 - 自定义（用户自己点阶段）
@@ -39,18 +39,18 @@
 
 > 用户已经明确说了「要甘特图」「要字段级 PRD」「要多模型交叉」这类词，**直接按深度档处理，不要再问这一题**。
 
-**问题4｜产品类型？**（决定阶段 6 技术栈；裁剪不含阶段 6 时跳过本题）
-- 管理后台系统（Vue3 + ElementPlus）
-- 移动端 H5 应用（Vue3 + Vant）
-- 企业官网（Vue3 + ElementPlus）
+**问题4｜产品类型？**（决定阶段 5 的形态判定与阶段 6 出哪张墙；裁剪不含阶段 5 与 6 时跳过本题）
+- Web 运营管理系统（后台墙 1440×900）
+- 移动端 APP / H5 / 小程序（移动墙 393×852）
+- 企业官网（官网墙 1280×900）
 - 其他（请描述）
 
 #### 第二批（2 问，仅当裁剪包含阶段 5／6 时才问）
 
-**问题5｜阶段 5 需求文档类型？**（判据见 `../SKILL.md` 的「产品文档链 · 七个技能只认 SRS」一节；**含阶段 6 研发原型时默认 SRS**）
-- **SRS 需求规格说明书**（`req-doc` → `dev/SRS/`，供 page-generator / HLD）
-- **产品 PRD**（`prd-writer` → `prd/PRD/`，探索对齐；**不含阶段 6** 或阶段 6 前须转 SRS）
-- **先 PRD 后 SRS**（`prd-writer` → 用户确认后 `req-doc` 转 SRS，再进阶段 6）
+**问题5｜阶段 5 需求文档类型？**（判据见 `../SKILL.md` 的「产品文档链 · 七个技能只认 SRS」一节；**后续要接 `dev-master` 出代码时默认 SRS**）
+- **SRS 需求规格说明书**（`req-doc` → `dev/SRS/`，供 `dev-master` / HLD 读）
+- **产品 PRD**（`prd-writer` → `prd/PRD/`，探索对齐；**只出文档与设计稿**时够用，进研发前须转 SRS）
+- **先 PRD 后 SRS**（`prd-writer` → 用户确认后 `req-doc` 转 SRS，再交给 `dev-master`）
 - 已有 Axure/HTML/URL 原型 → 阶段 5 走 **`prototype-to-prd`**
 
 **问题6｜交付模式？**（**默认「标准」**，向下游传递 `DELIVERY_MODE`）
@@ -67,9 +67,9 @@
 **自动升档**：用户消息里出现「正式交付」「验收」「上线」「提测」「完整审查」「严格模式」等意图时，
 **整任务升为严格**，直到用户另行声明。
 
-> 阶段 6 调用 `page-generator` 时使用本处所选模式；未单独改选时 stage 6 为 **标准双审查**；选 **快速** 则 stage 6 步骤 6 降级。
+> 阶段 6 调用 `ui-ux-pro-max` 时使用本处所选模式。
 >
-> **项目根若有 `AGENTS.md` 且其中的技能名与本库一致**（`req-doc` / `page-generator` 这套），以它的分技能默认为准；
+> **项目根若有 `AGENTS.md` 且其中的技能名与本库一致**（`req-doc` / `pm-test-cases` 这套），以它的分技能默认为准；
 > 技能名不一致（如写的是 `srs-writer` / `feature-dev`）说明那是另一代资源包的约定，**按本节的三档执行，不要照搬**。
 
 #### 换挡表（问题3 的作用范围）
@@ -107,9 +107,8 @@ TaskCreate: 阶段2 - 功能优先级排序
 TaskCreate: 阶段3 - 产品路线图
 TaskCreate: 阶段4 - 需求澄清
 TaskCreate: 阶段5 - 需求文档（SRS / PRD / 原型逆向）
-TaskCreate: 阶段6 - 前端原型框架搭建
-TaskCreate: 阶段6 - [模块A] 页面生成
-TaskCreate: 阶段6 - [模块B] 页面生成
+TaskCreate: 阶段6 - 界面设计稿（三张预览墙 + FLOWS.md + HANDOFF.md）
+TaskCreate: 阶段6 - 设计稿闭环检查四阶段签字
 TaskCreate: 阶段7 - 测试用例
 TaskCreate: 阶段8 - 操作手册
 TaskCreate: 阶段9 - 发版说明
@@ -166,16 +165,15 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 3 | `prd/planning/roadmap*.md` | 4 |
 | 4 | `prd/planning/requirements*.md` | 5 |
 | 5 | `SPEC_SOURCE` 已登记（指向 `dev/SRS/*.md` 或 `prd/PRD/*-产品需求文档-V*.md`） | 6／7／8 |
-| 6 | `dev/code/` 有代码（存量项目在仓库根 `src/` 也算） | 8（手册可对齐原型） |
 | 7 | `prd/test/*测试用例*.md` 或 `prd/test/*test-case*.md` | — |
 | 8 | `prd/release/*操作手册*.md` 或 `prd/release/*operation-manual*.md` | 9 |
 | 9 | `prd/release/*release-note*.md` 或 `prd/release/*发版*.md`（**技能不落盘，见下方**） | 10（仅当代码由 AI 生成） |
 | 10 | `prd/reports/` 下报告已写入且路径已告知用户 | — |
-| 设计稿分支（阶段5 之后，与阶段6 并列，无编号） | `design-system/<项目slug>/index.html` 等三张墙之一 **且** 同目录 `FLOWS.md` + `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；旧根 `Prototype/` 只读兼容 | 7／8（设计稿可作测试用例与手册的输入，**但须先过闭环检查**） |
+| 6 | `design-system/<项目slug>/index.html` 等三张墙之一 **且** 同目录 `FLOWS.md` + `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；旧根 `Prototype/` 只读兼容 | 7／8（设计稿可作测试用例与手册的输入，**但须先过闭环检查**） |
 
 **glob 命中多个文件时**（多产品／多版本仓库常见）：取最新修改的那个，并在交接摘要里写明用的是哪个文件。
 
-**设计稿那一行还有两道额外门禁**（文件在不等于能用）：契约的三组机检输出 OK（其中 `grep -l 'data-setframe' design-system/*/*.html` 必须为空——出稿帧已废除），
+**阶段6 那一行还有两道额外门禁**（文件在不等于能用）：契约的**四组**机检（死按钮与孤层 / 流程完整性 / 清单反查九条 / 页面闭环，对应 `prototype-review.md` 的 M1–M4）输出 OK（其中 `grep -l 'data-setframe' design-system/*/*.html` 必须为空——出稿帧已废除），
 以及 `prototype-review.md` 四阶段检查四方签字。**未签字的设计稿不得作为下游输入。**
 
 ### 两个阶段的技能不落盘，流程必须代写
@@ -218,8 +216,8 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 ### 可以并行的阶段
 
 阶段5（需求文档）完成后，阶段6/7/8**可以并行**：
-- 测试用例只依赖 `SPEC_SOURCE`，不依赖原型代码
-- 操作手册主要依赖 `SPEC_SOURCE`，可以先生成再补充原型细节
+- 测试用例只依赖 `SPEC_SOURCE`，不依赖设计稿
+- 操作手册主要依赖 `SPEC_SOURCE`，可以先生成再补充设计稿细节
 
 ### 用户确认节点（按交付模式）
 
@@ -234,7 +232,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 | 阶段6 每页 | 每页确认 | **批量不逐页问**；单次模式有问题才停 | 不逐页问 |
 | 阶段10 审计发现 | 必须确认 | 报告写完告知路径，默认继续 | 同标准 |
 
-**禁止**（标准/快速 + 批量 page-generator）：功能之间问「继续吗？」
+**禁止**（标准/快速 + 批量出稿）：页面之间问「继续吗？」
 
 ### 进度汇报
 
@@ -263,7 +261,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 
 ```
 [项目目录]/
-├── design-system/<项目slug>/             ← 设计链落盘根（设计稿 + 设计令牌同树）
+├── design-system/<项目slug>/             ← 阶段6 设计链落盘根（设计稿 + 设计令牌同树）
 │   ├── MASTER.md / tokens.json                  ← 设计系统母版与令牌（单一源）
 │   ├── index.html / web-index.html / admin-index.html  ← 三张预览墙
 │   ├── FLOWS.md / HANDOFF.md / CONSISTENCY.md   ← 流程清单 / 工程师对接 / 跨端一致性（后者 ≥2 端时必交）
@@ -296,7 +294,7 @@ TaskCreate: 阶段10 - 上线审计（代码由 AI 生成时）
 │   ├── SRS/*-SRS需求规格说明书-V*.md       ← 阶段5A/5C（**研发真源，唯一例外**）
 │   ├── design/                            ← 功能清单 · 概要设计 · 详细设计
 │   └── plan/delivery-plan-{项目名称}.md    ← delivery-plan（活文档，不带版本号）
-├── dev/code/                             ← 阶段6（各端子项目在其下；仓库级基建仍在仓库根）
+├── dev/code/                             ← 代码（`dev-master` 产出，本流程只读不写）
 └── docs/                                 ← 旧根，**只读兼容**，不再往里写
 ```
 
@@ -345,13 +343,13 @@ prd/planning/requirements*.md            → 阶段4已完成
 dev/SRS/*.md 或
 prd/PRD/*-产品需求文档-V*.md    → 阶段5已完成（登记 SPEC_SOURCE）
                                   ⚠️ 只有 -概念版- / -评审- / -原型盘点- 时**阶段5 未完成**
-dev/code/ 有代码                  → 阶段6已完成或进行中
+dev/code/ 有代码                  → 研发链已开工（本流程不管，归 `dev-master` 阶段7）
 prd/test/*测试用例*.md / *test-case*  → 阶段7已完成
 prd/release/*操作手册*.md / *operation-manual* → 阶段8已完成
 prd/release/*release-note*.md / *发版*   → 阶段9已完成
 prd/reports/ 下有审计报告        → 阶段10已完成
 design-system/<项目slug>/index.html（或 web-/admin-）
-  且同目录 FLOWS.md + HANDOFF.md    → 设计稿分支已完成（**再确认闭环检查是否签字**，未签字按未完成算）
+  且同目录 FLOWS.md + HANDOFF.md    → 阶段6已完成（**再确认闭环检查是否签字**，未签字按未完成算）
 Prototype/<项目slug>/ 有稿          → 旧根设计稿，按已完成算，路径照实记（不主动搬家）
 docs/** 下命中同名旧文档          → 该阶段按已完成算，路径照实记（不搬家）
 docs/spec.md 仅存在（遗留）      → 提示迁移 SRS 或重跑阶段5

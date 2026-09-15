@@ -3,6 +3,8 @@
 **目标**：基于阶段5 真源生成测试用例。
 
 **输入**：`SPEC_SOURCE`（SRS 优先；仅 PRD 时读 `prd/PRD/*-产品需求文档-V*.md` 并注明「非 SRS 结构」）
+- **阶段6 设计稿（若有）**：`design-system/<项目slug>/FLOWS.md` 的流程清单可直接转成端到端用例。
+  **前提是它已过闭环检查并签字**——未签字的稿不得当输入（门禁见 `../flow-engine.md`）
 
 **执行方式**：调用 `pm-test-cases` skill
 

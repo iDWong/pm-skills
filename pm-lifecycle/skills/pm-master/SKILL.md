@@ -1,9 +1,9 @@
 ---
 name: pm-master
 description: |
-  产品全生命周期单一流程（13 阶段）。管理 37 个 PM Skill + 11 个同链路的非 pm- 技能（SRS/设计/交付/标注链）。
+  产品全生命周期单一流程（13 阶段）。管理 37 个 PM Skill + 10 个同链路的非 pm- 技能（SRS/设计/交付/标注链）。
   流程链：战略框架 → 上市与ICP → 市场调研 → 用户画像 → 功能优先级 → 产品路线图 → 需求澄清
-  → 需求文档（SRS/PRD）→ 前端原型 → 测试用例 → 操作手册 → 发版说明 → 上线审计。
+  → 需求文档（SRS/PRD）→ 界面设计稿 → 测试用例 → 操作手册 → 发版说明 → 上线审计。
   能力：(1) 单点需求直接路由到最合适的 Skill (2) 多步需求按同一条流程裁剪出阶段区间并编排
   (3) 判断类问题转交 pm-advisory-board 组织专家评审 (4) 入口处让用户选「默认档／深度档」，并支持断点续跑与中途换挡。
   触发词：「pm-master」「产品总控」「我该用哪个 Skill」「帮我推进这个需求」「从头到尾走一遍」
@@ -12,8 +12,8 @@ description: |
   不适用：研发侧的 SRS／概要设计／详细设计／编码／测试／上线（那条链走 `dev-master`，从它的阶段 1 接手）。
 metadata:
   author: Wong
-  version: "1.5"
-  reviewed: "2026-09-14"
+  version: "1.8"
+  reviewed: "2026-09-15"
 ---
 
 # pm-master：产品全生命周期总控
@@ -29,11 +29,12 @@ metadata:
 |---|---|---|
 | 管什么 | 产品侧：战略 → 调研 → 画像 → 优先级 → 路线图 → 需求文档 | 研发侧：SRS → 设计 → 实现 → 测试 → 上线 |
 | 交接点 | 本流程的**阶段 5** 产出需求文档 | 它的**阶段 1** 接手，把 PRD 转写成 SRS 真源 |
-| 重叠技能 | `req-doc` / `page-generator` / `pm-test-cases` 等在两条链上都出现 | **同一份技能，不是两份**；谁在跑就由谁编排，不要两个总控同时起流程 |
+| 重叠技能 | `req-doc` / `ui-ux-pro-max` / `pm-test-cases` 等在两条链上都出现 | **同一份技能，不是两份**；谁在跑就由谁编排，不要两个总控同时起流程 |
 
 用户跑完阶段 5 拿到需求文档后说「开始开发 / 把它做出来 / 三端全做」→ **交给 `dev-master`**，
-由它从阶段 1 的 SRS 门禁接手。本流程的阶段 6–10 是产品侧的轻量下游（单端页面 + 文档链）；
-要三端全栈、真跑测试、调试验收、上线审计那一整套，走 `dev-master`，不要在本流程里硬撑。
+由它从阶段 1 的 SRS 门禁接手。本流程的阶段 6–10 是产品侧的轻量下游（设计稿 + 文档链，**不出代码**）。
+**写代码这件事本流程一概不做**——单端页面、三端全栈、真跑测试、调试验收，全部走 `dev-master`，不要在本流程里硬撑。
+> 两条链的**阶段 6 都是界面设计稿、都调 `ui-ux-pro-max`、都落 `design-system/<项目slug>/`**——编号是对齐的，不是两件事。
 
 ## 分诊（四类，先判这个）
 
@@ -60,19 +61,23 @@ metadata:
 | 3 | 产品路线图 | `pm-roadmap` | `pm-roadmap-planner` | `prd/planning/roadmap-*.md` |
 | 4 | 需求澄清 | （本技能直接做） | — | `prd/planning/requirements.md` |
 | 5 | 需求文档 | `req-doc`（SRS）／`prd-writer`（PRD） | `pm-prd-spec`（字段级+线框图，**流程须代为登记 SPEC_SOURCE**） | `dev/SRS/` 或 `prd/PRD/` |
-| 6 | 前端原型 | `page-generator` | — | `dev/code/` |
+| 6 | 界面设计稿 | `ui-ux-pro-max` | — | `design-system/<项目slug>/` |
 | 7 | 测试用例 | `pm-test-cases` | — | `prd/test/*测试用例*.md` |
 | 8 | 操作手册 | `pm-operation-manual` | — | `prd/release/*操作手册*.md` |
 | 9 | 发版说明 | `pm-release-notes` | — | `prd/release/release-notes-*.md`（**流程代写**） |
 | 10 | 上线审计 | `pm-ai-ship-audit` | — | `prd/reports/` |
 
+> **阶段 6 是设计稿，不是代码**：原「阶段6 前端原型」（`page-generator` → `dev/code/`）已从本流程移除，
+> 编号 6 现在给**界面设计稿**——可点可交互的独立 HTML，给人看、评审与对齐用。要真出代码交给 `dev-master`
+> （它的阶段 7「编码实现」）。编号从未重排，7–10 一直是原号，存量项目的进度存档照旧能读。
+
 > **产出路径一律按 glob 匹配**：各阶段技能的实际命名带产品名／日期／版本号，写死精确文件名门禁永远过不了。
 > 阶段2 和阶段9 的技能**是纯对话输出不写文件**，流程必须代写到表中路径——细则见 `references/flow-engine.md`。
 
-> **阶段5 的技能选择有硬约束**：只有 `req-doc`、`prd-writer` 认识流程契约（登记 `SPEC_SOURCE` 供阶段6–9 读取）。
+> **阶段5 的技能选择有硬约束**：只有 `req-doc`、`prd-writer` 认识流程契约（登记 `SPEC_SOURCE` 供阶段6–9 与 `dev-master` 读取）。
 > `pm-prd-spec` 认识落盘目录但**不登记 SPEC_SOURCE**，用它时流程必须在阶段5 收尾时代为登记。
 > **`pm-prd-writer` 不要在流程内当阶段5**——它不登记真源也不知道 `dev/SRS/`、`prd/PRD/` 约定，
-> 跑完阶段6 会拿不到规格。它是单点技能（模糊需求 → 可评审 PRD + 需求体检），走单点路由。
+> 下游阶段与 `dev-master` 都会拿不到规格。它是单点技能（模糊需求 → 可评审 PRD + 需求体检），走单点路由。
 
 **阶段 5 不可跳过**——后续全部依赖它登记的 `SPEC_SOURCE`。其余阶段的跳过判据见 `references/tailoring.md`。
 
@@ -81,7 +86,7 @@ metadata:
 - `references/tailoring.md` — 裁剪表（全量/立项/标准/快速/只要文档/迭代/上线体检）、逐阶段跳过判据、默认档与深度档换挡规则
 - `references/stages/s<N>-*.md` — 每个阶段的执行细则，**进入该阶段时读那一个**，不要一次全读
 - `references/prototype-review.md` — **设计稿生成后的闭环检查机制**（角色分工与签字、四阶段流程、
-  异常与边界覆盖、一致性、问题分级与返工闭环、准入准出、可勾选清单）。走设计稿那条路时读它；
+  异常与边界覆盖、一致性、问题分级与返工闭环、准入准出、可勾选清单）。**进阶段6 时读它**；
   与 `pm-prd-spec` 下的同名文件是**同一份**，改一处必须同步另一处
 
 ## 常用裁剪（细则见 tailoring.md）
@@ -160,13 +165,12 @@ metadata:
 | 阶段 -2、-1 之后 | `feasibility-report` | 可行性研究报告（立项报批用的正式文档） | `prd/planning/{日期}-{项目}-可行性研究报告-V*.md` + Word |
 | 阶段 5（真源）→ | `req-doc` | **SRS 需求规格说明书**——研发真源 | `dev/SRS/` |
 | 阶段 5 之后 | `feature-list` | 从 SRS / 可研提取功能清单 | `dev/design/{日期}-{项目}-功能清单-V*.{md,xlsx}`（研发链产出） |
-| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪 → 接阶段 6（**批量实现的前置**） | `dev/plan/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
+| 阶段 5 之后 | `delivery-plan` | 交付链路规划与进度追踪（**`dev-master` 批量实现的前置**） | `dev/plan/delivery-plan-{项目名称}.md`（活文档，不带版本号） |
 | 阶段 5 之后 | `hld-design` | 概要设计说明书（系统架构级） | `dev/design/{日期}-{客户}{项目}-概要设计说明书-V*.md` + Word |
 | `hld-design` 之后 | `lld-design` | 详细设计（模块 + 表结构 + API 三合一） | `dev/design/{日期}-{客户}{项目}-详细设计说明书-V*.md` + Word |
-| 阶段 5 → 阶段 6 | `page-generator` | 在现有项目里实现业务页面 | `dev/code/`（研发链产出） |
 | 阶段 5 分支 | `prototype-to-prd` | 已有 Axure/HTML/URL 原型 → 逆向盘点出 PRD | `prd/PRD/` |
-| 阶段 6 之后 | `annotation` | 往 **`dev/code/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
-| 阶段 5 之后（**与阶段6 并列的另一条路**） | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 + `FLOWS.md` + `HANDOFF.md` | `design-system/<项目slug>/` |
+| `dev/code/` 已出代码后 | `annotation` | 往 **`dev/code/` 真实页面代码**注入标注 class + 标注 JSON + Vite 插件 | 项目代码内 |
+| **阶段 6** | `ui-ux-pro-max` | **UI/UX 设计稿**：可点可交互的独立 HTML + 三张 iframe 预览墙 + `FLOWS.md` + `HANDOFF.md` | `design-system/<项目slug>/` |
 
 
 **三个根别搞混**：产品侧一切 → `prd/`（`strategy/ research/ planning/ PRD/ test/ release/ reports/`）；
@@ -196,7 +200,7 @@ prd/
 放 `prd/` 会让研发链两处找。阶段 5 出 PRD 落 `prd/PRD/`，出 SRS 落 `dev/SRS/`，`SPEC_SOURCE` 记真实路径。
 
 **接力给研发链技能的产出落 `dev/`**（`feature-list` → `dev/design/`、`hld-design`/`lld-design` → `dev/design/`、
-`delivery-plan` → `dev/plan/`、阶段 6 的**代码** → `dev/code/`）——那是 `dev-master` 的阶段产出，本流程只是指路，不要往 `prd/` 里塞。
+`delivery-plan` → `dev/plan/`、**代码** → `dev/code/`）——那是 `dev-master` 的阶段产出，本流程只是指路，不要往 `prd/` 里塞。
 
 三条规则：
 
@@ -206,20 +210,21 @@ prd/
 3. **老项目的文档留在 `docs/`：原地续用，不主动搬家**，进度存档里记真实路径；用户明确要求才迁，
    迁时 `images/` 一起搬并回改全部相对引用。
 
-### 「设计稿」和「前端原型」是两条不同的路，别混
+### 阶段6 设计稿 vs 页面代码，别混
 
-阶段5 之后有**两条并列的下游**，用户说「做原型」时必须先分清要哪个：
+用户说「做原型」时先分清他要的是哪种——**本流程只出设计稿，不出代码**：
 
-| | 阶段6 前端原型 | 设计稿（阶段5 之后的另一条路） |
+| | 设计稿（**本流程阶段 6**） | 页面代码（**不在本流程**） |
 |---|---|---|
-| 技能 | `page-generator` | `ui-ux-pro-max`（细则读 `ui-ux-pro-max/references/prototype-delivery.md`） |
-| 产出 | 项目里的**真实页面代码** | **零依赖的独立 HTML** + 三张 iframe 预览墙 + 流程清单 `FLOWS.md` + 工程师对接清单 `HANDOFF.md` |
-| 落盘 | `dev/code/` | `design-system/<项目slug>/` |
-| 真源 | **SRS**（不认 PRD，见下方硬规则） | **PRD 为主真源**，SRS 补规格细节 |
-| 用途 | 进开发、要能跑起来 | 给人看、点得动、评审与对齐用 |
-| 前置 | 合格 SRS | **PRD 与 SRS 都要有** |
+| 技能 | `ui-ux-pro-max`（细则读 `ui-ux-pro-max/references/prototype-delivery.md`） | `page-generator`——走 `dev-master` 阶段 7 |
+| 产出 | **零依赖的独立 HTML** + 三张 iframe 预览墙 + 流程清单 `FLOWS.md` + 工程师对接清单 `HANDOFF.md` | 项目里的真实页面代码 |
+| 落盘 | `design-system/<项目slug>/` | `dev/code/` |
+| 真源 | **PRD 为主真源**，SRS 补规格细节 | **SRS**（不认 PRD，见下方硬规则） |
+| 用途 | 给人看、点得动、评审与对齐用 | 进开发、要能跑起来 |
+| 前置 | **PRD 与 SRS 都要有** | 合格 SRS |
 
-**分不清就问一句**：「你要的是能进代码库跑起来的页面，还是给人点着看的设计稿？」
+**分不清就问一句**：「你要的是给人点着看的设计稿，还是能进代码库跑起来的页面？」
+要后者就**交给 `dev-master`**——本流程最远走到阶段6 出设计稿，不要在这儿起 `page-generator`。
 
 设计稿的缺件处理（与 `ui-ux-pro-max` 契约同一口径，**不要另写一套**）：
 
@@ -228,6 +233,7 @@ prd/
 | PRD + SRS 都有 | 可启动 |
 | 只有 PRD | 先 `req-doc` **Step F** 转 SRS；用户**原话**要求「跳过 SRS 直接出设计稿」才允许只用 PRD，并在索引页注明 |
 | 只有 SRS | 先 `pm-prd-spec` 出 PRD——**设计稿以 PRD 为主真源**，没 PRD 就没有页面清单与文案依据 |
+| 只有 SRS，且项目走的是 `dev-master` 研发流程（没有产品侧 PRD 链路） | **允许以 SRS 为唯一真源出稿**（契约缺件表已开此豁免），索引页注明「无 PRD，页面清单与文案取自 SRS」。**不要为此去跑 `pm-prd-spec`**——研发流程里没有这一环，硬等 PRD 会把阶段 6 卡死 |
 | 两个都没有 | 不要凭空造页面：先 `pm-prd-spec` 再 `req-doc` |
 
 口径冲突时**以 `ui-ux-pro-max/references/prototype-delivery.md` 为准**。
@@ -248,7 +254,7 @@ prd/
 |---|---|---|
 | 标在哪 | **`dev/code/` 项目真实页面代码** | `design-system/<项目slug>/` 的独立 HTML |
 | 怎么实现 | 注入专属 class + 生成标注 JSON + 装依赖 + 注册 Vite 插件 | 页面内建，全屏页右下角开关 |
-| 前置 | 阶段6 已出代码 + **合格 SRS**（在只认 SRS 的六技能名单里） | 设计稿已出（`ui-ux-pro-max`） |
+| 前置 | `dev/code/` 已出代码（`dev-master` 阶段 7）+ **合格 SRS**（在只认 SRS 的六技能名单里） | 阶段6 已出稿（`ui-ux-pro-max`） |
 | 谁做 | `annotation` | `ui-ux-pro-max`，**不需要另调 `annotation`** |
 
 **走设计稿这条路的用户不需要 `annotation` 技能**——预览墙的全屏页已经内建标注面板，
@@ -262,16 +268,16 @@ prd/
 
 所以阶段 5 的文档类型选择（Step 0 问题5）直接决定下游能不能走：
 
-| 阶段 5 选了 | 能直接进阶段 6 及上述七个吗 |
+| 阶段 5 选了 | 能直接进上述七个技能吗 |
 |---|---|
 | SRS（`req-doc`） | ✅ 可以 |
 | 先 PRD 后 SRS | ✅ 转写完成后可以 |
 | 只有 PRD（`pm-prd-writer` / `pm-prd-spec` / `prototype-to-prd`） | ❌ **必须先走 `req-doc` 的 PRD→SRS 转写（Step F）** |
 
-裁剪里含阶段 6，或用户提到上面七个技能中的任何一个时，**Step 0 问题5 默认选 SRS**，
-不要让用户在不知情的情况下选了 PRD 然后卡在阶段 6 前面。
+用户提到上面七个技能中的任何一个，或跑完阶段5 打算接 `dev-master` 时，**Step 0 问题5 默认选 SRS**，
+不要让用户在不知情的情况下选了 PRD，然后卡在研发链门口。
 
-## 流程外的 Skill（不在 13 阶段里，按需路由）
+## 流程外的 Skill（不在 13 个阶段里，按需路由）
 
 `pm-review-board`（评审）`pm-experiment-designer`（实验）`pm-tracking-spec-writer`（埋点）
 `pm-survey-designer`（问卷）`pm-user-interview`（访谈）`pm-competitor-deconstructor`（竞品）
@@ -287,11 +293,11 @@ prd/
 
 1. **开始前报价**：列出裁剪后的阶段区间、每阶段产出物、需要用户确认的点，让用户砍阶段
 2. **起流程必走 Step 0**：按 `references/flow-engine.md` 分两批收集（AskUserQuestion 单次上限 4 问）。
-   第一批必问：**手头已有什么 / 裁剪范围 / 档位 / 产品类型**；第二批仅当裁剪含阶段 5 或 6 时问：**阶段5 文档类型 / 交付模式**。
+   第一批必问：**手头已有什么 / 裁剪范围 / 档位 / 产品类型**；第二批仅当裁剪含阶段 5／6 时问：**阶段5 文档类型 / 交付模式**。
    收完回显一行确认（裁剪｜档位｜阶段5｜模式），再用 TaskCreate 建清单
 3. **阶段门禁**：上一阶段的产出文件写入成功，才能进下一阶段。
-   **出了设计稿的，门禁多三条**：① `design-system/<项目slug>/` 下 `FLOWS.md` 与 `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；
-   ② 契约的三组机检输出 OK（含 `data-setframe` 为 0——出稿帧已废除）；③ 跑完 `references/prototype-review.md` 的四阶段检查并四方签字。
+   **阶段6 的门禁多三条**：① `design-system/<项目slug>/` 下 `FLOWS.md` 与 `HANDOFF.md` 齐（覆盖 ≥2 端再加 `CONSISTENCY.md`）；
+   ② 契约的**四组**机检（死按钮与孤层 / 流程完整性 / 清单反查九条 / 页面闭环）输出 OK（含 `data-setframe` 为 0——出稿帧已废除）；③ 跑完 `references/prototype-review.md` 的四阶段检查并四方签字。
    未签字的设计稿**不得**作为下游（研发、测试用例、操作手册）的输入
 4. **步间交接**：每阶段输出「交接摘要」（≤10 行：本阶段结论 + 下阶段需要的输入），不让下一阶段重读全文
 5. **可中途退出**：每阶段完成即是独立可用的交付物
