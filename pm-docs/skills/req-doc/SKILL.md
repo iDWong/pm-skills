@@ -11,7 +11,7 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.7"
+  version: "1.8"
   reviewed: "2026-09-16"
 ---
 

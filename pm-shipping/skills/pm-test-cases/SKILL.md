@@ -11,7 +11,7 @@ description: >
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 metadata:
   author: Wong
-  version: "1.5"
+  version: "1.6"
   reviewed: "2026-09-16"
 ---
 
