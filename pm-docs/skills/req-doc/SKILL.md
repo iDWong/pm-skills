@@ -11,8 +11,8 @@ description: '> 用于生成、撰写、创建、细化、审查或反向同步 
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 metadata:
   author: Wong
-  version: "1.4"
-  reviewed: "2026-09-14"
+  version: "1.5"
+  reviewed: "2026-09-15"
 ---
 
 > **⚠️ `.agents/` 是外部资源包路径，本机已不存在**（`Documents/Claude/Product/.agents/` 已删除）。
@@ -708,14 +708,21 @@ ls {PROJECT_PATH}/../req-doc/references/templates/*.md
 
 ### F1: 转写范围确认
 
-从 PRD §4 提取 🔴 / MVP / V1.0 模块列表，输出：
+确定本期转写范围——**先判上游结构**（见 `references/prd-to-srs-handoff.md`「两种上游 PRD」）：
+
+- `prd-writer` / `prototype-to-prd` 结构 → 从 PRD **§4** 提取 🔴 / MVP / V1.0 模块列表
+- `pm-prd-spec` 结构（功能域/页面，**通常没有 🔴**）→ 依次取：页面清单表的优先级列 →
+  `prd/planning/roadmap-*.md` 的 V1.0 范围 → **都没有就列出全部功能域与页面问用户一次**。
+  **不要因为找不到 §4 或 🔴 就中止**，那只是结构不同，不是 PRD 不合格。
+
+输出：
 
 ```text
 PRD → SRS 转写计划
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 来源 PRD：{路径}
 本期转写模块（{N} 个）：[模块1, 模块2, ...]
-暂不展开（🟡⚪）：[...]
+暂不展开：[...]（`prd-writer` 结构写 🟡⚪；`pm-prd-spec` 结构写「本期范围外」）
 输出路径：dev/SRS/{日期}-{项目}-SRS需求规格说明书-V1.0.md
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
