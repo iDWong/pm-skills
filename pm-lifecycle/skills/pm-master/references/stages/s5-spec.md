@@ -7,9 +7,9 @@
 
 **输入**：
 - `prd/planning/requirements.md`（阶段4）
-- `prd/planning/roadmap.md`（阶段3，V1.0 范围）——**快速交付／只要文档／迭代三个裁剪跳过了阶段3，此文件不存在**。
+- `prd/planning/roadmap*.md`（阶段3，V1.0 范围）——**快速交付／只要文档／迭代三个裁剪跳过了阶段3，此文件不存在**。
   缺失时的替代：① 用 `prd/planning/requirements.md` 里用户圈定的范围；② 问用户一句「本次做到哪个版本／哪些功能进 V1」；
-  ③ 存量产品迭代时读已有的 `prd/planning/roadmap.md`（老文件也算）。**三条都拿不到就不要自己编版本范围**，标为待确认
+  ③ 存量产品迭代时读已有的 `prd/planning/roadmap*.md`（老文件也算）。**三条都拿不到就不要自己编版本范围**，标为待确认
 - Step 0 选的文档类型、交付模式
 
 **档位在本阶段的含义**：本阶段**不看 Step 0 问题3（档位）**，走的是**问题5 选的文档类型**——
@@ -45,8 +45,8 @@
 **执行方式**：调用 `req-doc`，传入阶段4 `requirements.md` + 阶段3 V1.0 范围。
 
 **关键规范**：
-- 只生成 V1.0 / P0 模块（对照 `roadmap.md`）
-- 读取 `prd/planning/requirements.md` 作为 analyzer 输入摘要
+- 只生成 V1.0 / P0 模块（对照阶段3 路线图）
+- 读取 `prd/planning/requirements.md`（阶段4，固定名）作为 analyzer 输入摘要
 - 遵循 `req-doc` **标准模式**（A6 抽检、P0 自动修）；流水线内 **不重复**额外全文审查
 
 **输出**：SRS 文件（上表路径）

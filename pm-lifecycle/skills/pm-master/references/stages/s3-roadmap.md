@@ -6,17 +6,21 @@
 - 默认档 `pm-roadmap`——项目内自动扫上下文，快速出路线图并落盘
 - 深度档 `pm-roadmap-planner`——目标对齐／能力拆分／里程碑编排／风险缓冲四步法 + 甘特图 HTML
 
-两档**产出路径相同**（`prd/planning/roadmap.md`），深度档额外产出甘特图 HTML。
+两档**产出路径相同**（`prd/planning/roadmap-{产品名}-{年度}.md`），深度档额外产出甘特图 HTML。
 
 **输入**：
-- `prd/planning/feature-priority.md`（阶段2输出）
-- `prd/research/user-persona.md`（阶段1输出）
+- `prd/planning/feature-priority*.md`（阶段2输出）
+- `prd/research/user-persona*.md`（阶段1输出）
 
-**执行方式**：调用 `pm-roadmap` skill
+> 输入块里是 glob，**由流程解析成真实路径后再传给技能**（见 `../flow-engine.md`「流程内调用技能的约定」）。
+
+**执行方式**：按 Step 0 问题3 定下的档位调用对应技能——**不要两档都跑，也不要默认档顶替深度档**。
+
+<details><summary><b>默认档 · 调用 <code>pm-roadmap</code></b></summary>
 
 **传入上下文**：
 ```
-请读取 prd/planning/feature-priority.md，规划产品路线图。
+请读取 {功能优先级}，规划产品路线图。
 
 要求：
 - 将功能分配到 3-4 个版本
@@ -24,6 +28,24 @@
 - 每个版本设定里程碑和交付时间
 - 说明版本间的依赖关系
 ```
+</details>
+
+<details><summary><b>深度档 · 调用 <code>pm-roadmap-planner</code></b></summary>
+
+**传入上下文**：
+```
+请读取 {功能优先级} 与 {用户画像}，按四步法出版本路线图。
+
+要求：
+- 目标对齐：先把季度目标/OKR 拆到版本，说明每个版本服务哪个目标
+- 能力拆分：按团队产能拆分里程碑，标出跨团队依赖与依赖方
+- 里程碑编排：给出甘特图 HTML（额外产出）
+- 风险缓冲：每个里程碑的风险项 + 缓冲策略 + 触发条件
+- V1.0 只包含 P0 功能（MVP）
+```
+
+**额外产出**：甘特图 HTML（与路线图 md 同目录）
+</details>
 
 **输出**：`prd/planning/roadmap-{产品名}-{年度}.md`
 

@@ -4,7 +4,7 @@
 
 **输入**：
 - `SPEC_SOURCE`
-- `prd/planning/roadmap.md`（**迭代／只要文档裁剪下不存在**；缺失时改用 `SPEC_SOURCE` 的功能清单 +
+- `prd/planning/roadmap*.md`（**迭代／只要文档裁剪下不存在**；缺失时改用 `SPEC_SOURCE` 的功能清单 +
   git log／已完成任务清单来确定本次发了什么，不要因为没有路线图就停下）
 - `dev/code/`（若有）
 
@@ -12,7 +12,7 @@
 
 **传入上下文**：
 ```
-请读取 {SPEC_SOURCE} 与 prd/planning/roadmap.md，生成 V1.0 发版说明。
+请读取 {SPEC_SOURCE} 与 {路线图}（缺失时省略本项），生成 V1.0 发版说明。
 功能列表从 SRS 3.2/3.3 或 PRD §4 提取。
 ```
 

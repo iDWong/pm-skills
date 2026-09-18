@@ -2,13 +2,13 @@
 
 **目标**：基于市场调研，创建详细的用户画像
 
-**输入**：`prd/research/market-research.md`（阶段0输出）
+**输入**：`prd/research/market-research*.md`（阶段0输出，glob 由流程解析后再传）
 
 **执行方式**：调用 `pm-user-persona` skill
 
 **传入上下文**：
 ```
-请读取 prd/research/market-research.md，基于目标用户群体创建用户画像。
+请读取 {市场调研报告}，基于目标用户群体创建用户画像。
 
 要求：
 - 创建 2-3 个典型用户画像
